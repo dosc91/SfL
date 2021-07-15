@@ -13,4 +13,5 @@ RoxygenNote: 7.1.1
 Imports: 
     stringr,
 	glue,
-	usethis
+	usethis,
+	utils
