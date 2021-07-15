@@ -1,0 +1,16 @@
+Package: SfL
+Title: Statistics for Linguistics
+Version: 0.1
+Authors@R: c(
+    person("Dominic", "Schmitz", email = "contact@dominicschmitz.com", role = c("aut", "cre")),
+    person("Janina", "Esser", email = "contact@dominicschmitz.com", role = "aut"))
+Description: A package introducing basics of statistics used in the study of language.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    stringr,
+	glue,
+	usethis
