@@ -15,11 +15,11 @@ load_markdown <- function (session)
 {
   num <- stringr::str_pad(session, 2, pad = "0")
   ex_num <- glue::glue("markdown_{stringr::str_pad(session, 2, pad = '0')}")
-  if (!(num %in% c("03", "06", "08"))) {
-    cli::cli_alert_danger(glue::glue("Session {num} does not have exercises! Choose Session 03, 06, or 08."))
+  if (!(num %in% c("02", "03", "04"))) {
+    cli::cli_alert_danger(glue::glue("Session {num} does not have a markdown file! Choose Session 01."))
   }
   else {
-    v_path <- get_vignette_path(ex_num, package = "learnB4SS")
+    v_path <- get_vignette_path(ex_num, package = "SfL")
     file.copy(v_path, ".")
     usethis::edit_file(glue::glue("./{markdown_num}.Rmd"))
   }
