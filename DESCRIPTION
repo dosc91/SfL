@@ -15,3 +15,4 @@ Imports:
 	glue,
 	usethis,
 	utils
+VignetteBuilder: knitr
