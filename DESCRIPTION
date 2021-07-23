@@ -10,10 +10,10 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-Imports: stringr, glue, usethis, utils
+Imports: 
+    stringr,
+	glue,
+	usethis,
+	utils,
+	knitr
 VignetteBuilder: knitr
-NeedsCompilation: no
-Packaged: 2021-07-23 11:59:40 UTC; Adomo
-Author: Dominic Schmitz [aut, cre],
-  Janina Esser [aut]
-Maintainer: Dominic Schmitz <contact@dominicschmitz.com>
