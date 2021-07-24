@@ -2,11 +2,14 @@
 #'
 #' @description Create a dataframe with which a \code{ggplot2} bar plot with error bars (+/- 1 standard deviation) can be created.
 #'
-#' @usage \code{create_error_bar_df(data, numerical, factors)}
+#' @usage \code{create_error_bar_df(data = ,
+#'                    numerical = "",
+#'                    factors = "")}
 #'
 #' @param data The original data set.
 #' @param numerical The numerical variable which will be visualised in the bar plot.
-#' @param factors
+#' @param factors One or more factor variables which will be used for grouping.
+#' Use \code{c("var1", "var2")} for multiple grouping variables.
 #'
 #' @return A dataframe object.
 #'

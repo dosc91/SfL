@@ -4,14 +4,17 @@
 \alias{create_error_bar_df}
 \title{Create Error Bar Dataframe}
 \usage{
-\code{create_error_bar_df(data, numerical, factors)}
+\code{create_error_bar_df(data = ,
+                   numerical = "",
+                   factors = "")}
 }
 \arguments{
 \item{data}{The original data set.}
 
 \item{numerical}{The numerical variable which will be visualised in the bar plot.}
 
-\item{factors}{}
+\item{factors}{One or more factor variables which will be used for grouping.
+Use \code{c("var1", "var2")} for multiple grouping variables.}
 }
 \value{
 A dataframe object.

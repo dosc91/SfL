@@ -1,0 +1,19 @@
+#' data_v - Vowel Shortening in German
+#'
+#' A dataset containing the duration of vowels in open, simplex, and complex syllables.
+#' Q1: Are vowels longer the simpler the following coda is?
+#' Q2: Are open vowels longest, closed vowels shortest, and mid vowels somewhere in between?
+#'
+#' @format A data frame with 448 rows and 6 variables:
+#' \describe{
+#'   \item{speaker}{speaker ID}
+#'   \item{word}{pseudoword produced, contains the vowel}
+#'   \item{duration}{vowel duration}
+#'   \item{structure}{coda structure}
+#'   \item{vowel}{one of five vowels}
+#'   \item{rate}{speech rate}
+#' }
+#' @source Schmitz, D., Cho, H.-E., & Niemann, H. (2018). Vowel shortening in German as a function of syllable structure.
+#' Proceedings of 13. Phonetik und Phonologie Tagung. Humboldt University Berlin, Berlin, 28-29 September, 2017.
+#' doi: dx.doi.org/10.18452/18805
+"data_v"
