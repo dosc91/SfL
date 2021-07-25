@@ -17,6 +17,18 @@ devtools::install_github("dosc91/SfL", upgrade_dependencies = FALSE)
 
 All required packages should automatically be installed along the way.
 
+If installation ends without errors but with the following warning, everything should be in order:
+
+```r
+Warning message:
+1 components of `...` were not used.
+
+We detected these problematic arguments:
+* `upgrade_dependencies`
+
+Did you misspecify an argument? 
+```
+
 ## Exercises
 
 Use the `open_exercise()` function to open the exercises for one of the workshop's sessions.
