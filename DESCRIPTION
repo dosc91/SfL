@@ -16,7 +16,12 @@ Imports:
     usethis,
     utils,
     knitr,
-    performance
+    performance,
+    ggplot2,
+    gridExtra,
+    gghighlight,
+    ggridges,
+    ggforce
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)

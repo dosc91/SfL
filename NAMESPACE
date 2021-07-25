@@ -2,3 +2,4 @@
 
 export(create_error_bar_df)
 export(open_exercises)
+export(tukey)

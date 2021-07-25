@@ -25,9 +25,3 @@ create_error_bar_df <- function(data, numerical, factors){
   data_sum <- plyr::rename(data_sum, c("mean" = numerical))
   return(data_sum)
 }
-
-
-
-
-
-
