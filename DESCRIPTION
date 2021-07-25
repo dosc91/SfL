@@ -21,7 +21,8 @@ Imports:
     gridExtra,
     gghighlight,
     ggridges,
-    ggforce
+    ggforce,
+	multcomp
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
