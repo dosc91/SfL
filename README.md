@@ -7,7 +7,7 @@
 
 The `SfL` package was created to accompany the <a href="https://forensic-linguistics-sc.com/workshop/" target="_blank">Statistics for Linguistics</a> online workshop. It comes with exercises and exemplary data sets.
 
-Check out the [functions vignette](https://htmlpreview.github.io/?https://github.com/dosc91/SfL/blob/main/vignettes/functions.html) for more information on included functions. A vignette on included data sets will be added soon.
+Check out the [functions vignette](https://htmlpreview.github.io/?https://github.com/dosc91/SfL/blob/main/vignettes/functions.html) for more information on included functions. Take a look at the [data sets vignette](https://htmlpreview.github.io/?https://github.com/dosc91/SfL/blob/main/vignettes/data_sets.html) for an overview of included data sets.
 
 ## How to Install
 
