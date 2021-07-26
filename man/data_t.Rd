@@ -20,6 +20,8 @@ A data frame with 544 rows and 13 variables:
 \item{A1_dur}{duration of vowel of 2nd syllable}
 \item{L_dur}{duration of onset consonant of 3rd syllable}
 \item{A2_dur}{duration of vowel of 3rd syllable}
+\item{L_time}{point in time when lowest F0 value, i.e. L, occured}
+\item{L_freq}{frequency of lowest F0 value, i.e. L}
 }
 }
 \source{
@@ -30,8 +32,8 @@ Master's Thesis. Universität zu Köln, Köln, Germany.
 data_t
 }
 \description{
-A dataset containing fictional data on age and looks.
-Q1: Are final consonants voiceless?
-Q2: Is vowel duration shorter when the vowel preceds a voiceless vowel?
+The Tonal Alignment in German data set, data_t, contains data on tonal alignment in German. The values are fictional, but closely
+related to real data, i.e. the data by Schmitz (2018).
+A possible question to investigate with this data set is whether the frequency of low points differs by syllable structure.
 }
 \keyword{datasets}

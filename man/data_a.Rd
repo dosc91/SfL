@@ -16,13 +16,13 @@ A data frame with 40 rows and 6 variables:
 }
 }
 \source{
-Schmitz, Dominic & Esser, Janina. (2021). SfL: Statistics for Linguistics. URL: https://github.com/dosc91/SfL
+Schmitz, D. & Esser, J. (2021). SfL: Statistics for Linguistics. URL: https://github.com/dosc91/SfL
 }
 \usage{
 data_a
 }
 \description{
-A dataset containing fictional data on age and looks.
-Q1: Is there are dependency between different variables?
+The Age and Looks data set, data_a, contains data on age and appearance of fictional individuals.
+A possible question to investigate with this data set is whether there is a dependency between different variables of the data set.
 }
 \keyword{datasets}

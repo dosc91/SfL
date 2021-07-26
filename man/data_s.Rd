@@ -40,7 +40,8 @@ Schmitz, D., Baer-Henney, D., & Plag, I. (submitted). Revision invited by Phonet
 data_s
 }
 \description{
-A dataset containing the duration of word-final /s/ and independent variables.
-Q1: Is the duration of /s/ influenced by its type?
+The Duration of word-final /s/ in English data set, data_s, contains data on three different types of word-final /s/ in
+English, i.e. non-morphemic, plural, and is-clitic /s/. The data is fictional, but closely related to the original data used in a study by Schmitz et al. (2020).
+A possible question to investigate with this data set is whether the duration of /s/ depends on the type of /s/.
 }
 \keyword{datasets}
