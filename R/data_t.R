@@ -4,7 +4,7 @@
 #' related to real data, i.e. the data by Schmitz (2018).
 #' A possible question to investigate with this data set is whether the frequency of low points differs by syllable structure.
 #'
-#' @format A data frame with 544 rows and 13 variables:
+#' @format A data frame with 544 rows and 15 variables:
 #' \describe{
 #'   \item{speaker}{speaker ID}
 #'   \item{word_dur}{word duration}
