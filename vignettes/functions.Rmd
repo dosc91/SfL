@@ -69,41 +69,37 @@ Additionally, the user may specify whether they want to compute the standard dev
 # example 1: one categorical variable
 
 df1 <- create_error_bar_df(data = data_s, numerical = "sDur", factors = "pauseBin")
+
+df1
 ```
 
-```{r echo=FALSE}
-datatable(df1)
-```
 
 ```{r include=T, eval=T}
 # example 2: more than one categorical variable
 
 df2 <- create_error_bar_df(data = data_s, numerical = "sDur", factors = c("pauseBin", "typeOfS", "folType"))
+
+df2
 ```
 
-```{r echo=FALSE}
-datatable(df2)
-```
 
 ```{r include=T, eval=T}
 # example 3: double standard deviation
 
 df3 <- create_error_bar_df(data = data_s, numerical = "sDur", factors = "pauseBin", size = 2)
+
+df3
 ```
 
-```{r echo=FALSE}
-datatable(df3)
-```
 
 ```{r include=T, eval=T}
 # example 4: standard error instead of standard deviation
 
 df4 <- create_error_bar_df(data = data_s, numerical = "sDur", factors = "pauseBin", type = "std")
+
+df4
 ```
 
-```{r echo=FALSE}
-datatable(df4)
-```
 
 ---
 
