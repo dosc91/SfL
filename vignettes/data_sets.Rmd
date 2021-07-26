@@ -3,7 +3,7 @@ title: "SfL - Data Sets"
 date: "Version 0.1 - July 2021"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{LDLConvFunctions}
+  %\VignetteIndexEntry{SfL - Data Sets}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -120,7 +120,7 @@ dim(data_t)
 
 ---
 
-# Tonal Alignment in German {#data_v}
+# Vowel Shortening in German {#data_v}
 
 The *Vowel Shortening in German* data set, `data_v`, contains data on the duration of vowels in open, simplex, and complex syllables in German. The data is fictional, but closely related to the original data used by Schmitz et al. (2018).
 

@@ -3,7 +3,7 @@ title: "SfL - Functions"
 date: "Version 0.1 - July 2021"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{LDLConvFunctions}
+  %\VignetteIndexEntry{SfL - Functions}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
