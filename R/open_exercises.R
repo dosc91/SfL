@@ -13,6 +13,9 @@
 #'
 #' @references Stefano Coretta, Joseph V. Casillas and Timo Roettger (2021). learnB4SS: Learning materials for the learnB4SS workshop. R package version 1.0.0. https://github.com/learnB4SS/learnB4SS
 #'
+#' @examples
+#' open_exercises(02)
+#'
 #' @export
 
 open_exercises <- function(session) {

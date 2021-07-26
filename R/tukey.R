@@ -1,7 +1,7 @@
 #' Tukey Contrasts
 #'
 #' @description Compute Tukey Contrasts for all levels of a categorical predictor. Takes simple linear regression
-#' models and multiple linear regression models (\code{lm()}), as well as linear mixed effects models (\code{lmer()}) as input.
+#' models and multiple linear regression models, as well as linear mixed effects models as input.
 #'
 #' @usage \code{tukey(model = , predictor = )}
 #'
@@ -11,6 +11,13 @@
 #' @return A list object if assigned to a variable name.
 #'
 #' @author D. Schmitz
+#'
+#' @examples
+#' data("data_s")
+#'
+#' mdl <- lm(sDur ~ pauseBin, data = data_s)
+#'
+#' tukey(model = mdl, predictor = pauseBin)
 #'
 #' @export
 
