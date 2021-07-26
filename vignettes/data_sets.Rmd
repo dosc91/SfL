@@ -1,5 +1,5 @@
 ---
-title: "SfL - Functions"
+title: "SfL - Data Sets"
 date: "Version 0.1 - July 2021"
 output: rmarkdown::html_vignette
 vignette: >
@@ -38,7 +38,7 @@ library(lme4)
 
 The `SfL` package was created to accompany the [Statistics for Linguistics](https://forensic-linguistics-sc.com/workshop/) online workshop in August/September 2021. The workshop was a satellite event to the [3rd Forensic Linguistics Short Course](https://forensic-linguistics-sc.com/).
 
-This vignette gives an overview of data sets included in the `SfL` package. Please refer to the [functions vignette](#https://htmlpreview.github.io/?https://github.com/dosc91/SfL/blob/main/vignettes/functions.html) for an overview of included functions.
+This vignette gives an overview of data sets included in the `SfL` package. Please refer to the [functions vignette](https://htmlpreview.github.io/?https://github.com/dosc91/SfL/blob/main/vignettes/functions.html) for an overview of included functions.
 
 ---
 

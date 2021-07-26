@@ -38,7 +38,7 @@ library(lme4)
 
 The `SfL` package was created to accompany the [Statistics for Linguistics](https://forensic-linguistics-sc.com/workshop/) online workshop in August/September 2021. The workshop was a satellite event to the [3rd Forensic Linguistics Short Course](https://forensic-linguistics-sc.com/).
 
-This vignette gives an overview of functions included in the `SfL` package. Please refer to the [data set vignette](#todo) for an overview of included data sets.
+This vignette gives an overview of functions included in the `SfL` package. Please refer to the [data set vignette](https://htmlpreview.github.io/?https://github.com/dosc91/SfL/blob/main/vignettes/data_sets.html) for an overview of included data sets.
 
 ---
 
