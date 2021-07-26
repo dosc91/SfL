@@ -1,0 +1,134 @@
+---
+title: "SfL - Functions"
+date: "Version 0.1 - July 2021"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{LDLConvFunctions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+<style type="text/css">
+
+img{
+  border: none;
+  margin: 5px;
+}
+
+</style>
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, include=F}
+library(SfL)
+library(DT)
+library(lme4)
+```
+
+<div class="logo">
+
+  <img src="figures/SfL_logo.png" style="float:right">
+
+</div>
+
+The `SfL` package was created to accompany the [Statistics for Linguistics](https://forensic-linguistics-sc.com/workshop/) online workshop in August/September 2021. The workshop was a satellite event to the [3rd Forensic Linguistics Short Course](https://forensic-linguistics-sc.com/).
+
+This vignette gives an overview of functions included in the `SfL` package. Please refer to the [data set vignette](#todo) for an overview of included data sets.
+
+---
+
+# Overview
+
+This is a full list of all functions currently contained in `SfL`:
+
+- [create_error_bar_df](#create_error_bar_df)
+- [open_exercises](#open_exercises)
+- [tukey](#tukey)
+
+Where necessary, the `data_s` data set will be used for illustrations in this vignette.
+
+```{r}
+data("data_s")
+```
+
+---
+
+# Create Error Bar Dataframe {#create_error_bar_df}
+
+The `create_error_bar_df` function creates a dataframe with which a `ggplot2` bar plot (`geom_bar`) with error bars (+/- 1 standard deviation) can easily be created.
+
+The function takes an original data set, a numerical value to summarise, and one or more categorical variables as arguments.
+
+```{r include=T, eval=T}
+# example 1: one categorical variable
+
+df1 <- create_error_bar_df(data = data_s, numerical = "sDur", factors = "pauseBin")
+```
+
+```{r echo=FALSE}
+datatable(df1)
+```
+
+```{r include=T, eval=T}
+# example 2: more than one categorical variable
+
+df1 <- create_error_bar_df(data = data_s, numerical = "sDur", factors = c("pauseBin", "typeOfS", "folType"))
+```
+
+```{r echo=FALSE}
+datatable(df1)
+```
+
+---
+
+# Open Exercise {#open_exercises}
+
+The `open_exercises` function opens the knitted RMarkdown associated with a session of the Statistics for Linguistics Workshop as html file in the system's standard browser.
+
+The function takes a session number as argument. Skipping the zero, e.g. writing `2` instead of `02`, works as well.
+
+```{r eval=F}
+open_exercises(02)
+```
+
+---
+
+# Tukey Contrasts {#tukey}
+
+The tukey function computes Tukey Contrasts for all levels of a categorical predictor. 
+
+The function takes simple and multiple linear regression models, as well as linear mixed effects regression models as input. Specify the categorical predictor for which Tukey contrasts should be computed.
+
+```{r}
+simple_lm <- lm(sDur ~ typeOfS, data = data_s)
+tukey(model = simple_lm, predictor = typeOfS)
+
+multiple_lm <- lm(sDur ~ typeOfS + pauseBin, data = data_s)
+tukey(model = multiple_lm, predictor = pauseBin)
+
+# library(lme4)
+mixed_lm <- lmer(sDur ~ typeOfS + pauseBin + folType + (1 | speaker), data = data_s, REML = F)
+tukey(model = mixed_lm, predictor = folType)
+```
+
+---
+
+*Please message the author at contact@dominicschmitz.com in case of any questions, errors or ideas.*
+
+
+
+
+
+
+
+
+
+
+
+
+
