@@ -16,6 +16,10 @@ Nothing.
 Calling \code{open_exercise} with a session number as argument will open the exercise html for that session.
 The html will be opened in your default browser. This function is inspired by Coretta et al. (see references).
 }
+\examples{
+open_exercises(02)
+
+}
 \references{
 Stefano Coretta, Joseph V. Casillas and Timo Roettger (2021). learnB4SS: Learning materials for the learnB4SS workshop. R package version 1.0.0. https://github.com/learnB4SS/learnB4SS
 }

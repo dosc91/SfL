@@ -6,7 +6,9 @@
 \usage{
 \code{create_error_bar_df(data = ,
                    numerical = "",
-                   factors = "")}
+                   factors = "",
+                   size = 1,
+                   type = "sd")}
 }
 \arguments{
 \item{data}{The original data set.}
@@ -15,12 +17,22 @@
 
 \item{factors}{One or more factor variables which will be used for grouping.
 Use \code{c("var1", "var2")} for multiple grouping variables.}
+
+\item{size}{Choose whether you want more/less than 1 standard deviation/standard error. Defaults to 1.}
+
+\item{type}{Choose between "sd" (standard deviation) and "std" (standard error). Defaults to "sd".}
 }
 \value{
 A dataframe object.
 }
 \description{
 Create a dataframe with which a \code{ggplot2} bar plot with error bars (+/- 1 standard deviation) can be created.
+}
+\examples{
+data("data_s")
+
+create_error_bar_df(data = data_s, numerical = "sDur", factors = "pauseBin", size = 1, type = "sd")
+
 }
 \author{
 D. Schmitz

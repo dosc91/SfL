@@ -5,7 +5,7 @@
 \alias{data_t}
 \title{data_t - Tonal Alignment in German}
 \format{
-A data frame with 544 rows and 13 variables:
+A data frame with 544 rows and 15 variables:
 \describe{
 \item{speaker}{speaker ID}
 \item{word_dur}{word duration}
