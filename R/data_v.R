@@ -1,8 +1,8 @@
 #' data_v - Vowel Shortening in German
 #'
-#' A dataset containing the duration of vowels in open, simplex, and complex syllables.
-#' Q1: Are vowels longer the simpler the following coda is?
-#' Q2: Are open vowels longest, closed vowels shortest, and mid vowels somewhere in between?
+#' The Vowel Shortening in German data set, data_v, contains data on the duration of vowels in open, simplex, and complex syllables
+#' in German. The data is fictional, but closely related to the original data used by Schmitz et al. (2018).
+#' A possible question to investigate with this data set is whether vowel duration differs by syllable structure.
 #'
 #' @format A data frame with 448 rows and 6 variables:
 #' \describe{
