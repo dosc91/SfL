@@ -46,14 +46,28 @@ This vignette gives an overview of functions included in the `SfL` package. Plea
 
 This is a full list of all functions currently contained in `SfL`:
 
+- [correlation_matrix](#correlation_matrix)
 - [create_error_bar_df](#create_error_bar_df)
 - [open_exercises](#open_exercises)
+- [predictor_competition](#predictor_competition)
 - [tukey](#tukey)
 
 Where necessary, the `data_s` data set will be used for illustrations in this vignette.
 
 ```{r}
 data("data_s")
+```
+
+---
+
+# Create Correlation Matrix {#correlation_matrix}
+
+The `correlation_matrix` function creates a matrix of scatter plots with Pearson and Spearman correlations in the lower triangle. It is a wrapper for `languageR::pairscor.fnc`.
+
+The function takes a data set and a vector of column (variable) names to display in the plot.
+
+```{r fig.align='center'}
+correlation_matrix(data = data_s, variables = c("typeOfS", "pauseBin", "sDur"))
 ```
 
 ---
@@ -115,6 +129,27 @@ open_exercises(02)
 
 ---
 
+# Compare Variables for Predictor Strength {#predictor_competition}
+
+The `predictor_competition` function is used to compare the predictive strength of two independent variables. The function creates two identical lmer objects, only differing in fixed effects structure. Then, a log-likelihood test is used to decide which fixed effect structure is better fit to predict the dependent variable.
+
+The function takes a number of arguments as input, i.e. the original data set, the dependent variable for both models, the independent variables to test, a random intercept variable, and (if specified) a random slope variable.
+
+```{r}
+# example 1: two similarly well fit predictors
+predictor_competition(data = data_s, dependent = "sDur", 
+                      independent1 = "typeOfS", independent2 = "pauseBin", 
+                      random.intercept = "speaker")
+
+# example 2: one predictor is better than the other
+predictor_competition(data = data_s, dependent = "sDur", 
+                      independent1 = "typeOfS", independent2 = "slideNumber", 
+                      random.intercept = "speaker")
+```
+
+
+---
+
 # Tukey Contrasts {#tukey}
 
 The tukey function computes Tukey Contrasts for all levels of a categorical predictor. 
@@ -132,6 +167,16 @@ tukey(model = multiple_lm, predictor = pauseBin)
 mixed_lm <- lmer(sDur ~ typeOfS + pauseBin + folType + (1 | speaker), data = data_s, REML = F)
 tukey(model = mixed_lm, predictor = folType)
 ```
+
+---
+
+# References
+
+R. Harald Baayen and Elnaz Shafaei-Bajestan (2019). languageR: Analyzing Linguistic Data: A Practical Introduction to Statistics. R package version 1.5.0. https://CRAN.R-project.org/package=languageR
+
+Douglas Bates, Martin Maechler, Ben Bolker, and Steve Walker (2015). Fitting Linear Mixed-Effects Models Using lme4. Journal of Statistical Software, 67(1), 1-48. doi:10.18637/jss.v067.i01.
+
+Schmitz, Dominic and Esser, Janina. (2021). SfL: Statistics for Linguistics. R package version 0.1. URL: https://github.com/dosc91/SfL
 
 ---
 

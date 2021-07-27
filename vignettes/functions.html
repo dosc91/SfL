@@ -153,147 +153,197 @@ img{
 <h1>Overview</h1>
 <p>This is a full list of all functions currently contained in <code>SfL</code>:</p>
 <ul>
+<li><a href="#correlation_matrix">correlation_matrix</a></li>
 <li><a href="#create_error_bar_df">create_error_bar_df</a></li>
 <li><a href="#open_exercises">open_exercises</a></li>
+<li><a href="#predictor_competition">predictor_competition</a></li>
 <li><a href="#tukey">tukey</a></li>
 </ul>
 <p>Where necessary, the <code>data_s</code> data set will be used for illustrations in this vignette.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;data_s&quot;</span>)</span></code></pre></div>
 <hr />
 </div>
+<div id="correlation_matrix" class="section level1">
+<h1>Create Correlation Matrix</h1>
+<p>The <code>correlation_matrix</code> function creates a matrix of scatter plots with Pearson and Spearman correlations in the lower triangle. It is a wrapper for <code>languageR::pairscor.fnc</code>.</p>
+<p>The function takes a data set and a vector of column (variable) names to display in the plot.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">correlation_matrix</span>(<span class="at">data =</span> data_s, <span class="at">variables =</span> <span class="fu">c</span>(<span class="st">&quot;typeOfS&quot;</span>, <span class="st">&quot;pauseBin&quot;</span>, <span class="st">&quot;sDur&quot;</span>))</span></code></pre></div>
+<p><img src="data:image/png;base64,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" style="display: block; margin: auto;" /></p>
+<hr />
+</div>
 <div id="create_error_bar_df" class="section level1">
 <h1>Create Error Bar Dataframe</h1>
 <p>The <code>create_error_bar_df</code> function creates a dataframe with which a <code>ggplot2</code> bar plot (<code>geom_bar</code>) with error bars (+/- 1 standard deviation) can easily be created.</p>
 <p>The function takes an original data set, a numerical value to summarise, and one or more categorical variables as arguments. </br> Additionally, the user may specify whether they want to compute the standard deviation (default) or standard error, and whether they wish to compute the base standard deviation/error (default) or a multiple of that, e.g. two times the standard deviation.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example 1: one categorical variable</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">create_error_bar_df</span>(<span class="at">data =</span> data_s, <span class="at">numerical =</span> <span class="st">&quot;sDur&quot;</span>, <span class="at">factors =</span> <span class="st">&quot;pauseBin&quot;</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df1</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   pauseBin      sDur         sd</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 no_pause 0.1095498 0.03404740</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    pause 0.1654329 0.06289761</span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example 2: more than one categorical variable</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example 1: one categorical variable</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">create_error_bar_df</span>(<span class="at">data =</span> data_s, <span class="at">numerical =</span> <span class="st">&quot;sDur&quot;</span>, <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">&quot;pauseBin&quot;</span>, <span class="st">&quot;typeOfS&quot;</span>, <span class="st">&quot;folType&quot;</span>))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">create_error_bar_df</span>(<span class="at">data =</span> data_s, <span class="at">numerical =</span> <span class="st">&quot;sDur&quot;</span>, <span class="at">factors =</span> <span class="st">&quot;pauseBin&quot;</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df2</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    pauseBin typeOfS folType       sDur         sd</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  no_pause      is     APP 0.10937583 0.02951835</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  no_pause      is       N 0.09962429 0.02481910</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  no_pause      is       P 0.08951111 0.02165350</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  no_pause      is       V 0.07847333 0.02065562</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  no_pause      nm     APP 0.12624500 0.04148153</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  no_pause      nm       N 0.11316500 0.02927859</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7  no_pause      nm       P 0.11973167 0.04050901</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8  no_pause      nm       V 0.12515500 0.04123140</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9  no_pause      pl     APP 0.13868600 0.03495489</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 no_pause      pl       F 0.11699000         NA</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 no_pause      pl       N 0.10664250 0.04328446</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 no_pause      pl       P 0.10604300 0.03429448</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 no_pause      pl       V 0.09878857 0.01154223</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14    pause      is     APP 0.14260500 0.02025861</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15    pause      is       N 0.11782800 0.04710657</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16    pause      is       P 0.16637333 0.05520483</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17    pause      is       V 0.11027857 0.03530715</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18    pause      nm     APP 0.22798000         NA</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19    pause      nm       N 0.21450625 0.03881482</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20    pause      nm       P 0.18060500 0.07597634</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21    pause      nm       V 0.21002571 0.07655703</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22    pause      pl     APP 0.15322667 0.05985975</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23    pause      pl       N 0.22900500 0.03377849</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24    pause      pl       P 0.17812000 0.04684116</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25    pause      pl       V 0.10248600 0.02751327</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example 3: double standard deviation</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df1</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   pauseBin      sDur         sd</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 no_pause 0.1095498 0.03404740</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    pause 0.1654329 0.06289761</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example 2: more than one categorical variable</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">create_error_bar_df</span>(<span class="at">data =</span> data_s, <span class="at">numerical =</span> <span class="st">&quot;sDur&quot;</span>, <span class="at">factors =</span> <span class="st">&quot;pauseBin&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">create_error_bar_df</span>(<span class="at">data =</span> data_s, <span class="at">numerical =</span> <span class="st">&quot;sDur&quot;</span>, <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">&quot;pauseBin&quot;</span>, <span class="st">&quot;typeOfS&quot;</span>, <span class="st">&quot;folType&quot;</span>))</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>df3</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   pauseBin      sDur        sd</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 no_pause 0.1095498 0.0680948</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    pause 0.1654329 0.1257952</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example 4: standard error instead of standard deviation</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>df2</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    pauseBin typeOfS folType       sDur         sd</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  no_pause      is     APP 0.10937583 0.02951835</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  no_pause      is       N 0.09962429 0.02481910</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  no_pause      is       P 0.08951111 0.02165350</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  no_pause      is       V 0.07847333 0.02065562</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  no_pause      nm     APP 0.12624500 0.04148153</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  no_pause      nm       N 0.11316500 0.02927859</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7  no_pause      nm       P 0.11973167 0.04050901</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8  no_pause      nm       V 0.12515500 0.04123140</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9  no_pause      pl     APP 0.13868600 0.03495489</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 no_pause      pl       F 0.11699000         NA</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 no_pause      pl       N 0.10664250 0.04328446</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 no_pause      pl       P 0.10604300 0.03429448</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 no_pause      pl       V 0.09878857 0.01154223</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14    pause      is     APP 0.14260500 0.02025861</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15    pause      is       N 0.11782800 0.04710657</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16    pause      is       P 0.16637333 0.05520483</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17    pause      is       V 0.11027857 0.03530715</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18    pause      nm     APP 0.22798000         NA</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19    pause      nm       N 0.21450625 0.03881482</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20    pause      nm       P 0.18060500 0.07597634</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21    pause      nm       V 0.21002571 0.07655703</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22    pause      pl     APP 0.15322667 0.05985975</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23    pause      pl       N 0.22900500 0.03377849</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24    pause      pl       P 0.17812000 0.04684116</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25    pause      pl       V 0.10248600 0.02751327</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example 3: double standard deviation</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> <span class="fu">create_error_bar_df</span>(<span class="at">data =</span> data_s, <span class="at">numerical =</span> <span class="st">&quot;sDur&quot;</span>, <span class="at">factors =</span> <span class="st">&quot;pauseBin&quot;</span>, <span class="at">type =</span> <span class="st">&quot;std&quot;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">create_error_bar_df</span>(<span class="at">data =</span> data_s, <span class="at">numerical =</span> <span class="st">&quot;sDur&quot;</span>, <span class="at">factors =</span> <span class="st">&quot;pauseBin&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>df4</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   pauseBin      sDur         std</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 no_pause 0.1095498 0.003569137</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    pause 0.1654329 0.008188571</span></span></code></pre></div>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>df3</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   pauseBin      sDur        sd</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 no_pause 0.1095498 0.0680948</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    pause 0.1654329 0.1257952</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example 4: standard error instead of standard deviation</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> <span class="fu">create_error_bar_df</span>(<span class="at">data =</span> data_s, <span class="at">numerical =</span> <span class="st">&quot;sDur&quot;</span>, <span class="at">factors =</span> <span class="st">&quot;pauseBin&quot;</span>, <span class="at">type =</span> <span class="st">&quot;std&quot;</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>df4</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   pauseBin      sDur         std</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 no_pause 0.1095498 0.003569137</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    pause 0.1654329 0.008188571</span></span></code></pre></div>
 <hr />
 </div>
 <div id="open_exercises" class="section level1">
 <h1>Open Exercise</h1>
 <p>The <code>open_exercises</code> function opens the knitted RMarkdown associated with a session of the Statistics for Linguistics Workshop as html file in the system’s standard browser.</p>
 <p>The function takes a session number as argument. Skipping the zero, e.g. writing <code>2</code> instead of <code>02</code>, works as well.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">open_exercises</span>(<span class="dv">02</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">open_exercises</span>(<span class="dv">02</span>)</span></code></pre></div>
+<hr />
+</div>
+<div id="predictor_competition" class="section level1">
+<h1>Compare Variables for Predictor Strength</h1>
+<p>The <code>predictor_competition</code> function is used to compare the predictive strength of two independent variables. The function creates two identical lmer objects, only differing in fixed effects structure. Then, a log-likelihood test is used to decide which fixed effect structure is better fit to predict the dependent variable.</p>
+<p>The function takes a number of arguments as input, i.e. the original data set, the dependent variable for both models, the independent variables to test, a random intercept variable, and (if specified) a random slope variable.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example 1: two similarly well fit predictors</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predictor_competition</span>(<span class="at">data =</span> data_s, <span class="at">dependent =</span> <span class="st">&quot;sDur&quot;</span>, </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">independent1 =</span> <span class="st">&quot;typeOfS&quot;</span>, <span class="at">independent2 =</span> <span class="st">&quot;pauseBin&quot;</span>, </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">random.intercept =</span> <span class="st">&quot;speaker&quot;</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; i Both predictors, typeOfS &amp; pauseBin, are equally good at predicting sDur.</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Data: data</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Models:</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mdl2: sDur ~ pauseBin + (1 | speaker)</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mdl1: sDur ~ typeOfS + (1 | speaker)</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      npar     AIC     BIC logLik deviance Chisq Df Pr(&gt;Chisq)</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mdl2    4 -500.04 -487.99 254.02  -508.04                    </span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mdl1    5 -475.28 -460.22 242.64  -485.28     0  1          1</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co"># example 2: one predictor is better than the other</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="fu">predictor_competition</span>(<span class="at">data =</span> data_s, <span class="at">dependent =</span> <span class="st">&quot;sDur&quot;</span>, </span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>                      <span class="at">independent1 =</span> <span class="st">&quot;typeOfS&quot;</span>, <span class="at">independent2 =</span> <span class="st">&quot;slideNumber&quot;</span>, </span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>                      <span class="at">random.intercept =</span> <span class="st">&quot;speaker&quot;</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; i We have a winner!</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Data: data</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Models:</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mdl2: sDur ~ slideNumber + (1 | speaker)</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mdl1: sDur ~ typeOfS + (1 | speaker)</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      npar     AIC     BIC logLik deviance  Chisq Df Pr(&gt;Chisq)    </span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mdl2    4 -458.17 -446.13 233.08  -466.17                         </span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mdl1    5 -475.28 -460.22 242.64  -485.28 19.109  1  1.235e-05 ***</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
 <hr />
 </div>
 <div id="tukey" class="section level1">
 <h1>Tukey Contrasts</h1>
 <p>The tukey function computes Tukey Contrasts for all levels of a categorical predictor.</p>
 <p>The function takes simple and multiple linear regression models, as well as linear mixed effects regression models as input. Specify the categorical predictor for which Tukey contrasts should be computed.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>simple_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(sDur <span class="sc">~</span> typeOfS, <span class="at">data =</span> data_s)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tukey</span>(<span class="at">model =</span> simple_lm, <span class="at">predictor =</span> typeOfS)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Simultaneous Tests for General Linear Hypotheses</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple Comparisons of Means: Tukey Contrasts</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Fit: lm(formula = sDur ~ typeOfS, data = data_s)</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Linear Hypotheses:</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;              Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; nm - is == 0  0.05033    0.01020   4.935   &lt;1e-04 ***</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; pl - is == 0  0.02543    0.01020   2.493   0.0364 *  </span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; pl - nm == 0 -0.02490    0.01020  -2.442   0.0416 *  </span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Adjusted p values reported -- single-step method)</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>multiple_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(sDur <span class="sc">~</span> typeOfS <span class="sc">+</span> pauseBin, <span class="at">data =</span> data_s)</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="fu">tukey</span>(<span class="at">model =</span> multiple_lm, <span class="at">predictor =</span> pauseBin)</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Simultaneous Tests for General Linear Hypotheses</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple Comparisons of Means: Tukey Contrasts</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Fit: lm(formula = sDur ~ typeOfS + pauseBin, data = data_s)</span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Linear Hypotheses:</span></span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                       Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; pause - no_pause == 0 0.053788   0.007372   7.296 1.75e-11 ***</span></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Adjusted p values reported -- single-step method)</span></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="co"># library(lme4)</span></span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>mixed_lm <span class="ot">&lt;-</span> <span class="fu">lmer</span>(sDur <span class="sc">~</span> typeOfS <span class="sc">+</span> pauseBin <span class="sc">+</span> folType <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> speaker), <span class="at">data =</span> data_s, <span class="at">REML =</span> F)</span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="fu">tukey</span>(<span class="at">model =</span> mixed_lm, <span class="at">predictor =</span> folType)</span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Simultaneous Tests for General Linear Hypotheses</span></span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple Comparisons of Means: Tukey Contrasts</span></span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Fit: lmer(formula = sDur ~ typeOfS + pauseBin + folType + (1 | speaker), </span></span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     data = data_s, REML = F)</span></span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Linear Hypotheses:</span></span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               Estimate Std. Error z value Pr(&gt;|z|)</span></span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F - APP == 0 -0.025340   0.041764  -0.607    0.970</span></span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; N - APP == 0  0.001008   0.009290   0.109    1.000</span></span>
-<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; P - APP == 0 -0.004010   0.008432  -0.476    0.988</span></span>
-<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; V - APP == 0 -0.018596   0.009280  -2.004    0.235</span></span>
-<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; N - F == 0    0.026348   0.041748   0.631    0.965</span></span>
-<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; P - F == 0    0.021330   0.041787   0.510    0.984</span></span>
-<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; V - F == 0    0.006744   0.042080   0.160    1.000</span></span>
-<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; P - N == 0   -0.005018   0.009385  -0.535    0.981</span></span>
-<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; V - N == 0   -0.019604   0.009775  -2.005    0.234</span></span>
-<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; V - P == 0   -0.014586   0.008937  -1.632    0.441</span></span>
-<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Adjusted p values reported -- single-step method)</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>simple_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(sDur <span class="sc">~</span> typeOfS, <span class="at">data =</span> data_s)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tukey</span>(<span class="at">model =</span> simple_lm, <span class="at">predictor =</span> typeOfS)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Simultaneous Tests for General Linear Hypotheses</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple Comparisons of Means: Tukey Contrasts</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Fit: lm(formula = sDur ~ typeOfS, data = data_s)</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Linear Hypotheses:</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;              Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; nm - is == 0  0.05033    0.01020   4.935   &lt;1e-04 ***</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; pl - is == 0  0.02543    0.01020   2.493   0.0364 *  </span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; pl - nm == 0 -0.02490    0.01020  -2.442   0.0415 *  </span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Adjusted p values reported -- single-step method)</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>multiple_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(sDur <span class="sc">~</span> typeOfS <span class="sc">+</span> pauseBin, <span class="at">data =</span> data_s)</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="fu">tukey</span>(<span class="at">model =</span> multiple_lm, <span class="at">predictor =</span> pauseBin)</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Simultaneous Tests for General Linear Hypotheses</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple Comparisons of Means: Tukey Contrasts</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Fit: lm(formula = sDur ~ typeOfS + pauseBin, data = data_s)</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Linear Hypotheses:</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                       Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; pause - no_pause == 0 0.053788   0.007372   7.296 1.75e-11 ***</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Adjusted p values reported -- single-step method)</span></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="co"># library(lme4)</span></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>mixed_lm <span class="ot">&lt;-</span> <span class="fu">lmer</span>(sDur <span class="sc">~</span> typeOfS <span class="sc">+</span> pauseBin <span class="sc">+</span> folType <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> speaker), <span class="at">data =</span> data_s, <span class="at">REML =</span> F)</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a><span class="fu">tukey</span>(<span class="at">model =</span> mixed_lm, <span class="at">predictor =</span> folType)</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Simultaneous Tests for General Linear Hypotheses</span></span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple Comparisons of Means: Tukey Contrasts</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Fit: lmer(formula = sDur ~ typeOfS + pauseBin + folType + (1 | speaker), </span></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     data = data_s, REML = F)</span></span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Linear Hypotheses:</span></span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               Estimate Std. Error z value Pr(&gt;|z|)</span></span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F - APP == 0 -0.025340   0.041764  -0.607    0.970</span></span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; N - APP == 0  0.001008   0.009290   0.109    1.000</span></span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; P - APP == 0 -0.004010   0.008432  -0.476    0.988</span></span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; V - APP == 0 -0.018596   0.009280  -2.004    0.234</span></span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; N - F == 0    0.026348   0.041748   0.631    0.965</span></span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; P - F == 0    0.021330   0.041787   0.510    0.984</span></span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; V - F == 0    0.006744   0.042080   0.160    1.000</span></span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; P - N == 0   -0.005018   0.009385  -0.535    0.981</span></span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; V - N == 0   -0.019604   0.009775  -2.005    0.234</span></span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; V - P == 0   -0.014586   0.008937  -1.632    0.441</span></span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Adjusted p values reported -- single-step method)</span></span></code></pre></div>
+<hr />
+</div>
+<div id="references" class="section level1">
+<h1>References</h1>
+<p>R. Harald Baayen and Elnaz Shafaei-Bajestan (2019). languageR: Analyzing Linguistic Data: A Practical Introduction to Statistics. R package version 1.5.0. <a href="https://CRAN.R-project.org/package=languageR" class="uri">https://CRAN.R-project.org/package=languageR</a></p>
+<p>Douglas Bates, Martin Maechler, Ben Bolker, and Steve Walker (2015). Fitting Linear Mixed-Effects Models Using lme4. Journal of Statistical Software, 67(1), 1-48. <a href="doi:10.18637/jss.v067.i01" class="uri">doi:10.18637/jss.v067.i01</a>.</p>
+<p>Schmitz, Dominic and Esser, Janina. (2021). SfL: Statistics for Linguistics. R package version 0.1. URL: <a href="https://github.com/dosc91/SfL" class="uri">https://github.com/dosc91/SfL</a></p>
 <hr />
 <p><em>Please message the author at <a href="mailto:contact@dominicschmitz.com" class="email">contact@dominicschmitz.com</a> in case of any questions, errors or ideas.</em></p>
 </div>

@@ -22,8 +22,9 @@ Imports:
     gghighlight,
     ggridges,
     ggforce,
-	multcomp,
-	DT
+    multcomp,
+    DT,
+    languageR
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
