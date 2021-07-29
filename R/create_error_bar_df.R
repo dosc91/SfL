@@ -19,6 +19,8 @@
 #'
 #' @author D. Schmitz
 #'
+#' @references H. Wickham. (2016) ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York.
+#'
 #' @examples
 #' data("data_s")
 #'

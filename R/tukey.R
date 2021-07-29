@@ -12,6 +12,8 @@
 #'
 #' @author D. Schmitz
 #'
+#' @references Hothorn, Torsten, Bretz, Frank, and Westfall, Peter. (2008). Simultaneous Inference in General Parametric Models. Biometrical Journal 50(3), 346-363.
+#'
 #' @examples
 #' data("data_s")
 #'

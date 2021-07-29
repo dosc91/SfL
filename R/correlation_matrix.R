@@ -12,8 +12,7 @@
 #'
 #' @author D. Schmitz
 #'
-#' @references R. Harald Baayen and Elnaz Shafaei-Bajestan (2019). languageR: Analyzing Linguistic Data: A Practical Introduction to Statistics.
-#' R package version 1.5.0. https://CRAN.R-project.org/package=languageR
+#' @references Baayen, R. Harald and Shafaei-Bajestan, Elnaz. (2019). languageR: Analyzing Linguistic Data: A Practical Introduction to Statistics. R package version 1.5.0. https://CRAN.R-project.org/package=languageR
 #'
 #' @examples
 #' data("data_s")
