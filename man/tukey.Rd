@@ -26,6 +26,9 @@ mdl <- lm(sDur ~ pauseBin, data = data_s)
 tukey(model = mdl, predictor = pauseBin)
 
 }
+\references{
+Hothorn, Torsten, Bretz, Frank, and Westfall, Peter. (2008). Simultaneous Inference in General Parametric Models. Biometrical Journal 50(3), 346-363.
+}
 \author{
 D. Schmitz
 }

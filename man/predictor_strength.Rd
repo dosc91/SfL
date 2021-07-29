@@ -39,16 +39,13 @@ predictor_strength(dependent = "sDur",
 
 }
 \references{
-Douglas Bates, Martin Maechler, Ben Bolker, Steve Walker (2015). Fitting Linear Mixed-Effects Models Using lme4. Journal of
-Statistical Software, 67(1), 1-48. doi:10.18637/jss.v067.i01.
+Bates, Douglas, Maechler, Martin, Bolker, Ben, and Steve Walker. (2015). Fitting Linear Mixed-Effects Models Using lme4. Journal of Statistical Software, 67(1), 1-48. doi:10.18637/jss.v067.i01.
 
-Kamil Barton (2020). MuMIn: Multi-Model Inference. R package version 1.43.17. https://CRAN.R-project.org/package=MuMIn
+Barton, Kamil. (2020). MuMIn: Multi-Model Inference. R package version 1.43.17. https://CRAN.R-project.org/package=MuMIn
 
-Nakagawa, S., Johnson, P.C.D., Schielzeth, H. (2017) The coefficient of determination R? and intra-class correlation coefficient
-from generalized linear mixed-effects models revisited and expanded. J. R. Soc. Interface 14: 20170213.
+Nakagawa, S., Johnson, P.C.D., and Schielzeth, H. (2017) The coefficient of determination R? and intra-class correlation coefficient from generalized linear mixed-effects models revisited and expanded. J. R. Soc. Interface 14: 20170213.
 
-R Core Team (2021). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna,
-Austria. URL https://www.R-project.org/.
+R Core Team. (2021). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
 }
 \author{
 D. Schmitz & J. Esser

@@ -43,8 +43,7 @@ predictor_competition(data = data_s, dependent = "sDur", independent1 = "typeOfS
 
 }
 \references{
-Douglas Bates, Martin Maechler, Ben Bolker, Steve Walker (2015). Fitting
-Linear Mixed-Effects Models Using lme4. Journal of Statistical Software, 67(1), 1-48. doi:10.18637/jss.v067.i01.
+Bates, Douglas, Maechler, Martin, Bolker, Ben, and Steve Walker. (2015). Fitting Linear Mixed-Effects Models Using lme4. Journal of Statistical Software, 67(1), 1-48. doi:10.18637/jss.v067.i01.
 }
 \author{
 D. Schmitz

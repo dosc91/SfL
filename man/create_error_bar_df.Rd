@@ -34,6 +34,9 @@ data("data_s")
 create_error_bar_df(data = data_s, numerical = "sDur", factors = "pauseBin", size = 1, type = "sd")
 
 }
+\references{
+H. Wickham. (2016) ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York.
+}
 \author{
 D. Schmitz
 }

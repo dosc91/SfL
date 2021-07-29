@@ -21,7 +21,7 @@ open_exercises(02)
 
 }
 \references{
-Stefano Coretta, Joseph V. Casillas and Timo Roettger (2021). learnB4SS: Learning materials for the learnB4SS workshop. R package version 1.0.0. https://github.com/learnB4SS/learnB4SS
+Coretta, Stefano, Casillas, Joseph V., and Roettger, Timo. (2021). learnB4SS: Learning materials for the learnB4SS workshop. R package version 1.0.0. https://github.com/learnB4SS/learnB4SS
 }
 \author{
 D. Schmitz
