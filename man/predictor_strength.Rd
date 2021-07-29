@@ -2,7 +2,7 @@
 % Please edit documentation in R/predictor_strength.R
 \name{predictor_strength}
 \alias{predictor_strength}
-\title{Compare Variables for Predictor Strength}
+\title{Compute Predictor Strength}
 \usage{
 \code{predictor_strength(dependent = "",
                    fixed = c(""),
