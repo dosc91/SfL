@@ -290,7 +290,7 @@ img{
 </div>
 <div id="tukey" class="section level1">
 <h1>Tukey Contrasts</h1>
-<p>The tukey function computes Tukey Contrasts for all levels of a categorical predictor.</p>
+<p>The <code>tukey</code> function computes Tukey Contrasts for all levels of a categorical predictor.</p>
 <p>The function takes simple and multiple linear regression models, as well as linear mixed effects regression models as input. Specify the categorical predictor for which Tukey contrasts should be computed.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>simple_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(sDur <span class="sc">~</span> typeOfS, <span class="at">data =</span> data_s)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tukey</span>(<span class="at">model =</span> simple_lm, <span class="at">predictor =</span> typeOfS)</span>
@@ -306,7 +306,7 @@ img{
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;              Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; nm - is == 0  0.05033    0.01020   4.935   &lt;1e-04 ***</span></span>
 <span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; pl - is == 0  0.02543    0.01020   2.493   0.0365 *  </span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; pl - nm == 0 -0.02490    0.01020  -2.442   0.0415 *  </span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; pl - nm == 0 -0.02490    0.01020  -2.442   0.0416 *  </span></span>
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
 <span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
 <span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Adjusted p values reported -- single-step method)</span></span>

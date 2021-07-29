@@ -166,7 +166,7 @@ predictor_strength(dependent = "sDur",
 
 # Tukey Contrasts {#tukey}
 
-The tukey function computes Tukey Contrasts for all levels of a categorical predictor. 
+The `tukey` function computes Tukey Contrasts for all levels of a categorical predictor. 
 
 The function takes simple and multiple linear regression models, as well as linear mixed effects regression models as input. Specify the categorical predictor for which Tukey contrasts should be computed.
 
