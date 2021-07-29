@@ -50,6 +50,7 @@ This is a full list of all functions currently contained in `SfL`:
 - [create_error_bar_df](#create_error_bar_df)
 - [open_exercises](#open_exercises)
 - [predictor_competition](#predictor_competition)
+- [predictor_strength](#predictor_strength)
 - [tukey](#tukey)
 
 Where necessary, the `data_s` data set will be used for illustrations in this vignette.
@@ -114,7 +115,6 @@ df4 <- create_error_bar_df(data = data_s, numerical = "sDur", factors = "pauseBi
 df4
 ```
 
-
 ---
 
 # Open Exercise {#open_exercises}
@@ -147,6 +147,20 @@ predictor_competition(data = data_s, dependent = "sDur",
                       random.intercept = "speaker")
 ```
 
+---
+
+# Compute Predictor Strength {#predictor_strength}
+
+This function creates an `lmer` model for each predictor variable, lacking that predictor variable. Then, conditional and marginal coefficients of determination for each model are calculated. Comparing the value of the conditional coefficient of determination across all models, one can conclude the predictor strength of the respective missing predictor. The function uses `MuMIn::r.squaredGLMM` to compute coefficients of determination.
+
+This function needs a dependent variable, several independent variables as fixed effects, a random effect structure, and a data set to work.
+
+```{r warning=FALSE, message=FALSE}
+predictor_strength(dependent = "sDur",
+        fixed = c("pauseBin", "list", "folType", "baseDur"),
+        random_str = c("(1 | speaker) + (1 | item)"),
+        data = data_s)
+```
 
 ---
 
