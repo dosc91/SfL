@@ -31,5 +31,5 @@
 #'   \item{preC}{phone preceding the /s/}
 #'   \item{googleFreq}{number of Google hits for item}
 #' }
-#' @source Schmitz, D., Baer-Henney, D., & Plag, I. (submitted). Revision invited by Phonetica.
+#' @source Schmitz, D., Baer-Henney, D., & Plag, I. (submitted). The duration of word-final /s/ differs across morphological categories in English: Evidence from pseudowords. Revision invited by Phonetica.
 "data_s"
