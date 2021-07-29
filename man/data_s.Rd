@@ -34,7 +34,7 @@ A data frame with 150 rows and 24 variables:
 }
 }
 \source{
-Schmitz, D., Baer-Henney, D., & Plag, I. (submitted). Revision invited by Phonetica.
+Schmitz, D., Baer-Henney, D., & Plag, I. (submitted). The duration of word-final /s/ differs across morphological categories in English: Evidence from pseudowords. Revision invited by Phonetica.
 }
 \usage{
 data_s
