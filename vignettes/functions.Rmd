@@ -48,7 +48,8 @@ This is a full list of all functions currently contained in `SfL`:
 
 - [correlation_matrix](#correlation_matrix)
 - [create_error_bar_df](#create_error_bar_df)
-- [open_exercises](#open_exercises)
+- [open_exercise](#open_exercise)
+- [open_slides](#open_slides)
 - [predictor_competition](#predictor_competition)
 - [predictor_strength](#predictor_strength)
 - [tukey](#tukey)
@@ -117,17 +118,30 @@ df4
 
 ---
 
-# Open Exercise {#open_exercises}
+# Open Exercise {#open_exercise}
 
-The `open_exercises` function opens the knitted RMarkdown associated with a session of the Statistics for Linguistics Workshop as html file in the system's standard browser.
+The `open_exercise` function opens the knitted RMarkdown associated with a session of the Statistics for Linguistics Workshop as html file in the system's standard browser.
 
 The function takes a session number as argument. Skipping the zero, e.g. writing `2` instead of `02`, works as well.
 
 ```{r eval=F}
-open_exercises(02)
+open_exercise(02)
 ```
 
 ---
+
+# Open Slides {#open_slides}
+
+The `open_slides` function opens the slides associated with a session of the Statistics for Linguistics Workshop as pdf file in the system's standard browser.
+
+The function takes a session number as argument. Skipping the zero, e.g. writing `2` instead of `02`, works as well.
+
+```{r eval=F}
+open_slides(01)
+```
+
+---
+
 
 # Compare Variables for Predictor Strength {#predictor_competition}
 
