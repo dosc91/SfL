@@ -134,7 +134,7 @@ open_exercise(02)
 
 The `open_slides` function opens the slides associated with a session of the Statistics for Linguistics Workshop as pdf file in the system's standard browser.
 
-The function takes a session number as argument. Skipping the zero, e.g. writing `2` instead of `02`, works as well.
+The function takes a session number as argument. Skipping the zero, e.g. writing `1` instead of `01`, works as well.
 
 ```{r eval=F}
 open_slides(01)
