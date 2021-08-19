@@ -30,7 +30,7 @@ open_slides <- function(session) {
   }
   else {
     cli::cli_alert_danger(
-      glue::glue("I am not aware of exercises for session {num}! Currently, I only know of exercises for sessions 02, 03, 04, and 05!")
+      glue::glue("I am not aware of slides for session {num}! Currently, I only know of slides for sessions 02, 03, 04, and 05!")
     )
   }
 }
