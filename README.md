@@ -39,7 +39,19 @@ Use the `open_exercise()` function to open the exercises for one of the workshop
 open_exercise(session_number)
 ```
 
-Currently, there are exercises (planned) for sessions 02, 03, 04, 05, 06, and 07.
+Currently, there are exercises included for sessions 02, 03, 04, and 05. Exercises for sessions 06 and 07 will be added soon.
+
+
+## Slides
+
+Use the `open_slides()` function to open the slides for one of the workshop's sessions.
+
+```r
+open_slides(session_number)
+```
+
+Currently, there are slides included for sessions 01, 03, 04, and 05. Slides for sessions 06 and 07 will be added soon.
+
 
 ## Info
 
