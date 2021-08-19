@@ -2,7 +2,8 @@
 
 export(correlation_matrix)
 export(create_error_bar_df)
-export(open_exercises)
+export(open_exercise)
+export(open_slides)
 export(predictor_competition)
 export(predictor_strength)
 export(tukey)
