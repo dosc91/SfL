@@ -14,6 +14,10 @@ Check out the [functions vignette](https://htmlpreview.github.io/?https://github
 The preferred way to install this package is through devtools:
 
 ```r
+# if devtools has not been installed yet, please install it first
+# install.packages("devtools")
+
+# then, install the SfL package
 devtools::install_github("dosc91/SfL", upgrade_dependencies = FALSE)
 ```
 
