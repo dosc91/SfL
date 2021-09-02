@@ -7,7 +7,7 @@
 \code{open_exercise(session_number)}
 }
 \arguments{
-\item{session_number}{The number of a session, i.e. 02, 03, 04, or 05.}
+\item{session_number}{The number of a session, i.e. 02, 03, 04, 05, 06, or 07.}
 }
 \value{
 Nothing.
