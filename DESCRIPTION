@@ -1,6 +1,6 @@
 Package: SfL
 Title: Statistics for Linguistics
-Version: 0.1
+Version: 0.2
 Date: 2021-07-27
 Authors@R: c(
     person("Dominic", "Schmitz", email = "contact@dominicschmitz.com", role = c("aut", "cre")),
@@ -25,7 +25,11 @@ Imports:
     ggforce,
     multcomp,
     DT,
-    languageR
+    languageR,
+	lme4,
+	visreg,
+	lmerTest,
+	LMERConvenienceFunctions
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
