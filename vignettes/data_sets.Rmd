@@ -142,7 +142,7 @@ Roettger, T. B., Winter, B., Kirby, J., Grawunder, S., & Grice, M. (2014). Asses
 
 Schmitz, D. (2018). Tonal Alignment and Segmental Composition in German. Master's Thesis. Universität zu Köln, Köln, Germany.
 
-Schmitz, D. & Esser, J. (2021). SfL: Statistics for Linguistics. URL: https://github.com/dosc91/SfL
+Schmitz, Dominic and Esser, Janina. (2021). SfL: Statistics for Linguistics. R package version 0.2. URL: https://github.com/dosc91/SfL
 
 Schmitz, D., Baer-Henney, D., & Plag, I. (submitted). The duration of word-final /s/ differs across morphological categories in English: Evidence from pseudowords. Revision invited by Phonetica.
 

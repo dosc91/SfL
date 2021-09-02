@@ -214,7 +214,7 @@ Nakagawa, S., Johnson, P.C.D., and Schielzeth, H. (2017) The coefficient of dete
 
 R Core Team. (2021). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
 
-Schmitz, Dominic and Esser, Janina. (2021). SfL: Statistics for Linguistics. R package version 0.1. URL: https://github.com/dosc91/SfL
+Schmitz, Dominic and Esser, Janina. (2021). SfL: Statistics for Linguistics. R package version 0.2. URL: https://github.com/dosc91/SfL
 
 H. Wickham. (2016) ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York.
 
