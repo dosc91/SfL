@@ -5,7 +5,7 @@
 #'
 #' @usage \code{open_exercise(session_number)}
 #'
-#' @param session_number The number of a session, i.e. 02, 03, 04, or 05.
+#' @param session_number The number of a session, i.e. 02, 03, 04, 05, 06, or 07.
 #'
 #' @return Nothing.
 #'
@@ -22,11 +22,11 @@ open_exercise <- function(session) {
   num <- stringr::str_pad(session, 2, pad = '0')
   real_session <- session - 1
 
-  if (real_session > 0 & real_session < 6) {
+  if (real_session > 0 & real_session < 7) {
     utils::browseURL(exercises[real_session])
   } else {
     cli::cli_alert_danger(
-      glue::glue("I am not aware of exercises for session {num}! Currently, I only know of exercises for sessions 02, 03, 04, and 05!")
+      glue::glue("I am not aware of exercises for session {num}! Currently, I only know of exercises for sessions 02, 03, 04, 05, 06, and 07!")
     )
   }
 }
@@ -36,7 +36,9 @@ exercises <- c(
   "https://dosc91.github.io/SfL/exercises/Introduction_to_R_and_RStudio.html",
   "https://dosc91.github.io/SfL/exercises/Data_Visualisation.html",
   "https://dosc91.github.io/SfL/exercises/Simple_Linear_Regression.html",
-  "https://dosc91.github.io/SfL/exercises/Multiple_Linear_Regression.html"
+  "https://dosc91.github.io/SfL/exercises/Multiple_Linear_Regression.html",
+  "https://dosc91.github.io/SfL/exercises/Linear_Mixed_Effects_Models_Part1.html",
+  "https://dosc91.github.io/SfL/exercises/Linear_Mixed_Effects_Models_Part2.html"
 )
 
 

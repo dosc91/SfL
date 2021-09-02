@@ -25,12 +25,12 @@ open_slides <- function(session) {
   if (real_session == 1) {
     utils::browseURL(slides[real_session])
   }
-  else if (real_session > 2 & real_session < 6) {
+  else if (real_session > 2 & real_session < 8) {
     utils::browseURL(slides[real_session])
   }
   else {
     cli::cli_alert_danger(
-      glue::glue("I am not aware of slides for session {num}! Currently, I only know of slides for sessions 02, 03, 04, and 05!")
+      glue::glue("I am not aware of slides for session {num}! Currently, I only know of slides for sessions 02, 03, 04, 05, 06, and 07!")
     )
   }
 }
@@ -41,5 +41,7 @@ slides <- c(
   "https://dosc91.github.io/SfL/slides/SfL_Session_02.pdf",
   "https://dosc91.github.io/SfL/slides/SfL_Session_03.pdf",
   "https://dosc91.github.io/SfL/slides/SfL_Session_04.pdf",
-  "https://dosc91.github.io/SfL/slides/SfL_Session_05.pdf"
+  "https://dosc91.github.io/SfL/slides/SfL_Session_05.pdf",
+  "https://dosc91.github.io/SfL/slides/SfL_Session_06.pdf",
+  "https://dosc91.github.io/SfL/slides/SfL_Session_07.pdf"
 )
