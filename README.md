@@ -43,7 +43,7 @@ Use the `open_exercise()` function to open the exercises for one of the workshop
 open_exercise(session_number)
 ```
 
-Currently, there are exercises included for sessions 02, 03, 04, and 05. Exercises for sessions 06 and 07 will be added soon.
+Currently, there are exercises included for sessions 02, 03, 04, and 05, 06, and 07. 
 
 
 ## Slides
@@ -54,13 +54,13 @@ Use the `open_slides()` function to open the slides for one of the workshop's se
 open_slides(session_number)
 ```
 
-Currently, there are slides included for sessions 01, 03, 04, and 05. Slides for sessions 06 and 07 will be added soon.
+Currently, there are slides included for sessions 01, 03, 04, 05, 06, and 07. 
 
 
 ## Info
 
-This package is still very much a work in progress and should not yet be used.
+This package is still very much a work in progress.
 
 Please cite the package as follows:
 
-Schmitz, Dominic & Esser, Janina. (2021). SfL: Statistics for Linguistics. R package version 0.1. URL: https://github.com/dosc91/SfL
+Schmitz, Dominic & Esser, Janina. (2021). SfL: Statistics for Linguistics. R package version 0.2. URL: https://github.com/dosc91/SfL
