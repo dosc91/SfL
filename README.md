@@ -1,7 +1,7 @@
 # SfL - Statistics for Linguistics <img src='https://github.com/dosc91/SfL/blob/gh-pages/logo/sfl_logo.svg' align="right" height="138" />
 
 <!-- badges: start -->
-![](https://img.shields.io/badge/version-0.1-FFA70B.svg)
+![](https://img.shields.io/badge/version-0.2-FFA70B.svg)
 ![](https://img.shields.io/github/last-commit/dosc91/SfL)
 <!-- badges: end -->
 
