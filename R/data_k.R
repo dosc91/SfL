@@ -4,7 +4,7 @@
 #' A possible question to investigate with this data set is whether the correlation strength depends on the frequency of either role nouns.
 #'
 #'
-#' @format A data frame with 600 rows and 6 variables:
+#' @format A data frame with 600 rows and 4 variables:
 #' \describe{
 #'   \item{correlation}{correlation coefficient of a pertinent role noun pair}
 #'   \item{freq_masc_log}{log-transformed frequency of masculine role nouns}
