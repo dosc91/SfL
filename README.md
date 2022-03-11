@@ -2,7 +2,7 @@
 
 <!-- badges: start -->
 ![](https://img.shields.io/badge/version-0.3-FFA70B.svg)
-![](https://img.shields.io/github/last-commit/dosc91/mtqgam)
+![](https://img.shields.io/github/last-commit/dosc91/SfL)
 <!-- badges: end -->
 
 `SfL` is a package created for the ["Statistics for Linguistics"](https://div-ling.org/en/events/statistics-for-linguistics-en/) workshop. 
