@@ -5,7 +5,7 @@
 \alias{data_k}
 \title{data_k - Semantic Correlation Data}
 \format{
-A data frame with 600 rows and 6 variables:
+A data frame with 600 rows and 4 variables:
 \describe{
 \item{correlation}{correlation coefficient of a pertinent role noun pair}
 \item{freq_masc_log}{log-transformed frequency of masculine role nouns}
