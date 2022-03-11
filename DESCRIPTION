@@ -1,7 +1,7 @@
 Package: SfL
 Title: Statistics for Linguistics
-Version: 0.2
-Date: 2021-07-27
+Version: 0.3
+Date: 2022-03-11
 Authors@R: c(
     person("Dominic", "Schmitz", email = "contact@dominicschmitz.com", role = c("aut", "cre")),
     person("Janina", "Esser", email = "contact@dominicschmitz.com", role = "aut"))

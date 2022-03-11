@@ -2,8 +2,12 @@
 
 export(correlation_matrix)
 export(create_error_bar_df)
+export(mode_stat)
 export(open_exercise)
+export(open_exercises)
+export(open_slide)
 export(open_slides)
 export(predictor_competition)
 export(predictor_strength)
+export(se)
 export(tukey)

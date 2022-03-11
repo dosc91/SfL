@@ -1,0 +1,23 @@
+reference:
+- title: "Functions"
+- contents:
+  - correlation_matrix
+  - create_error_bar_df
+  - mode_stat
+  - open_exercise
+  - open_exercises
+  - open_slide
+  - open_slides
+  - predictor_competition
+  - predictor_strength
+  - se
+  - tukey
+- title: "Data Sets"
+- contents:
+  - data_a
+  - data_c
+  - data_k
+  - data_r
+  - data_s
+  - data_t
+  - data_v
