@@ -9,7 +9,7 @@
 
 It includes some handy functions and data sets, but most importantly installs all necessary packages and contains exercise files.
 
-Check out the [references](https://dosc91.github.io/SfL/reference/index.html) for more detailed information.
+Check out the [references](https://dosc91.github.io/SfL/docs/reference/index.html) for more detailed information.
 
 
 # How to Install
