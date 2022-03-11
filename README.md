@@ -1,4 +1,4 @@
-# mtqgam <img src='https://dominicschmitz.com/wp-content/uploads/2021/11/SfL_logo.png' align="right" height="138" />
+# SfL <img src='https://dominicschmitz.com/wp-content/uploads/2021/11/SfL_logo.png' align="right" height="138" />
 
 <!-- badges: start -->
 ![](https://img.shields.io/badge/version-0.3-FFA70B.svg)
@@ -9,7 +9,7 @@
 
 It includes some handy functions and data sets, but most importantly installs all necessary packages and contains exercise files.
 
-Check out the [references](https://dosc91.github.io/SfL/docs/reference/index.html) for more detailed information.
+Check out the [references](https://dosc91.github.io/SfL/reference/index.html) for more detailed information.
 
 
 # How to Install
