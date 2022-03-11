@@ -34,14 +34,14 @@ A data frame with 150 rows and 24 variables:
 }
 }
 \source{
-Schmitz, D., Baer-Henney, D., & Plag, I. (submitted). The duration of word-final /s/ differs across morphological categories in English: Evidence from pseudowords. Revision invited by Phonetica.
+Schmitz, D., Baer-Henney, D., & Plag, I. (2021). The duration of word-final /s/ differs across morphological categories in English: evidence from pseudowords. Phonetica. De Gruyter Mouton 78(5–6). 571–616. https://doi.org/10.1515/phon-2021-2013.
 }
 \usage{
 data_s
 }
 \description{
 The Duration of word-final /s/ in English data set, data_s, contains data on three different types of word-final /s/ in
-English, i.e. non-morphemic, plural, and is-clitic /s/. The data is fictional, but closely related to the original data used in a study by Schmitz et al. (2020).
+English, i.e. non-morphemic, plural, and is-clitic /s/. The data is fictional, but closely related to the original data used in a study by Schmitz et al. (2021).
 A possible question to investigate with this data set is whether the duration of /s/ depends on the type of /s/.
 }
 \keyword{datasets}

@@ -4,12 +4,27 @@
 \alias{correlation_matrix}
 \title{Create Correlation Matrix}
 \usage{
-\code{correlation_matrix(data = , variables = c(""))}
+correlation_matrix(
+  data,
+  variables,
+  hist = TRUE,
+  smooth = TRUE,
+  size = 1,
+  color = "darkgrey"
+)
 }
 \arguments{
 \item{data}{The data set containing the variables to be plotted.}
 
 \item{variables}{The variables used in the plot. Note: Variables cannot be of type 'character'.}
+
+\item{hist}{A logical indicating whether panels on the diagonal should contain a histogram.}
+
+\item{smooth}{A logical indicating whether panels in the upper triangle should have a smoother added.}
+
+\item{size}{A number indicating the size of the points in the panels in the upper triangle, available only when smoothers are added.}
+
+\item{color}{A number or string indicating the color of the points in the panels in the upper triangle, available only when smoothers are added.}
 }
 \value{
 Nothing. Creates a plot.
@@ -25,7 +40,7 @@ correlation_matrix(data_s, variables = c("typeOfS", "sDur"))
 
 }
 \references{
-Baayen, R. Harald and Shafaei-Bajestan, Elnaz. (2019). languageR: Analyzing Linguistic Data: A Practical Introduction to Statistics. R package version 1.5.0. https://CRAN.R-project.org/package=languageR
+Baayen, R. H, & Shafaei-Bajestan, E. (2019). languageR: Analyzing Linguistic Data: A Practical Introduction to Statistics. R package version 1.5.0. https://CRAN.R-project.org/package=languageR
 }
 \author{
 D. Schmitz

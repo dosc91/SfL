@@ -25,8 +25,7 @@ A data frame with 544 rows and 15 variables:
 }
 }
 \source{
-This data set is a shortened version of: Schmitz, D. (2018). Tonal Alignment and Segmental Composition in German.
-Master's Thesis. Universität zu Köln, Köln, Germany.
+This data set is a shortened version of: Schmitz, D. (2018). Tonal Alignment and Segmental Composition in German. Master's Thesis. Universität zu Köln, Köln, Germany.
 }
 \usage{
 data_t

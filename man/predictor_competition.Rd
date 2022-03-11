@@ -4,12 +4,14 @@
 \alias{predictor_competition}
 \title{Compare Variables for Predictor Strength}
 \usage{
-\code{predictor_competition(data = ,
-                      dependent = "",
-                      independent1 = "",
-                      independent2 = "",
-                      random.intercept = "",
-                      random.slope = 1)}
+predictor_competition(
+  data,
+  dependent,
+  independent1,
+  independent2,
+  random.intercept = NULL,
+  random.slope = 1
+)
 }
 \arguments{
 \item{data}{The original data set for both models.}
@@ -20,7 +22,7 @@
 
 \item{independent2}{The independent variable(s), i.e. the fixed effects, of the 2nd model.}
 
-\item{random.intercept}{The random intercept for both models.}
+\item{random.intercept}{The random intercept for both models. If not random intercept is specified, regular linear models are fitted.}
 
 \item{random.slope}{The random slope for both models. The default assumes no random slope.}
 }
@@ -28,8 +30,8 @@
 A dataframe containing npar, AIC, BIG, logLik, deviance, Chisq, Df, and Pr(>Chisq). Usually used without variable assignment.
 }
 \description{
-Compare the predictive strength of two independent variables in a minimal linear mixed effects regression model. The function creates two identical
-\code{lmer} objects, only differing in fixed effects structure. Then, a log-likelihood test is used to decide which fixed effect structure is better fit to
+Compare the predictive strength of two independent variables in a minimal linear (mixed effects) regression model. The function creates two identical
+\code{lm} or \code{lmer} objects, only differing in fixed effects structure. Then, a log-likelihood test is used to decide which fixed effect structure is better fit to
 predict the dependent variable.
 }
 \examples{
@@ -43,7 +45,7 @@ predictor_competition(data = data_s, dependent = "sDur", independent1 = "typeOfS
 
 }
 \references{
-Bates, Douglas, Maechler, Martin, Bolker, Ben, and Steve Walker. (2015). Fitting Linear Mixed-Effects Models Using lme4. Journal of Statistical Software, 67(1), 1-48. doi:10.18637/jss.v067.i01.
+Bates, D., Maechler, M., Bolker, B., & Walker, S. (2015). Fitting Linear Mixed-Effects Models Using lme4. Journal of Statistical Software, 67(1), 1-48. doi:10.18637/jss.v067.i01.
 }
 \author{
 D. Schmitz

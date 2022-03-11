@@ -16,10 +16,10 @@ A data frame with 40 rows and 6 variables:
 }
 }
 \source{
-Schmitz, D. & Esser, J. (2021). SfL: Statistics for Linguistics. URL: https://github.com/dosc91/SfL
+Schmitz, D., & Esser, J. (2022). SfL: Statistics for Linguistics. R package version 0.3. URL: https://github.com/dosc91/SfL
 }
 \usage{
-data_a
+data(data_a)
 }
 \description{
 The Age and Looks data set, data_a, contains data on age and appearance of fictional individuals.

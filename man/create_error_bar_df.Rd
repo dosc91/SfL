@@ -4,11 +4,7 @@
 \alias{create_error_bar_df}
 \title{Create Error Bar Dataframe}
 \usage{
-\code{create_error_bar_df(data = ,
-                   numerical = "",
-                   factors = "",
-                   size = 1,
-                   type = "sd")}
+create_error_bar_df(data, numerical, factors, size = 1, type = "sd")
 }
 \arguments{
 \item{data}{The original data set.}
@@ -35,7 +31,7 @@ create_error_bar_df(data = data_s, numerical = "sDur", factors = "pauseBin", siz
 
 }
 \references{
-H. Wickham. (2016) ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York.
+Wickham, H. (2016) ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York.
 }
 \author{
 D. Schmitz

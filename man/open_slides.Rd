@@ -4,10 +4,14 @@
 \alias{open_slides}
 \title{Open Slides}
 \usage{
-\code{open_slides(session_number)}
+open_slides(session, year, language)
 }
 \arguments{
-\item{session_number}{The number of a session, i.e. 01, 02, 03, 04, 05, 06, or 07.}
+\item{year}{The year of the SfL workshop. Currently either \code{2021} or \code{2022}.}
+
+\item{language}{The language of the SfL workshop. Currently either \code{"english"} or \code{"german"}.}
+
+\item{session_number}{The number of the SfL session.}
 }
 \value{
 Nothing.
@@ -17,11 +21,11 @@ Calling \code{open_slides} with a session number as argument will open the power
 The pdf will be opened in your default browser. This function is inspired by Coretta et al. (see references).
 }
 \examples{
-open_slides(02)
+open_slides(02, 2021, "english")
 
 }
 \references{
-Coretta, Stefano, Casillas, Joseph V., and Roettger, Timo. (2021). learnB4SS: Learning materials for the learnB4SS workshop. R package version 1.0.0. https://github.com/learnB4SS/learnB4SS
+Coretta, S., Casillas, J. V., & Roettger, T. (2021). learnB4SS: Learning materials for the learnB4SS workshop. R package version 1.0.0. https://github.com/learnB4SS/learnB4SS
 }
 \author{
 D. Schmitz

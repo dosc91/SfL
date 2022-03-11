@@ -4,7 +4,7 @@
 \alias{tukey}
 \title{Tukey Contrasts}
 \usage{
-\code{tukey(model = , predictor = )}
+tukey(model, predictor)
 }
 \arguments{
 \item{model}{The model object, created by \code{lm()} or \code{lmer()}.}
@@ -27,7 +27,7 @@ tukey(model = mdl, predictor = pauseBin)
 
 }
 \references{
-Hothorn, Torsten, Bretz, Frank, and Westfall, Peter. (2008). Simultaneous Inference in General Parametric Models. Biometrical Journal 50(3), 346-363.
+Hothorn, T., Bretz, F., & Westfall, P. (2008). Simultaneous Inference in General Parametric Models. Biometrical Journal 50(3), 346-363.
 }
 \author{
 D. Schmitz
