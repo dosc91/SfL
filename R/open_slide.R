@@ -1,8 +1,7 @@
-#' Open Slides
+#' Open Slide
 #'
 #' @description Calling \code{open_slides} with a session number as argument will open the powerpoint slides for that session as pdf.
 #' The pdf will be opened in your default browser. This function is inspired by Coretta et al. (see references).
-#'
 #'
 #' @param session_number The number of the SfL session.
 #' @param year The year of the SfL workshop. Currently either \code{2021} or \code{2022}.
@@ -15,11 +14,11 @@
 #' @references Coretta, S., Casillas, J. V., & Roettger, T. (2021). learnB4SS: Learning materials for the learnB4SS workshop. R package version 1.0.0. https://github.com/learnB4SS/learnB4SS
 #'
 #' @examples
-#' open_slides(02, 2021, "english")
+#' open_slide(02, 2021, "english")
 #'
 #' @export
 
-open_slides <- function(session, year, language) {
+open_slide <- function(session, year, language) {
 
   num <- stringr::str_pad(session, 2, pad = '0')
 

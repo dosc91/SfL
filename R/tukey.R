@@ -3,7 +3,6 @@
 #' @description Compute Tukey Contrasts for all levels of a categorical predictor. Takes simple linear regression
 #' models and multiple linear regression models, as well as linear mixed effects models as input.
 #'
-#' @usage \code{tukey(model = , predictor = )}
 #'
 #' @param model The model object, created by \code{lm()} or \code{lmer()}.
 #' @param predictor The categorical predictor for which Tukey Contrasts should be computed.
@@ -12,7 +11,7 @@
 #'
 #' @author D. Schmitz
 #'
-#' @references Hothorn, Torsten, Bretz, Frank, and Westfall, Peter. (2008). Simultaneous Inference in General Parametric Models. Biometrical Journal 50(3), 346-363.
+#' @references Hothorn, T., Bretz, F., & Westfall, P. (2008). Simultaneous Inference in General Parametric Models. Biometrical Journal 50(3), 346-363.
 #'
 #' @examples
 #' data("data_s")

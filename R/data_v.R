@@ -4,6 +4,7 @@
 #' in German. The data is fictional, but closely related to the original data used by Schmitz et al. (2018).
 #' A possible question to investigate with this data set is whether vowel duration differs by syllable structure.
 #'
+#'
 #' @format A data frame with 448 rows and 6 variables:
 #' \describe{
 #'   \item{speaker}{speaker ID}
@@ -13,7 +14,5 @@
 #'   \item{vowel}{one of five vowels}
 #'   \item{rate}{speech rate}
 #' }
-#' @source Schmitz, D., Cho, H.-E., & Niemann, H. (2018). Vowel shortening in German as a function of syllable structure.
-#' Proceedings of 13. Phonetik und Phonologie Tagung. Humboldt University Berlin, Berlin, 28-29 September, 2017.
-#' doi: dx.doi.org/10.18452/18805
+#' @source Schmitz, D., Hae-Eun C., & Niemann, H. (2018). Vowel shortening in German as a function of syllable structure. In Proceedings 13. Phonetik und Phonologie Tagung (P&P13), 181–184. Berlin.
 "data_v"

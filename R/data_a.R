@@ -3,6 +3,8 @@
 #' The Age and Looks data set, data_a, contains data on age and appearance of fictional individuals.
 #' A possible question to investigate with this data set is whether there is a dependency between different variables of the data set.
 #'
+#' @usage data(data_a)
+#'
 #' @format A data frame with 40 rows and 6 variables:
 #' \describe{
 #'   \item{bsex}{biological sex}
@@ -12,5 +14,6 @@
 #'   \item{eyes}{eye colour}
 #'   \item{glasses}{info on whether person wears glasses}
 #' }
-#' @source Schmitz, D. & Esser, J. (2021). SfL: Statistics for Linguistics. URL: https://github.com/dosc91/SfL
+#'
+#' @source Schmitz, D., & Esser, J. (2022). SfL: Statistics for Linguistics. R package version 0.3. URL: https://github.com/dosc91/SfL
 "data_a"

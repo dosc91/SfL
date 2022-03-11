@@ -4,6 +4,7 @@
 #' but closely related to real data, i.e. the data by Roettger et al. (2014).
 #' A possible question to investigate with this data set is whether vowels are shorter when preceding voiceless word-final consonants.
 #'
+#'
 #' @format A data frame with 300 rows and 9 variables:
 #' \describe{
 #'   \item{subject}{biological sex}
@@ -16,6 +17,5 @@
 #'   \item{prosodic_boundary}{info on whether word is followed by a boundary}
 #'   \item{vowel_dur}{duration of vowel preceding the final consonant}
 #' }
-#' Roettger, T. B., Winter, B., Kirby, J., Grawunder, S., & Grice, M. (2014).
-#' Assessing incomplete neutralization of final devoicing in German. Journal of Phonetics, 43: 11- 25.
+#' @source Roettger, T. B., Winter, B., Kirby, J., Grawunder, S., & Grice, M. (2014). Assessing incomplete neutralization of final devoicing in German. Journal of Phonetics, 43: 11- 25.
 "data_c"

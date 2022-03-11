@@ -2,11 +2,6 @@
 #'
 #' @description Create a dataframe with which a \code{ggplot2} bar plot with error bars (+/- 1 standard deviation) can be created.
 #'
-#' @usage \code{create_error_bar_df(data = ,
-#'                    numerical = "",
-#'                    factors = "",
-#'                    size = 1,
-#'                    type = "sd")}
 #'
 #' @param data The original data set.
 #' @param numerical The numerical variable which will be visualised in the bar plot.
@@ -19,7 +14,7 @@
 #'
 #' @author D. Schmitz
 #'
-#' @references H. Wickham. (2016) ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York.
+#' @references Wickham, H. (2016) ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York.
 #'
 #' @examples
 #' data("data_s")
