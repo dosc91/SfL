@@ -31,7 +31,7 @@ You will be asked to update dependencies during installation; usually, updates c
 
 Please cite the package as follows:
 
-Schmitz, D., & Esser, J. (2022). SfL: Statistics for Linguistics. R package version 0.3. URL: https://github.com/dosc91/SfL
+Schmitz, D., & Esser, J. (2021). SfL: Statistics for Linguistics. R package version 0.3. URL: https://github.com/dosc91/SfL
 
 The following sources are made use of in the `SfL` package:
 
