@@ -21,10 +21,10 @@ The preferred way to install this package is through devtools:
 # install.packages("devtools")
 
 # then, install the SfL package
-devtools::install_github("dosc91/SfL", upgrade_dependencies = FALSE)
+devtools::install_github("dosc91/SfL")
 ```
 
-You will be asked to update dependencies during installation; usually, updates can be skipped. Once installation was successfull, there will be a warning message on the usage of `...`; this can be ignored.
+You will be asked to update dependencies during installation; usually, updates can be skipped. Once installation was successful, there will be a warning message on the usage of `...`; this can be ignored.
 
 
 # References
