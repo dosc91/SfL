@@ -1,7 +1,7 @@
 # SfL <img src='https://dominicschmitz.com/wp-content/uploads/2021/11/SfL_logo.png' align="right" height="138" />
 
 <!-- badges: start -->
-![](https://img.shields.io/badge/version-0.3-FFA70B.svg)
+![](https://img.shields.io/badge/version-0.4-FFA70B.svg)
 ![](https://img.shields.io/github/last-commit/dosc91/SfL)
 <!-- badges: end -->
 
