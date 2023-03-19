@@ -6,7 +6,8 @@
 #'
 #' @param session_number The number of the SfL session.
 #' @param year The year of the SfL workshop. Currently either \code{2021} or \code{2022}.
-#' @param language The language of the SfL workshop. Currently either \code{"english"} or \code{"german"}.
+#' @param edition The edition of the SfL workshop. Either \code{"english"}, \code{"german"}, or \code{"hannover"}.
+#' @param language Deprecated. Please use \code{edition} instead.
 #'
 #' @return Nothing.
 #'
@@ -19,11 +20,11 @@
 #'
 #' @export
 
-open_exercises <- function(session, year, language) {
+open_exercises <- function(session, year, edition, language = NULL) {
 
   num <- stringr::str_pad(session, 2, pad = '0')
 
-  if (year == 2021 & language == "english"){
+  if (year == 2021 & edition == "english" | year == 2021 & edition == "English"){
 
     real_session <- session - 1
 
@@ -39,7 +40,8 @@ open_exercises <- function(session, year, language) {
 
       )
     }
-  } else if(year == 2022 & language == "german"){
+
+  } else if(year == 2022 & edition == "german" | year == 2022 & edition == "German"){
 
     real_session <- session - 1
 
@@ -55,9 +57,28 @@ open_exercises <- function(session, year, language) {
 
       )
     }
+  }
+
+  else if(year == 2023 & edition == "hannover" | year == 2023 & edition == "Hannover"){
+
+    real_session <- session - 1
+
+    if (real_session > 0 & real_session < 13) {
+
+      utils::browseURL(exercises_2023_hannover[real_session])
+
+    }else {
+
+      cli::cli_alert_danger(
+
+        glue::glue("I am not aware of exercises for session {num}! Currently, I only know of exercises for sessions 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, and 13!")
+
+      )
+    }
+
   } else {
     cli::cli_alert_danger(
-      glue::glue(paste(paste("Sorry, I have no data for an SfL workshop in", language, "in", year), ".", sep = ""))
+      glue::glue(paste(paste("Sorry, I have no data for an SfL workshop in", edition, "in", year), ".", sep = ""))
     )
   }
 }
@@ -86,4 +107,17 @@ exercises_2022_german <- c(
   "https://dosc91.github.io/SfL/exercises/12_Weitere_Themen.html"
 )
 
-
+exercises_2023_hannover <- c(
+  "https://dosc91.github.io/SfL/exercises/hannover/02_Einf%C3%BChrung_in_R_und_RStudio.html",
+  "https://dosc91.github.io/SfL/exercises/hannover/03_Statistische_Messgroessen.html",
+  "https://dosc91.github.io/SfL/exercises/hannover/04_Statistische_Tests.html",
+  "https://dosc91.github.io/SfL/exercises/hannover/05_ANOVA_und_Co.html",
+  "https://dosc91.github.io/SfL/exercises/hannover/06_Datenvisualisierung_mit_ggplot2.html",
+  "https://dosc91.github.io/SfL/exercises/hannover/07_Clustering_Classification.html",
+  "https://dosc91.github.io/SfL/exercises/hannover/08_Einfache_Lineare_Regression.html",
+  "https://dosc91.github.io/SfL/exercises/hannover/09_Multiple_Lineare_Regression.html",
+  "https://dosc91.github.io/SfL/exercises/hannover/10_Visualisierung_Linearer_Regression.html",
+  "https://dosc91.github.io/SfL/exercises/hannover/11_Kollinearit%C3%A4t.html",
+  "https://dosc91.github.io/SfL/exercises/hannover/12_Gemischte_Lineare_Regression.html",
+  "https://dosc91.github.io/SfL/exercises/hannover/13_Weitere_Regressionsarten.html"
+)

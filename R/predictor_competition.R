@@ -64,13 +64,13 @@ predictor_competition <- function(data, dependent, independent1, independent2, r
   }else{
 
     formula1 <- as.formula(paste(dependent,
-                                paste("~"),
-                                paste(independent1, collapse= "+"),
-                                paste("+ ("),
-                                paste(random.slope),
-                                paste("|"),
-                                paste(random.intercept),
-                                paste(")")))
+                                 paste("~"),
+                                 paste(independent1, collapse= "+"),
+                                 paste("+ ("),
+                                 paste(random.slope),
+                                 paste("|"),
+                                 paste(random.intercept),
+                                 paste(")")))
 
     formula2 <- as.formula(paste(dependent,
                                  paste("~"),
@@ -100,4 +100,3 @@ predictor_competition <- function(data, dependent, independent1, independent2, r
 
   return(an)
 }
-

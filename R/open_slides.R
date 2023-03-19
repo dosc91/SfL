@@ -6,7 +6,8 @@
 #'
 #' @param session_number The number of the SfL session.
 #' @param year The year of the SfL workshop. Currently either \code{2021} or \code{2022}.
-#' @param language The language of the SfL workshop. Currently either \code{"english"} or \code{"german"}.
+#' @param edition The edition of the SfL workshop. Either \code{"english"}, \code{"german"}, or \code{"hannover"}.
+#' @param language Deprecated. Please use \code{edition} instead.
 #'
 #' @return Nothing.
 #'
@@ -19,11 +20,15 @@
 #'
 #' @export
 
-open_slides <- function(session, year, language) {
+open_slides <- function(session, year, edition, language = NULL) {
+
+  if(!is.null(language)){
+    stop("Please use edition instead of language! Check documentation for further information.")
+  }
 
   num <- stringr::str_pad(session, 2, pad = '0')
 
-  if (year == 2021 & language == "english"){
+  if (year == 2021 & edition == "english" | year == 2021 & edition == "English"){
 
     real_session <- session - 0
 
@@ -48,7 +53,7 @@ open_slides <- function(session, year, language) {
     }
   }
 
-  else if(year == 2022 & language == "german"){
+  else if(year == 2022 & edition == "german" | year == 2022 & edition == "German"){
 
     real_session <- session - 0
 
@@ -70,9 +75,9 @@ open_slides <- function(session, year, language) {
 
     } else if (real_session > 8 & real_session < 11) {
 
-    real_session <- real_session - 2
+      real_session <- real_session - 2
 
-    utils::browseURL(slides_2022_german[real_session])
+      utils::browseURL(slides_2022_german[real_session])
 
     }else{
       cli::cli_alert_danger(
@@ -82,6 +87,24 @@ open_slides <- function(session, year, language) {
       )
     }
   }
+
+  else if(year == 2023 & edition == "hannover" | year == 2023 & edition == "Hannover"){
+
+    real_session <- session - 0
+
+    if (real_session >= 1 & real_session <= 14) {
+
+      utils::browseURL(slides_2023_hannover[real_session])
+
+    }else{
+      cli::cli_alert_danger(
+
+        glue::glue(paste(paste("I am not aware of slides for session {num}! Currently, I only know of slides for sessions 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, and 14!")))
+
+      )
+    }
+  }
+
 }
 
 
@@ -105,4 +128,21 @@ slides_2022_german <- c(
   "https://dosc91.github.io/SfL/slides/07_Multiple_Lineare_Regression.pdf",
   "https://dosc91.github.io/SfL/slides/09_Probleme_Linearer_Regression.pdf",
   "https://dosc91.github.io/SfL/slides/10_Gemischte_Modelle_1.pdf"
+)
+
+slides_2023_hannover <- c(
+  "https://dosc91.github.io/SfL/slides/hannover/01_Begr%C3%BC%C3%9Fung_Kennenlernen.pdf",
+  "https://dosc91.github.io/SfL/slides/hannover/02_Einf%C3%BChrung_in_R_und_RStudio.pdf",
+  "https://dosc91.github.io/SfL/slides/hannover/03_Statistische_Messgroessen.pdf",
+  "https://dosc91.github.io/SfL/slides/hannover/04_Statistische_Tests.pdf",
+  "https://dosc91.github.io/SfL/slides/hannover/05_ANOVA_und_Co.pdf",
+  "https://dosc91.github.io/SfL/slides/hannover/06_Datenvisualisierung_mit_ggplot2.pdf",
+  "https://dosc91.github.io/SfL/slides/hannover/07_Clustering_Classification.pdf",
+  "https://dosc91.github.io/SfL/slides/hannover/08_Einfache_Lineare_Regression.pdf",
+  "https://dosc91.github.io/SfL/slides/hannover/09_Multiple_Lineare_Regression.pdf",
+  "https://dosc91.github.io/SfL/slides/hannover/10_Visualisierung_Linearer_Regression.pdf",
+  "https://dosc91.github.io/SfL/slides/hannover/11_Kollinearit%C3%A4t.pdf",
+  "https://dosc91.github.io/SfL/slides/hannover/12_Gemischte_Lineare_Regression.pdf",
+  "https://dosc91.github.io/SfL/slides/hannover/13_Weitere_Regressionsarten.pdf",
+  "https://dosc91.github.io/SfL/slides/hannover/14_Fragerunde_Abschluss.pdf"
 )
