@@ -24,7 +24,7 @@ The preferred way to install this package is through devtools:
 devtools::install_github("dosc91/SfL")
 ```
 
-You will be asked to update dependencies during installation; usually, updates can be skipped. Once installation was successful, there will be a warning message on the usage of `...`; this can be ignored.
+You will be asked to update dependencies during installation; usually, updates can be skipped. 
 
 
 # References
