@@ -1,16 +1,16 @@
 Package: SfL
 Title: Statistics for Linguistics
-Version: 0.3
-Date: 2022-03-11
+Version: 0.4
+Date: 2023-03-19
 Authors@R: c(
     person("Dominic", "Schmitz", email = "contact@dominicschmitz.com", role = c("aut", "cre")),
-    person("Janina", "Esser", email = "contact@dominicschmitz.com", role = "aut"))
+    person("Janina", "Esser", email = "janina.esser.92@gmail.com", role = "aut"))
 Description: A package introducing basics of statistics used in the study of language.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3
 Imports: 
     stringr,
     glue,
@@ -29,7 +29,8 @@ Imports:
 	lme4,
 	visreg,
 	lmerTest,
-	LMERConvenienceFunctions
+	LMERConvenienceFunctions,
+	MuMIn
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
