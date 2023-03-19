@@ -4,12 +4,14 @@
 \alias{open_slide}
 \title{Open Slide}
 \usage{
-open_slide(session, year, language)
+open_slide(session, year, edition, language = NULL)
 }
 \arguments{
 \item{year}{The year of the SfL workshop. Currently either \code{2021} or \code{2022}.}
 
-\item{language}{The language of the SfL workshop. Currently either \code{"english"} or \code{"german"}.}
+\item{edition}{The edition of the SfL workshop. Either \code{"english"}, \code{"german"}, or \code{"hannover"}.}
+
+\item{language}{Deprecated. Please use \code{edition} instead.}
 
 \item{session_number}{The number of the SfL session.}
 }
