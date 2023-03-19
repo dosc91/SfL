@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,59 +33,14 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">SfL</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="articles/02_Einfuehrung_in_R_und_RStudio.html">Einführung in R und RStudio</a>
-    </li>
-    <li>
-      <a href="articles/03_Statistische_Messgroessen.html">Statistische Messgrößen</a>
-    </li>
-    <li>
-      <a href="articles/04_Statistische_Tests.html">Statistische Tests</a>
-    </li>
-    <li>
-      <a href="articles/05_Datenvisualisierung_mit_ggplot2.html">Datenvisualisierung mit ggplot2</a>
-    </li>
-    <li>
-      <a href="articles/06_Simple_Lineare_Regression.html">Simple Lineare Regression</a>
-    </li>
-    <li>
-      <a href="articles/07_Multiple_Lineare_Regression.html">Multiple Lineare Regression</a>
-    </li>
-    <li>
-      <a href="articles/08_Visualisierung_Linearer_Regression.html">Visualisierung Linearer Regression</a>
-    </li>
-    <li>
-      <a href="articles/09_Probleme_Linearer_Regression.html">Probleme Linearer Regression</a>
-    </li>
-    <li>
-      <a href="articles/10_Gemischte_Modelle.html">Gemischte Modelle</a>
-    </li>
-    <li>
-      <a href="articles/12_Weitere_Themen.html">Weitere Themen</a>
-    </li>
-  </ul>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right"></ul>
@@ -99,43 +56,42 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-<div id="sfl-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#sfl-" class="anchor"></a>SfL <img src="https://dominicschmitz.com/wp-content/uploads/2021/11/SfL_logo.png" align="right" height="138">
+<div class="section level1">
+<div class="page-header"><h1 id="sfl-">SfL <img src="https://dominicschmitz.com/wp-content/uploads/2021/11/SfL_logo.png" align="right" height="138"><a class="anchor" aria-label="anchor" href="#sfl-"></a>
 </h1></div>
 <!-- badges: start -->
-<p><img src="https://img.shields.io/badge/version-0.3-FFA70B.svg"><img src="https://img.shields.io/github/last-commit/dosc91/SfL"><!-- badges: end --></p>
-<p><code>SfL</code> is a package created for the <a href="https://div-ling.org/en/events/statistics-for-linguistics-en/">“Statistics for Linguistics”</a> workshop.</p>
+<p><img src="https://img.shields.io/badge/version-0.4-FFA70B.svg"><img src="https://img.shields.io/github/last-commit/dosc91/SfL"><!-- badges: end --></p>
+<p><code>SfL</code> is a package created for the <a href="https://div-ling.org/en/events/statistics-for-linguistics-en/" class="external-link">“Statistics for Linguistics”</a> workshop.</p>
 <p>It includes some handy functions and data sets, but most importantly installs all necessary packages and contains exercise files.</p>
-<p>Check out the <a href="https://dosc91.github.io/SfL/reference/index.html">references</a> for more detailed information.</p>
+<p>Check out the <a href="https://dosc91.github.io/SfL/reference/index.html" class="external-link">references</a> for more detailed information.</p>
 </div>
-<div id="how-to-install" class="section level1">
-<h1 class="hasAnchor">
-<a href="#how-to-install" class="anchor"></a>How to Install</h1>
+<div class="section level1">
+<h1 id="how-to-install">How to Install<a class="anchor" aria-label="anchor" href="#how-to-install"></a>
+</h1>
 <p>The preferred way to install this package is through devtools:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># if devtools has not been installed yet, please install it first</span>
-<span class="co"># install.packages("devtools")</span>
-
-<span class="co"># then, install the SfL package</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"dosc91/SfL"</span>, upgrade_dependencies <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># if devtools has not been installed yet, please install it first</span></span>
+<span><span class="co"># install.packages("devtools")</span></span>
+<span></span>
+<span><span class="co"># then, install the SfL package</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"dosc91/SfL"</span>, upgrade_dependencies <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p>You will be asked to update dependencies during installation; usually, updates can be skipped. Once installation was successfull, there will be a warning message on the usage of <code>...</code>; this can be ignored.</p>
 </div>
-<div id="references" class="section level1">
-<h1 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h1>
+<div class="section level1">
+<h1 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h1>
 <p>Please cite the package as follows:</p>
-<p>Schmitz, D., &amp; Esser, J. (2022). SfL: Statistics for Linguistics. R package version 0.3. URL: <a href="https://github.com/dosc91/SfL" class="uri">https://github.com/dosc91/SfL</a></p>
+<p>Schmitz, D., &amp; Esser, J. (2021). SfL: Statistics for Linguistics. R package version 0.4. URL: <a href="https://github.com/dosc91/SfL" class="external-link uri">https://github.com/dosc91/SfL</a></p>
 <p>The following sources are made use of in the <code>SfL</code> package:</p>
-<p>Baayen, R. H, &amp; Shafaei-Bajestan, E. (2019). languageR: Analyzing Linguistic Data: A Practical Introduction to Statistics. R package version 1.5.0. <a href="https://CRAN.R-project.org/package=languageR" class="uri">https://CRAN.R-project.org/package=languageR</a></p>
-<p>Barton, K. (2020). MuMIn: Multi-Model Inference. R package version 1.43.17. <a href="https://CRAN.R-project.org/package=MuMIn" class="uri">https://CRAN.R-project.org/package=MuMIn</a></p>
+<p>Baayen, R. H, &amp; Shafaei-Bajestan, E. (2019). languageR: Analyzing Linguistic Data: A Practical Introduction to Statistics. R package version 1.5.0. <a href="https://CRAN.R-project.org/package=languageR" class="external-link uri">https://CRAN.R-project.org/package=languageR</a></p>
+<p>Barton, K. (2020). MuMIn: Multi-Model Inference. R package version 1.43.17. <a href="https://CRAN.R-project.org/package=MuMIn" class="external-link uri">https://CRAN.R-project.org/package=MuMIn</a></p>
 <p>Bates, D., Maechler, M., Bolker, B., &amp; Walker, S. (2015). Fitting Linear Mixed-Effects Models Using lme4. Journal of Statistical Software, 67(1), 1-48. <a href="doi:10.18637/jss.v067.i01" class="uri">doi:10.18637/jss.v067.i01</a>.</p>
-<p>Coretta, S., Casillas, J. V., &amp; Roettger, T. (2021). learnB4SS: Learning materials for the learnB4SS workshop. R package version 1.0.0. <a href="https://github.com/learnB4SS/learnB4SS" class="uri">https://github.com/learnB4SS/learnB4SS</a></p>
+<p>Coretta, S., Casillas, J. V., &amp; Roettger, T. (2021). learnB4SS: Learning materials for the learnB4SS workshop. R package version 1.0.0. <a href="https://github.com/learnB4SS/learnB4SS" class="external-link uri">https://github.com/learnB4SS/learnB4SS</a></p>
 <p>Hothorn, T., Bretz, F., &amp; Westfall, P. (2008). Simultaneous Inference in General Parametric Models. Biometrical Journal 50(3), 346-363.</p>
 <p>Nakagawa, S., Johnson, P.C.D., &amp; Schielzeth, H. (2017) The coefficient of determination R? and intra-class correlation coefficient from generalized linear mixed-effects models revisited and expanded. J. R. Soc. Interface 14: 20170213.</p>
 <p>Roettger, T. B., Winter, B., Kirby, J., Grawunder, S., &amp; Grice, M. (2014). Assessing incomplete neutralization of final devoicing in German. Journal of Phonetics, 43: 11- 25.</p>
 <p>Schmitz, D. (2018). Tonal Alignment and Segmental Composition in German. Master’s Thesis. Universität zu Köln, Köln, Germany.</p>
-<p>Schmitz, D., Baer-Henney, D., &amp; Plag, I. (2021). The duration of word-final /s/ differs across morphological categories in English: evidence from pseudowords. Phonetica. De Gruyter Mouton 78(5–6). 571–616. <a href="https://doi.org/10.1515/phon-2021-2013" class="uri">https://doi.org/10.1515/phon-2021-2013</a>.</p>
+<p>Schmitz, D., Baer-Henney, D., &amp; Plag, I. (2021). The duration of word-final /s/ differs across morphological categories in English: evidence from pseudowords. Phonetica. De Gruyter Mouton 78(5–6). 571–616. <a href="https://doi.org/10.1515/phon-2021-2013" class="external-link uri">https://doi.org/10.1515/phon-2021-2013</a>.</p>
 <p>Schmitz, D., Hae-Eun C., &amp; Niemann, H. (2018). Vowel shortening in German as a function of syllable structure. In Proceedings 13. Phonetik und Phonologie Tagung (P&amp;P13), 181–184. Berlin.</p>
 <p>Wickham, H. (2016) ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York.</p>
 </div>
@@ -144,30 +100,43 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing SfL</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Dominic Schmitz <br><small class="roles"> Author, maintainer </small>  </li>
 <li>Janina Esser <br><small class="roles"> Author </small>  </li>
 </ul>
 </div>
 
+
+
   </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Dominic Schmitz, Janina Esser.</p>
+  <p></p>
+<p>Developed by Dominic Schmitz, Janina Esser.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
@@ -175,6 +144,8 @@
 
   
 
+
+  
 
   </body>
 </html>
