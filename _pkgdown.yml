@@ -1,23 +1,35 @@
 reference:
-- title: "Functions"
+- title: "Stastical Functions"
 - contents:
+  - corfun
   - correlation_matrix
   - create_error_bar_df
+  - heteroscedasticity_check
   - mode_stat
+  - multinomial_p
+  - normality_check
+  - ordinal_p
+  - predictor_competition
+  - predictor_competition2
+  - predictor_strength
+  - se
+  - tukey
+- title: "Other Functions"
+- contents:
   - open_exercise
   - open_exercises
   - open_slide
   - open_slides
-  - predictor_competition
-  - predictor_strength
-  - se
-  - tukey
 - title: "Data Sets"
 - contents:
   - data_a
   - data_c
+  - data_g
   - data_k
+  - data_o
+  - data_p
   - data_r
   - data_s
   - data_t
   - data_v
+  - data_z

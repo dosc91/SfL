@@ -1,7 +1,7 @@
 # SfL <img src='https://dominicschmitz.com/wp-content/uploads/2021/11/SfL_logo.png' align="right" height="138" />
 
 <!-- badges: start -->
-![](https://img.shields.io/badge/version-0.4-FFA70B.svg)
+![](https://img.shields.io/badge/version-0.4.1-FFA70B.svg)
 ![](https://img.shields.io/github/last-commit/dosc91/SfL)
 <!-- badges: end -->
 
@@ -24,14 +24,14 @@ The preferred way to install this package is through devtools:
 devtools::install_github("dosc91/SfL")
 ```
 
-You will be asked to update dependencies during installation; usually, updates can be skipped. 
+You will be asked to update dependencies during installation; usually, updates can be skipped.
 
 
 # References
 
 Please cite the package as follows:
 
-Schmitz, D., & Esser, J. (2021). SfL: Statistics for Linguistics. R package version 0.4. URL: https://github.com/dosc91/SfL
+Schmitz, D., & Esser, J. (2021). SfL: Statistics for Linguistics. R package version 0.4.1. URL: https://github.com/dosc91/SfL
 
 The following sources are made use of in the `SfL` package:
 
