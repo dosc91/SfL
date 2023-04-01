@@ -1,7 +1,7 @@
 Package: SfL
 Title: Statistics for Linguistics
 Version: 0.4.1
-Date: 2023-03-19
+Date: 2023-04-01
 Authors@R: c(
     person("Dominic", "Schmitz", email = "contact@dominicschmitz.com", role = c("aut", "cre")),
     person("Janina", "Esser", email = "janina.esser.92@gmail.com", role = "aut"))
@@ -30,7 +30,8 @@ Imports:
 	visreg,
 	lmerTest,
 	LMERConvenienceFunctions,
-	MuMIn
+	MuMIn,
+	lmtest
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
