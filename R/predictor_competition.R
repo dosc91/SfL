@@ -1,6 +1,9 @@
 #' Compare Variables for Predictor Strength
 #'
-#' @description Compare the predictive strength of two independent variables in a minimal linear (mixed effects) regression model. The function creates two identical
+#'
+#'
+#' @description NOTE: This function is deprecated. Please use \code{SfL::predictor_competition2} instead.
+#' Compare the predictive strength of two independent variables in a minimal linear (mixed effects) regression model. The function creates two identical
 #' \code{lm} or \code{lmer} objects, only differing in fixed effects structure. Then, a log-likelihood test is used to decide which fixed effect structure is better fit to
 #' predict the dependent variable.
 #'
