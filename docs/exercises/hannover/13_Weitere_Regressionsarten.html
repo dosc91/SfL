@@ -2146,7 +2146,7 @@ R-sq.(adj) =  0.767   Deviance explained = 69.2%
 </div>
 <div id="poisson-regression" class="section level1">
 <h1>06 Poisson-Regression</h1>
-<p>Quantil-Regression nutzen wir zur Modellierung einer integeren
+<p>Poisson-Regression nutzen wir zur Modellierung einer integeren
 abhängigen Variable.</p>
 <div id="beispiel-4" class="section level2">
 <h2>Beispiel</h2>
@@ -2155,7 +2155,7 @@ Auszeichnungen modelliert werden.</p>
 </div>
 <div id="model-4" class="section level2">
 <h2>Model</h2>
-<p>Quantil-Regression lässt sich mit dem <code>stats</code> Package
+<p>Poisson-Regression lässt sich mit dem <code>stats</code> Package
 berechnen. Das <code>stats</code> Package ist standardmäßig in R
 enthalten.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>poi_mdl <span class="ot">&lt;-</span> <span class="fu">glm</span>(num_awards <span class="sc">~</span> prog <span class="sc">+</span> math, <span class="at">family =</span> <span class="st">&quot;poisson&quot;</span>, <span class="at">data =</span> data_p)</span></code></pre></div>
