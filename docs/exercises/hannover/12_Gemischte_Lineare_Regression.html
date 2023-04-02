@@ -2008,40 +2008,29 @@ Intercept.</p>
 <div id="schritt-1" class="section level3">
 <h3>Schritt 1</h3>
 <p><code>folSeg</code> vs. <code>folType</code></p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictor_competition</span>(<span class="at">data =</span> data_s,</span>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictor_competition2</span>(<span class="at">data =</span> data_s,</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">dependent =</span> <span class="st">&quot;sDurLog&quot;</span>,</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">independent1 =</span> <span class="st">&quot;folSeg&quot;</span>,</span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">independent2 =</span> <span class="st">&quot;folType&quot;</span>,</span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">random.intercept =</span> <span class="st">&quot;speaker&quot;</span>)</span></code></pre></div>
-<pre><code>Data: data
-Models:
-mdl2: sDurLog ~ folType + (1 | speaker)
-mdl1: sDurLog ~ folSeg + (1 | speaker)
-     npar    AIC    BIC  logLik deviance  Chisq Df Pr(&gt;Chisq)
-mdl2    7 135.74 156.81 -60.869   121.74                     
-mdl1   17 140.86 192.04 -53.431   106.86 14.877 10     0.1366</code></pre>
-<p>Wie vom Output angedeutet, sind beide Variablen gleich gute
-Prediktoren. In diesem Fall können wir wählen, welchen wir für die
-weitere Analyse behalten möchten.</p>
-<p>Wir behalten <code>folType</code>. Weitere Vergleiche mit
+<pre><code>     df      AIC
+mdl1 17 140.8614
+mdl2  7 135.7386</code></pre>
+<p>Wir haben einen Sieger: <code>folType</code>. Weitere Vergleiche mit
 <code>folSeg</code> entfallen.</p>
 <hr />
 </div>
 <div id="schritt-2" class="section level3">
 <h3>Schritt 2</h3>
 <p><code>biphoneProbSumBin</code> vs. <code>biphoneProbSum</code></p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictor_competition</span>(<span class="at">data =</span> data_s,</span>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictor_competition2</span>(<span class="at">data =</span> data_s,</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">dependent =</span> <span class="st">&quot;sDurLog&quot;</span>,</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">independent1 =</span> <span class="st">&quot;biphoneProbSumBin&quot;</span>,</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">independent2 =</span> <span class="st">&quot;biphoneProbSum&quot;</span>,</span>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">random.intercept =</span> <span class="st">&quot;speaker&quot;</span>)</span></code></pre></div>
-<pre><code>Data: data
-Models:
-mdl1: sDurLog ~ biphoneProbSumBin + (1 | speaker)
-mdl2: sDurLog ~ biphoneProbSum + (1 | speaker)
-     npar    AIC    BIC  logLik deviance  Chisq Df Pr(&gt;Chisq)
-mdl1    4 130.32 142.36 -61.161   122.32                     
-mdl2    4 129.73 141.77 -60.863   121.73 0.5955  0           </code></pre>
+<pre><code>     df      AIC
+mdl1  4 130.3216
+mdl2  4 129.7262</code></pre>
 <p>Wie vom Output angedeutet, sind beide Variablen gleich gute
 Prediktoren. In diesem Fall können wir wählen, welchen wir für die
 weitere Analyse behalten möchten.</p>
@@ -2053,25 +2042,11 @@ weitere Analyse behalten möchten.</p>
 <h3>Schritt 3</h3>
 <p><code>item</code> vs. <code>transcription</code></p>
 <p><strong>Achtung</strong>: Diese Variablen möchten wir als Random
-Effects einsetzen. Daher erfolgt der Vergleich mit etwas anderen
-Mitteln.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>mdl_item <span class="ot">&lt;-</span> <span class="fu">lmer</span>(sDurLog <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>item), <span class="at">data =</span> data_s, <span class="at">REML =</span> F)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>mdl_transcription <span class="ot">&lt;-</span> <span class="fu">lmer</span>(sDurLog <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>transcription), <span class="at">data =</span> data_s, <span class="at">REML =</span> F)</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mdl_item, mdl_transcription)</span></code></pre></div>
-<pre><code>Data: data_s
-Models:
-mdl_item: sDurLog ~ 1 + (1 | item)
-mdl_transcription: sDurLog ~ 1 + (1 | transcription)
-                  npar    AIC    BIC  logLik deviance Chisq Df Pr(&gt;Chisq)
-mdl_item             3 162.51 171.55 -78.257   156.51                    
-mdl_transcription    3 162.53 171.57 -78.268   156.53     0  0           </code></pre>
-<p>Wie vom Output angedeutet, sind beide Variablen gleich gute
-Prediktoren. In diesem Fall können wir wählen, welchen wir für die
-weitere Analyse behalten möchten.</p>
-<p>Wir behalten <code>transcription</code>. Weitere Vergleiche mit
-<code>item</code> entfallen.</p>
+Effects einsetzen. Daher wäre eine Korrelation an sich kein Problem. Da
+wir allerdings wissen, dass beide Variablen in ihrer Bedeutung - und
+somit auch Aussagekraft - sehr ähnlich sind, entscheiden wir uns ganz
+ohne “statistische Probleme” für eine der beiden Variablen:
+<code>transcription</code>.</p>
 <hr />
 </div>
 <div id="schritt-4" class="section level3">
@@ -2108,27 +2083,27 @@ folgende Variablen erhalten geblieben: <code>folType</code>,
 <p>Mit den Variablen, die das Ausschlussverfahren überlebt haben, sowie
 mit den Variablen, die keine problematischen Korrelationen gezeigt
 haben, kann nun ein volles Modell erstellt werden:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>mdl_full <span class="ot">&lt;-</span> <span class="fu">lmer</span>(sDurLog <span class="sc">~</span> </span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>                   folType <span class="sc">+</span> </span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                   biphoneProbSum <span class="sc">+</span> </span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>                   baseDurLog <span class="sc">+</span> </span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>                   speakingRateLog <span class="sc">+</span> </span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>                   googleFreqLog <span class="sc">+</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>                   age <span class="sc">+</span> </span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>                   typeOfS <span class="sc">+</span> </span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>                   monoMultilingual <span class="sc">+</span> </span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>                   pauseBin <span class="sc">+</span> </span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>                   preC <span class="sc">+</span></span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>                   (<span class="dv">1</span> <span class="sc">|</span> speaker) <span class="sc">+</span> </span>
-<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>                   (<span class="dv">1</span> <span class="sc">|</span> transcription), </span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>                 data_s, <span class="at">REML=</span>F)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>mdl_full <span class="ot">&lt;-</span> <span class="fu">lmer</span>(sDurLog <span class="sc">~</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>                   folType <span class="sc">+</span> </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>                   biphoneProbSum <span class="sc">+</span> </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                   baseDurLog <span class="sc">+</span> </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>                   speakingRateLog <span class="sc">+</span> </span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>                   googleFreqLog <span class="sc">+</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>                   age <span class="sc">+</span> </span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>                   typeOfS <span class="sc">+</span> </span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>                   monoMultilingual <span class="sc">+</span> </span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>                   pauseBin <span class="sc">+</span> </span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>                   preC <span class="sc">+</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>                   (<span class="dv">1</span> <span class="sc">|</span> speaker) <span class="sc">+</span> </span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>                   (<span class="dv">1</span> <span class="sc">|</span> transcription), </span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>                 data_s, <span class="at">REML=</span>F)</span></code></pre></div>
 <hr />
 </div>
 <div id="bestes-modell" class="section level1">
 <h1>05 Bestes Modell</h1>
 <p>Mit der <code>step()</code> Funktion können wir erneut das beste
 Modell finden:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(mdl_full)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(mdl_full)</span></code></pre></div>
 <pre><code>Backward reduced random-effect table:
 
                     Eliminated npar   logLik    AIC     LRT Df Pr(&gt;Chisq)    
@@ -2164,15 +2139,15 @@ Intercept nicht benötigt wird.</p>
 Prediktoren für <code>sDurLog</code> sind, und demnach aussortiert
 werden können.</p>
 <p>Das beste Modell ist demnach folgendes:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>mdl_best <span class="ot">&lt;-</span> <span class="fu">lmer</span>(sDurLog <span class="sc">~</span> </span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>                   biphoneProbSum <span class="sc">+</span> </span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                   baseDurLog <span class="sc">+</span> </span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>                   speakingRateLog <span class="sc">+</span> </span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>                   typeOfS <span class="sc">+</span> </span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>                   monoMultilingual <span class="sc">+</span> </span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>                   pauseBin <span class="sc">+</span> </span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>                   (<span class="dv">1</span> <span class="sc">|</span> speaker), </span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>                 data_s, <span class="at">REML=</span>F)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>mdl_best <span class="ot">&lt;-</span> <span class="fu">lmer</span>(sDurLog <span class="sc">~</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                   biphoneProbSum <span class="sc">+</span> </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                   baseDurLog <span class="sc">+</span> </span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>                   speakingRateLog <span class="sc">+</span> </span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>                   typeOfS <span class="sc">+</span> </span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>                   monoMultilingual <span class="sc">+</span> </span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>                   pauseBin <span class="sc">+</span> </span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>                   (<span class="dv">1</span> <span class="sc">|</span> speaker), </span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>                 data_s, <span class="at">REML=</span>F)</span></code></pre></div>
 <hr />
 </div>
 <div id="diagnostik-trimming" class="section level1">
@@ -2185,17 +2160,17 @@ diesen Schritt hier.</p>
 besser gemacht werden kann: durch Residual Trimming.</p>
 <p>Durch Residual Trimming wird der “Fit” des Modells verbessert, da
 Datenpunkte entfernt werden, die durch das Modell nur sehr schlecht
-erklärt werden können. Anders als das Aussortierten von Outliern vor dem
+erklärt werden können. Anders als das Aussortieren von Outliern vor dem
 Modell-Prozess ist dieses Vorgehen statistisch motiviert und entspricht
 modernen Konventionen.</p>
 <p>Nachdem man, so wie im vorliegenden Fall, ein “bestes” Modell
 gefunden hat, kann man mit dem <code>LMERConvenienceFunctions</code>
 Package die Daten trimmen:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(LMERConvenienceFunctions)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>data_s2 <span class="ot">&lt;-</span> <span class="fu">romr.fnc</span>(mdl_best, <span class="co"># das beste Modell</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>                    data_s, <span class="co"># der Datensatz</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">trim =</span> <span class="fl">2.5</span>) <span class="co"># die Standardabweichung mit welcher man trimmen möchte; 2.5 ist die Standardeinstellung</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(LMERConvenienceFunctions)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>data_s2 <span class="ot">&lt;-</span> <span class="fu">romr.fnc</span>(mdl_best, <span class="co"># das beste Modell</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>                    data_s, <span class="co"># der Datensatz</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">trim =</span> <span class="fl">2.5</span>) <span class="co"># die Standardabweichung mit welcher man trimmen möchte; 2.5 ist die Standardeinstellung</span></span></code></pre></div>
 <pre><code>n.removed = 1 
 percent.removed = 0.6666667 </code></pre>
 <p>Mit diesem Befehl trimmt man die Daten, deren Residuen im Modell
@@ -2204,20 +2179,20 @@ vom Durchschnitt der Gesamtresiduen entfernt liegen.</p>
 <p>Im vorliegenden Fall wird lediglich <span class="math inline">\(1\)</span> Datenpunkt getrimmt, d.h. <span class="math inline">\(0.67/%\)</span> der gesamten Datenmenge.</p>
 <p>Anschließend wird das getrimmte Datenset im Environment
 gesichert:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>data_s2 <span class="ot">&lt;-</span> data_s2<span class="sc">$</span>data</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>data_s2 <span class="ot">&lt;-</span> data_s2<span class="sc">$</span>data</span></code></pre></div>
 <p>Zuletzt wird das beste Modell mit dem getrimmten Datensatz erneut
 erstellt:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>mdl_trim <span class="ot">&lt;-</span> <span class="fu">lmer</span>(sDurLog <span class="sc">~</span> biphoneProbSum <span class="sc">+</span> </span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>                   baseDurLog <span class="sc">+</span> </span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>                   speakingRateLog <span class="sc">+</span> </span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>                   typeOfS <span class="sc">+</span> </span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>                   monoMultilingual <span class="sc">+</span> </span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>                   pauseBin <span class="sc">+</span> </span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>                   (<span class="dv">1</span> <span class="sc">|</span> speaker), </span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>                 data_s2, <span class="at">REML=</span>F)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>mdl_trim <span class="ot">&lt;-</span> <span class="fu">lmer</span>(sDurLog <span class="sc">~</span> biphoneProbSum <span class="sc">+</span> </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>                   baseDurLog <span class="sc">+</span> </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>                   speakingRateLog <span class="sc">+</span> </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>                   typeOfS <span class="sc">+</span> </span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>                   monoMultilingual <span class="sc">+</span> </span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>                   pauseBin <span class="sc">+</span> </span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>                   (<span class="dv">1</span> <span class="sc">|</span> speaker), </span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>                 data_s2, <span class="at">REML=</span>F)</span></code></pre></div>
 <p>Betrachten wir nun die AIC-Werte der beiden “besten” Modelle, sehen
 wir eine Verbesserung durch die getrimmten Daten:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(mdl_best, mdl_trim)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(mdl_best, mdl_trim)</span></code></pre></div>
 <pre><code>         df      AIC
 mdl_best 10 47.30116
 mdl_trim 10 39.31184</code></pre>
@@ -2232,7 +2207,7 @@ Gemischten Modells begeben.</p>
 <h2>Signifikanz &amp; Predictor Strength</h2>
 <p>Wie zuvor können wir mit der <code>anova()</code> Funktion die
 Signifikanz von Variablen überprüfen:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mdl_trim)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mdl_trim)</span></code></pre></div>
 <pre><code>Type III Analysis of Variance Table with Satterthwaite&#39;s method
                   Sum Sq Mean Sq NumDF   DenDF F value    Pr(&gt;F)    
 biphoneProbSum   0.37715 0.37715     1 129.745  7.2917  0.007852 ** 
@@ -2248,12 +2223,12 @@ insgesamt sehr unterschiedlich sind. Um ein genaues Bild von diesen
 Unterschieden zu erhalten, können wir die
 <code>predictor_strength()</code>-Funktion aus dem <code>SfL</code>
 Package nutzen:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>strength <span class="ot">&lt;-</span> <span class="fu">predictor_strength</span>(<span class="at">dependent =</span> <span class="st">&quot;sDurLog&quot;</span>,</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fixed =</span> <span class="fu">c</span>(<span class="st">&quot;biphoneProbSum&quot;</span>, <span class="st">&quot;baseDurLog&quot;</span>, <span class="st">&quot;speakingRateLog&quot;</span>, <span class="st">&quot;typeOfS&quot;</span>, <span class="st">&quot;monoMultilingual&quot;</span>, <span class="st">&quot;pauseBin&quot;</span>),</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">random_str =</span> <span class="fu">c</span>(<span class="st">&quot;( 1 | speaker)&quot;</span>),</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> data_s2)</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>strength[<span class="fu">order</span>(strength<span class="sc">$</span>R2m),]</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>strength <span class="ot">&lt;-</span> <span class="fu">predictor_strength</span>(<span class="at">dependent =</span> <span class="st">&quot;sDurLog&quot;</span>,</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fixed =</span> <span class="fu">c</span>(<span class="st">&quot;biphoneProbSum&quot;</span>, <span class="st">&quot;baseDurLog&quot;</span>, <span class="st">&quot;speakingRateLog&quot;</span>, <span class="st">&quot;typeOfS&quot;</span>, <span class="st">&quot;monoMultilingual&quot;</span>, <span class="st">&quot;pauseBin&quot;</span>),</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">random_str =</span> <span class="fu">c</span>(<span class="st">&quot;( 1 | speaker)&quot;</span>),</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> data_s2)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>strength[<span class="fu">order</span>(strength<span class="sc">$</span>R2m),]</span></code></pre></div>
 <pre><code>         predictor       R2m       R2c
 5       baseDurLog 0.3637483 0.6439048
 3          typeOfS 0.4591623 0.6394286
@@ -2285,7 +2260,7 @@ Prediktor ist.</p>
 <h2>Koeffizienten</h2>
 <p>Mit der <code>summary()</code>-Funktionen können wir uns wie gewohnt
 die Koeffizienten des Modells anschauen:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mdl_trim)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mdl_trim)</span></code></pre></div>
 <pre><code>Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite&#39;s method [&#39;lmerModLmerTest&#39;]
 Formula: sDurLog ~ biphoneProbSum + baseDurLog + speakingRateLog + typeOfS +      monoMultilingual + pauseBin + (1 | speaker)
    Data: data_s2
@@ -2334,8 +2309,8 @@ Multiplen Linearen Modellen.</p>
 <p>Tukey Contrasts werden genutzt um die Level von kategorischen
 Prediktoren zu untersuchen, d.h. um zu schauen, ob diese signifikant
 verschieden zueinander sind.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tukey</span>(<span class="at">model =</span> mdl_trim,</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">predictor =</span> typeOfS)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tukey</span>(<span class="at">model =</span> mdl_trim,</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">predictor =</span> typeOfS)</span></code></pre></div>
 <pre><code>
      Simultaneous Tests for General Linear Hypotheses
 
@@ -2349,13 +2324,13 @@ Fit: lmer(formula = sDurLog ~ biphoneProbSum + baseDurLog + speakingRateLog +
 Linear Hypotheses:
              Estimate Std. Error z value Pr(&gt;|z|)    
 nm - is == 0  0.25994    0.05175   5.023  &lt; 1e-04 ***
-pl - is == 0  0.10968    0.05327   2.059  0.09847 .  
-pl - nm == 0 -0.15025    0.05114  -2.938  0.00918 ** 
+pl - is == 0  0.10968    0.05327   2.059  0.09838 .  
+pl - nm == 0 -0.15025    0.05114  -2.938  0.00913 ** 
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 (Adjusted p values reported -- single-step method)</code></pre>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tukey</span>(<span class="at">model =</span> mdl_trim,</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">predictor =</span> monoMultilingual)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tukey</span>(<span class="at">model =</span> mdl_trim,</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">predictor =</span> monoMultilingual)</span></code></pre></div>
 <pre><code>
      Simultaneous Tests for General Linear Hypotheses
 
@@ -2372,8 +2347,8 @@ monolingual - bilingual == 0  0.16531    0.07851   2.106   0.0352 *
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 (Adjusted p values reported -- single-step method)</code></pre>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tukey</span>(<span class="at">model =</span> mdl_trim,</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">predictor =</span> pauseBin)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tukey</span>(<span class="at">model =</span> mdl_trim,</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">predictor =</span> pauseBin)</span></code></pre></div>
 <pre><code>
      Simultaneous Tests for General Linear Hypotheses
 
@@ -2400,12 +2375,13 @@ Beispiel könntest du folgendes Modell erstellen:</p>
 <p>Aus <code>data_v</code>:</p>
 <ul>
 <li><p>abhängige Variable: <code>vowel_dur</code></p></li>
-<li><p>Prediktoren: <code>subject</code>, <code>gender</code>,
+<li><p>Prädiktoren: <code>subject</code>, <code>gender</code>,
 <code>item</code>, <code>voicing</code>, <code>vowel</code>,
 <code>prosodic_boundary</code></p></li>
 </ul>
 <p>Führe alle Schritte zur Modellerstellung durch, die dir sinnvoll
-erscheinen.</p>
+erscheinen. Entscheide initial, welche Variablen du als fixed und welche
+du als random effects nutzen wirst.</p>
 <p></br></p>
 <p>Alternativ kannst du dich aber zunächst auch an der Visualisierung
 von Gemischten Modellen versuchen. Hierzu verwendet man ebenfalls das
