@@ -76,27 +76,7 @@ open_exercises <- function(session, year, edition, language = NULL) {
       )
     }
 
-  }
-
-  else if(year == 2023 & edition == "german" | year == 2023 & edition == "German"){
-
-    real_session <- session - 1
-
-    if (real_session > 0 & real_session < 12) {
-
-      utils::browseURL(exercises_2023_german[real_session])
-
-    }else {
-
-      cli::cli_alert_danger(
-
-        glue::glue("I am not aware of exercises for session {num}! Currently, I only know of exercises for sessions 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, and 12!")
-
-      )
-    }
-  }
-
-  else {
+  } else {
     cli::cli_alert_danger(
       glue::glue(paste(paste("Sorry, I have no data for an SfL workshop in", edition, "in", year), ".", sep = ""))
     )
@@ -140,18 +120,4 @@ exercises_2023_hannover <- c(
   "https://dosc91.github.io/SfL/exercises/hannover/11_Kollinearit%C3%A4t.html",
   "https://dosc91.github.io/SfL/exercises/hannover/12_Gemischte_Lineare_Regression.html",
   "https://dosc91.github.io/SfL/exercises/hannover/13_Weitere_Regressionsarten.html"
-)
-
-exercises_2023_german <- c(
-  "https://dosc91.github.io/SfL/exercises/august2023/02_Einf%C3%BChrung_in_R_und_RStudio.html",
-  "https://dosc91.github.io/SfL/exercises/august2023/03_Statistische_Messgroessen.html",
-  "https://dosc91.github.io/SfL/exercises/august2023/04_Statistische_Tests.html",
-  "https://dosc91.github.io/SfL/exercises/august2023/05_Datenvisualisierung_mit_ggplot2.html",
-  "https://dosc91.github.io/SfL/exercises/august2023/06_Einfache_Lineare_Regression.html",
-  "https://dosc91.github.io/SfL/exercises/august2023/07_Multiple_Lineare_Regression.html",
-  "https://dosc91.github.io/SfL/exercises/august2023/08_Visualisierung_Linearer_Regression.html",
-  "https://dosc91.github.io/SfL/exercises/august2023/09_Kollinearit%C3%A4t.html",
-  "https://dosc91.github.io/SfL/exercises/august2023/10_11_Gemischte_Lineare_Regression.html",
-  "https://dosc91.github.io/SfL/exercises/august2023/10_11_Gemischte_Lineare_Regression.html",
-  "https://dosc91.github.io/SfL/exercises/august2023/12_Weitere_Regressionsarten.html"
 )

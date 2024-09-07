@@ -87,29 +87,6 @@ open_slide <- function(session, year, edition, language = NULL) {
     }
   }
 
-  else if(year == 2023 & edition == "german" | year == 2023 & edition == "German"){
-
-    real_session <- session - 0
-
-    if (real_session == 1) {
-
-      utils::browseURL(slides_2023_german[real_session])
-
-    }else if (real_session > 2 & real_session < 13) {
-
-      real_session <- real_session - 1
-
-      utils::browseURL(slides_2023_german[real_session])
-
-    }else if (real_session == 2 | real_session >= 13){
-
-      cli::cli_alert_danger(
-        glue::glue("I am not aware of slides for session {num}! Currently, I only know of slides for sessions 01, 03, 04, 05, 06, 07, 08, 09, 10, 11, and 12!")
-      )
-
-    }
-  }
-
   else if(year == 2023 & edition == "hannover" | year == 2023 & edition == "Hannover"){
 
     real_session <- session - 0
@@ -167,18 +144,4 @@ slides_2023_hannover <- c(
   "https://dosc91.github.io/SfL/slides/hannover/12_Gemischte_Lineare_Regression.pdf",
   "https://dosc91.github.io/SfL/slides/hannover/13_Weitere_Regressionsarten.pdf",
   "https://dosc91.github.io/SfL/slides/hannover/14_Fragerunde_Abschluss.pdf"
-)
-
-slides_2023_german <- c(
-  "https://dosc91.github.io/SfL/slides/august2023/01_Begr%C3%BC%C3%9Fung_Kennenlernen.pdf",
-  "https://dosc91.github.io/SfL/slides/august2023/03_Statistische_Messgroessen.pdf",
-  "https://dosc91.github.io/SfL/slides/august2023/04_Statistische_Tests.pdf",
-  "https://dosc91.github.io/SfL/slides/august2023/05_Datenvisualisierung_mit_ggplot2.pdf",
-  "https://dosc91.github.io/SfL/slides/august2023/06_Einfache_Lineare_Regression.pdf",
-  "https://dosc91.github.io/SfL/slides/august2023/07_Multiple_Lineare_Regression.pdf",
-  "https://dosc91.github.io/SfL/slides/august2023/08_Visualisierung_Linearer_Regression.pdf",
-  "https://dosc91.github.io/SfL/slides/august2023/09_Kollinearit%C3%A4t.pdf",
-  "https://dosc91.github.io/SfL/slides/august2023/10_11_Gemischte_Lineare_Regression.pdf",
-  "https://dosc91.github.io/SfL/slides/august2023/10_11_Gemischte_Lineare_Regression.pdf",
-  "https://dosc91.github.io/SfL/slides/august2023/12_Weitere_Regressionsarten.pdf"
 )
