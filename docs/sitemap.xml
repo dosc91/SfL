@@ -10,36 +10,90 @@
     <loc>/index.html</loc>
   </url>
   <url>
-    <loc>/LICENSE-text.html</loc>
+    <loc>/reference/corfun.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>/reference/correlation_matrix.html</loc>
   </url>
   <url>
-    <loc>/reference/corpus_files.html</loc>
+    <loc>/reference/create_error_bar_df.html</loc>
   </url>
   <url>
-    <loc>/reference/get_band_correlations.html</loc>
+    <loc>/reference/data_a.html</loc>
   </url>
   <url>
-    <loc>/reference/get_band_samples.html</loc>
+    <loc>/reference/data_c.html</loc>
   </url>
   <url>
-    <loc>/reference/get_corpus_files.html</loc>
+    <loc>/reference/data_g.html</loc>
   </url>
   <url>
-    <loc>/reference/get_mel.html</loc>
+    <loc>/reference/data_k.html</loc>
   </url>
   <url>
-    <loc>/reference/get_word_duration.html</loc>
+    <loc>/reference/data_o.html</loc>
   </url>
   <url>
-    <loc>/reference/get_word_sound_files.html</loc>
+    <loc>/reference/data_p.html</loc>
+  </url>
+  <url>
+    <loc>/reference/data_r.html</loc>
+  </url>
+  <url>
+    <loc>/reference/data_s.html</loc>
+  </url>
+  <url>
+    <loc>/reference/data_t.html</loc>
+  </url>
+  <url>
+    <loc>/reference/data_v.html</loc>
+  </url>
+  <url>
+    <loc>/reference/data_z.html</loc>
+  </url>
+  <url>
+    <loc>/reference/heteroscedasticity_check.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/sphspn_to_wav.html</loc>
+    <loc>/reference/mode_stat.html</loc>
+  </url>
+  <url>
+    <loc>/reference/multinomial_p.html</loc>
+  </url>
+  <url>
+    <loc>/reference/normality_check.html</loc>
+  </url>
+  <url>
+    <loc>/reference/open_exercise.html</loc>
+  </url>
+  <url>
+    <loc>/reference/open_exercises.html</loc>
+  </url>
+  <url>
+    <loc>/reference/open_slide.html</loc>
+  </url>
+  <url>
+    <loc>/reference/open_slides.html</loc>
+  </url>
+  <url>
+    <loc>/reference/ordinal_p.html</loc>
+  </url>
+  <url>
+    <loc>/reference/predictor_competition.html</loc>
+  </url>
+  <url>
+    <loc>/reference/predictor_competition2.html</loc>
+  </url>
+  <url>
+    <loc>/reference/predictor_strength.html</loc>
+  </url>
+  <url>
+    <loc>/reference/se.html</loc>
+  </url>
+  <url>
+    <loc>/reference/tukey.html</loc>
   </url>
 </urlset>
