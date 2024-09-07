@@ -1,7 +1,7 @@
 # SfL <img src='https://dominicschmitz.com/wp-content/uploads/2021/11/SfL_logo.png' align="right" height="138" />
 
 <!-- badges: start -->
-![](https://img.shields.io/badge/version-0.4.2-FFA70B.svg)
+![](https://img.shields.io/badge/version-0.5-FFA70B.svg)
 ![](https://img.shields.io/github/last-commit/dosc91/SfL)
 <!-- badges: end -->
 
@@ -31,7 +31,7 @@ You will be asked to update dependencies during installation; usually, updates c
 
 Please cite the package as follows:
 
-Schmitz, D., & Esser, J. (2021). SfL: Statistics for Linguistics. R package version 0.4.2. URL: https://github.com/dosc91/SfL
+Schmitz, D., & Esser, J. (2021). SfL: Statistics for Linguistics. R package version 0.4. URL: https://github.com/dosc91/SfL
 
 The following sources are made use of in the `SfL` package:
 
@@ -51,14 +51,9 @@ Roettger, T. B., Winter, B., Kirby, J., Grawunder, S., & Grice, M. (2014). Asses
 
 Schmitz, D. (2018). Tonal Alignment and Segmental Composition in German. Master's Thesis. Universität zu Köln, Köln, Germany.
 
-Schmitz, D., Baer-Henney, D., & Plag, I. (2021). The duration of word-final /s/ differs across morphological categories in English: evidence from pseudowords. Phonetica 78(5–6). 571–616. 
-doi: 10.1515/phon-2021-2013.
-
-Schmitz, D., Cicek, D., Nguyen, A. K., & Rottleb, D. (2023). Cuteness modulates size sound symbolism at its extremes. Preprint available on PsyArXiv. doi: 10.31234/osf.io/62ne9
+Schmitz, D., Baer-Henney, D., & Plag, I. (2021). The duration of word-final /s/ differs across morphological categories in English: evidence from pseudowords. Phonetica. De Gruyter Mouton 78(5–6). 571–616. https://doi.org/10.1515/phon-2021-2013.
 
 Schmitz, D., Hae-Eun C., & Niemann, H. (2018). Vowel shortening in German as a function of syllable structure. In Proceedings 13. Phonetik und Phonologie Tagung (P&P13), 181–184. Berlin.
-
-Schmitz, D., Schneider, V., & Esser, J. (2023). No genericity in sight: An exploration of the semantics of masculine generics in German. Glossa Psycholinguistics, 2(1). doi: 10.5070/G6011192
 
 Wickham, H. (2016) ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York.
 

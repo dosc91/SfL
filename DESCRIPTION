@@ -1,7 +1,7 @@
 Package: SfL
 Title: Statistics for Linguistics
-Version: 0.4.2
-Date: 2023-08-16
+Version: 0.5.0
+Date: 2024-09-09
 Authors@R: c(
     person("Dominic", "Schmitz", email = "contact@dominicschmitz.com", role = c("aut", "cre")),
     person("Janina", "Esser", email = "janina.esser.92@gmail.com", role = "aut"))
@@ -10,7 +10,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 Imports: 
     stringr,
     glue,
@@ -26,14 +26,13 @@ Imports:
     multcomp,
     DT,
     languageR,
-	lme4,
-	visreg,
-	lmerTest,
-	LMERConvenienceFunctions,
-	MuMIn,
-	lmtest
+    lme4,
+    visreg,
+    lmerTest,
+    LMERConvenienceFunctions,
+    MuMIn
 VignetteBuilder: knitr
 Depends: 
-    R (>= 2.10)
+    R (>= 4.0)
 Suggests: 
     rmarkdown
