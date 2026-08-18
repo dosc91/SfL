@@ -1,7 +1,7 @@
 # SfL
 
 <!-- badges: start -->
-![Version](https://img.shields.io/badge/version-1.0.1-FFA70B.svg)
+![Version](https://img.shields.io/badge/version-1.0.2-FFA70B.svg)
 ![GitHub last commit](https://img.shields.io/github/last-commit/dosc91/SfL)
 <!-- badges: end -->
 
@@ -40,7 +40,7 @@ Open a registered resource in the default browser:
 
 ```r
 SfL::open_slide(3, 2021, "english")
-SfL::open_exercise(2, 2021, "english")
+SfL::open_exercise(3, 2026, "marburg")
 ```
 
 The plural aliases `open_slides()` and `open_exercises()` remain available.
@@ -61,7 +61,7 @@ help(package = "SfL")
 Please cite the package as:
 
 > Schmitz, D. & Esser, J. (2026). SfL: Statistics for Linguistics. R package
-> version 1.0.1. https://github.com/dosc91/SfL
+> version 1.0.2. https://github.com/dosc91/SfL
 
 ## License
 

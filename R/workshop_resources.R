@@ -93,6 +93,19 @@
         "exercises/hannover/12_Gemischte_Lineare_Regression.html",
         "exercises/hannover/13_Weitere_Regressionsarten.html"
       )
+    ),
+    .make_resource_rows(
+      "exercise", 2026, "marburg", 3:10,
+      c(
+        "exercises/Marburg/03_Lineare_Regression.html",
+        "exercises/Marburg/04_Multiple_Regression_Kontrollvariablen.html",
+        "exercises/Marburg/05_Interaktionen.html",
+        "exercises/Marburg/06_Logistische_Regression.html",
+        "exercises/Marburg/07_Gemischte_Modelle.html",
+        "exercises/Marburg/08_Kollinearitaet.html",
+        "exercises/Marburg/09_Modelldiagnostik_Modellkomplexitaet.html",
+        "exercises/Marburg/10_Ergebnisse_kommunizieren.html"
+      )
     )
   )
 )
@@ -193,7 +206,7 @@ open_slides <- function(session, year, edition, language = NULL) {
 #'   learnB4SS: Learning materials for the learnB4SS workshop.
 #' @examples
 #' \dontrun{
-#' open_exercise(2, 2021, "english")
+#' open_exercise(3, 2026, "marburg")
 #' }
 #' @export
 open_exercise <- function(session, year, edition, language = NULL) {

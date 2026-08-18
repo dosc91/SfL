@@ -4,6 +4,12 @@ test_that("resource catalogue selects registered URLs", {
 
   hannover <- SfL:::.resource_url(11, 2023, "hannover", "exercise")
   expect_match(hannover, "11_Kollinearitaet[.]html$")
+
+  marburg <- SfL:::.resource_url(8, 2026, "Marburg", "exercise")
+  expect_identical(
+    marburg,
+    "https://dosc91.github.io/SfL/exercises/Marburg/08_Kollinearitaet.html"
+  )
 })
 
 test_that("resource catalogue reports unavailable sessions", {

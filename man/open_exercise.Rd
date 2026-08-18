@@ -29,7 +29,7 @@ web browser. Resources are hosted on the SfL GitHub Pages site.
 }
 \examples{
 \dontrun{
-open_exercise(2, 2021, "english")
+open_exercise(3, 2026, "marburg")
 }
 }
 \references{
