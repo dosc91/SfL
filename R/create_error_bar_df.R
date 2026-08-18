@@ -1,51 +1,54 @@
-#' Create Error Bar Dataframe
+#' Create an error-bar data frame
 #'
-#' @description Create a dataframe with which a \code{ggplot2} bar plot with error bars (+/- 1 standard deviation) can be created.
+#' Summarises a numerical variable by one or more grouping variables. The
+#' result can be supplied directly to plotting code.
 #'
+#' @param data A data frame.
+#' @param numerical Name of the numerical variable to summarise.
+#' @param factors Character vector naming the grouping variables.
+#' @param size Multiplier applied to the standard deviation or standard error.
+#' @param type Either `"sd"` for standard deviation or `"std"` for standard
+#'   error.
 #'
-#' @param data The original data set.
-#' @param numerical The numerical variable which will be visualised in the bar plot.
-#' @param factors One or more factor variables which will be used for grouping.
-#' Use \code{c("var1", "var2")} for multiple grouping variables.
-#' @param size Choose whether you want more/less than 1 standard deviation/standard error. Defaults to 1.
-#' @param type Choose between "sd" (standard deviation) and "std" (standard error). Defaults to "sd".
-#'
-#' @return A dataframe object.
-#'
-#' @author D. Schmitz
-#'
-#' @references Wickham, H. (2016) ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York.
-#'
+#' @return A data frame containing the grouping variables, group mean, and the
+#'   requested spread measure.
 #' @examples
 #' data("data_s")
-#'
-#' create_error_bar_df(data = data_s, numerical = "sDur", factors = "pauseBin", size = 1, type = "sd")
-#'
+#' create_error_bar_df(data_s, "sDur", "pauseBin", type = "sd")
 #' @export
-
-create_error_bar_df <- function(data, numerical, factors, size = 1, type = "sd"){
-
-  std <- function(x) sd(x)/sqrt(length(x))
-
-  summary_function_sd <- function(x, col){
-    c(mean = mean(x[[col]], na.rm=TRUE), sd = size * (sd(x[[col]], na.rm=TRUE)))
+create_error_bar_df <- function(data, numerical, factors, size = 1, type = "sd") {
+  if (!is.data.frame(data)) stop("`data` must be a data frame.", call. = FALSE)
+  if (length(numerical) != 1L || !is.character(numerical) ||
+      !numerical %in% names(data)) {
+    stop("`numerical` must name one column in `data`.", call. = FALSE)
   }
-
-  summary_function_std <- function(x, col){
-    c(mean = mean(x[[col]], na.rm=TRUE), std = size * std(x[[col]]))
+  if (!is.numeric(data[[numerical]])) {
+    stop("`numerical` must identify a numeric column.", call. = FALSE)
   }
+  if (!is.character(factors) || !length(factors) ||
+      any(!factors %in% names(data))) {
+    stop("`factors` must name one or more columns in `data`.", call. = FALSE)
+  }
+  if (length(size) != 1L || !is.numeric(size) || is.na(size) || size < 0) {
+    stop("`size` must be one non-negative number.", call. = FALSE)
+  }
+  type <- match.arg(type, c("sd", "std"))
 
-  if(type == "sd"){
-    data_sum <- plyr::ddply(data, factors, .fun=summary_function_sd, numerical)
-  } else if(type == "std") {
-    data_sum <- plyr::ddply(data, factors, .fun=summary_function_std, numerical)
+  group_data <- data[factors]
+  values <- data[[numerical]]
+  means <- stats::aggregate(values, group_data, mean, na.rm = TRUE)
+  spread_fun <- if (type == "sd") {
+    function(x) size * stats::sd(x, na.rm = TRUE)
   } else {
-    cli::cli_alert_danger(
-      glue::glue("type can be 'sd' (standard deviation) or 'std' (standard error)")
-    )
+    function(x) {
+      n <- sum(!is.na(x))
+      if (n < 2L) return(NA_real_)
+      size * stats::sd(x, na.rm = TRUE) / sqrt(n)
+    }
   }
+  spreads <- stats::aggregate(values, group_data, spread_fun)
 
-  data_sum <- plyr::rename(data_sum, c("mean" = numerical))
-
-  return(data_sum)
+  names(means)[ncol(means)] <- numerical
+  names(spreads)[ncol(spreads)] <- type
+  cbind(means, spreads[ncol(spreads)])
 }

@@ -2,37 +2,31 @@
 % Please edit documentation in R/create_error_bar_df.R
 \name{create_error_bar_df}
 \alias{create_error_bar_df}
-\title{Create Error Bar Dataframe}
+\title{Create an error-bar data frame}
 \usage{
 create_error_bar_df(data, numerical, factors, size = 1, type = "sd")
 }
 \arguments{
-\item{data}{The original data set.}
+\item{data}{A data frame.}
 
-\item{numerical}{The numerical variable which will be visualised in the bar plot.}
+\item{numerical}{Name of the numerical variable to summarise.}
 
-\item{factors}{One or more factor variables which will be used for grouping.
-Use \code{c("var1", "var2")} for multiple grouping variables.}
+\item{factors}{Character vector naming the grouping variables.}
 
-\item{size}{Choose whether you want more/less than 1 standard deviation/standard error. Defaults to 1.}
+\item{size}{Multiplier applied to the standard deviation or standard error.}
 
-\item{type}{Choose between "sd" (standard deviation) and "std" (standard error). Defaults to "sd".}
+\item{type}{Either \code{"sd"} for standard deviation or \code{"std"} for standard
+error.}
 }
 \value{
-A dataframe object.
+A data frame containing the grouping variables, group mean, and the
+requested spread measure.
 }
 \description{
-Create a dataframe with which a \code{ggplot2} bar plot with error bars (+/- 1 standard deviation) can be created.
+Summarises a numerical variable by one or more grouping variables. The
+result can be supplied directly to plotting code.
 }
 \examples{
 data("data_s")
-
-create_error_bar_df(data = data_s, numerical = "sDur", factors = "pauseBin", size = 1, type = "sd")
-
-}
-\references{
-Wickham, H. (2016) ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York.
-}
-\author{
-D. Schmitz
+create_error_bar_df(data_s, "sDur", "pauseBin", type = "sd")
 }

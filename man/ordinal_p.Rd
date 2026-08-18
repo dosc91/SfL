@@ -2,30 +2,23 @@
 % Please edit documentation in R/ordinal_p.R
 \name{ordinal_p}
 \alias{ordinal_p}
-\title{Compute p-values for Ordinal Regression}
+\title{Compute p-values for ordinal regression}
 \usage{
 ordinal_p(mdl)
 }
 \arguments{
-\item{mdl}{The fitted ordinal regression model.}
+\item{mdl}{A fitted \code{polr} model.}
 }
 \value{
-Usually used without variable assignment.
+A coefficient matrix with an additional \verb{p value} column.
 }
 \description{
-Computes p-values for an ordinal regression model fitted with MASS::polr.
+Adds two-sided Wald p-values to the coefficient table of a model fitted with
+\code{\link[MASS:polr]{MASS::polr()}}.
 }
 \examples{
-data("data_o")
-
-ord_mdl <- polr(size ~ vowel + C1 + C2 + age, data = data_o, Hess=TRUE)
-
-ordinal_p(mdl = ord_mdl)
-
+\dontrun{
+model <- MASS::polr(Sat ~ Infl + Type + Cont, MASS::housing, Hess = TRUE)
+ordinal_p(model)
 }
-\references{
-Venables, W. N. & Ripley, B. D. (2002) Modern Applied Statistics with S. Fourth Edition. Springer, New York.
-}
-\author{
-D. Schmitz
 }

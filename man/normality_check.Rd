@@ -2,28 +2,24 @@
 % Please edit documentation in R/normality_check.R
 \name{normality_check}
 \alias{normality_check}
-\title{Check Normality of a Model}
+\title{Check residual normality}
 \usage{
 normality_check(mdl)
 }
 \arguments{
-\item{mdl}{A simple, multiple, or mixed-effects linear regression model.}
+\item{mdl}{A fitted model with a \code{\link[stats:residuals]{stats::residuals()}} method.}
 }
 \value{
-A plot and a test results in the console.
+A \code{ggplot} object with the Shapiro-Wilk test stored in its
+\code{sfl_test} attribute.
 }
 \description{
-Checks a simple, multiple, or mixed-effects linear regression model for normality. The function outputs an orientation plot
-and computes a relevant statistical test: Shapiro-Wilk test on model residuals.
+Draws a residual-density plot and reports a Shapiro-Wilk test. The test is
+defined for 3 to 5000 observations.
 }
 \examples{
-data("data_s")
-
-model <- lm(sDur ~ typeOfS + pauseDur, data_s)
-
+\dontrun{
+model <- stats::lm(mpg ~ wt, data = mtcars)
 normality_check(model)
-
 }
-\author{
-D. Schmitz & J. Esser
 }

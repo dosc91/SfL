@@ -1,21 +1,18 @@
-#' Standard Error
+#' Standard error
 #'
-#' @description Compute the standard error of a numerical or ordinal variable.
+#' Computes the standard error of the mean.
 #'
-#' @param x A numeric vector containing the values whose stadard error is to be computed.
+#' @param x A numeric vector.
+#' @param na.rm Remove missing values before computing the standard error.
 #'
-#'
-#' @author D. Schmitz
-#'
+#' @return A numeric scalar.
 #' @examples
-#' data("data_s")
-#'
-#' se(data = data_s$age)
-#'
+#' se(c(1, 2, 3, 4))
 #' @export
-
-se <- function(x){
-
-  sd(x) / sqrt(length(x))
-
-  }
+se <- function(x, na.rm = FALSE) {
+  if (!is.numeric(x)) stop("`x` must be numeric.", call. = FALSE)
+  if (isTRUE(na.rm)) x <- x[!is.na(x)]
+  n <- length(x)
+  if (n < 2L) return(NA_real_)
+  stats::sd(x) / sqrt(n)
+}

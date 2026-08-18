@@ -1,119 +1,63 @@
-#' Compute Correlation Coefficients
+.correlation_method <- function(x) {
+  if (!is.numeric(x)) return("spearman")
+  x <- x[is.finite(x)]
+  if (length(x) < 3L || length(x) > 5000L || length(unique(x)) < 3L) {
+    return("spearman")
+  }
+  if (stats::shapiro.test(x)$p.value >= 0.05) "pearson" else "spearman"
+}
+
+.correlation_values <- function(x) {
+  if (is.character(x)) {
+    stop("Character variables cannot be correlated; convert them to ordered factors first.",
+         call. = FALSE)
+  }
+  if (is.factor(x)) as.numeric(x) else x
+}
+
+#' Compute correlation coefficients
 #'
-#' @description \code{corfun} computes the Pearson or Spearman correlation coefficients for all variable pairs. Pearson is computed for comparisons of
-#' normally distributed numeric variables, Spearman for all other comparisons.
+#' Computes coefficients for every pair of selected variables. Pearson's
+#' correlation is used when both variables are numeric and pass a
+#' Shapiro-Wilk normality check; Spearman's correlation is used otherwise.
 #'
+#' @param data A data frame containing the variables.
+#' @param variables Character vector naming at least two variables.
 #'
-#' @param data The data set containing the variables.
-#' @param variables The variables for which correlation coefficients are to be computed.
-#'
-#' @author D. Schmitz
-#'
+#' @return Invisibly returns a lower-triangular numeric matrix.
 #' @examples
 #' data("data_s")
-#'
 #' corfun(data_s, c("sDurLog", "speakingRate", "typeOfS"))
-#'
-#' corfun(data_s, c("sDurLog", "speakingRate", "typeOfS", "sDur"))
-#'
-#' corfun(data_s, c("sDurLog", "speakingRate", "typeOfS", "sDur", "pauseDur", "pauseBin"))
-#'
 #' @export
-
-corfun <- function(data, variables){
-
-  if(length(variables) == 1){
-    stop("Cannot compute correlation coefficient for a single variable.")
+corfun <- function(data, variables) {
+  if (!is.data.frame(data)) stop("`data` must be a data frame.", call. = FALSE)
+  if (!is.character(variables) || length(variables) < 2L) {
+    stop("`variables` must name at least two columns.", call. = FALSE)
+  }
+  missing <- setdiff(variables, names(data))
+  if (length(missing)) {
+    stop("Unknown variable(s): ", paste(missing, collapse = ", "), call. = FALSE)
   }
 
-  idx <- match(variables, names(data))
-
-  workingdata <- data[,idx]
-
-  rchoice <- data.frame()
-
-  for (i in 1:ncol(workingdata)) {
-
-    type <- is.numeric(workingdata[,i])
-
-    if(type == TRUE){
-
-      normality <- shapiro.test(workingdata[,i])$p.value
-
-      if(normality >= 0.05){
-
-        rchoice[i,1] <- "pearson"
-
-      } else if(normality <= 0.05){
-
-        rchoice[i,1] <- "spearman"
-
-      }
-
-    } else if(type == FALSE){
-
-      rchoice[i,1] <- "spearman"
-
-    }
-
+  selected <- data[variables]
+  methods <- vapply(selected, .correlation_method, character(1))
+  result <- matrix(
+    NA_real_, nrow = length(variables), ncol = length(variables),
+    dimnames = list(variables, variables)
+  )
+  combinations <- utils::combn(seq_along(variables), 2L)
+  for (i in seq_len(ncol(combinations))) {
+    first <- combinations[1L, i]
+    second <- combinations[2L, i]
+    method <- if ("spearman" %in% methods[c(first, second)]) "spearman" else "pearson"
+    x <- .correlation_values(selected[[first]])
+    y <- .correlation_values(selected[[second]])
+    keep <- stats::complete.cases(x, y)
+    if (sum(keep) < 3L) next
+    value <- suppressWarnings(stats::cor.test(x[keep], y[keep], method = method)$estimate)
+    result[second, first] <- unname(value)
   }
 
-  rownames(rchoice) <- variables
-
-  coefficients <- data.frame()
-
-  var_combs <- combn(variables, 2)
-
-  for (k in 1:ncol(var_combs)) {
-
-    c1 <- rchoice$V1[rownames(rchoice) == var_combs[1,k]]
-    c2 <- rchoice$V1[rownames(rchoice) == var_combs[2,k]]
-
-    if(c1 == "spearman" | c2 == "spearman"){
-
-      x <- unlist(workingdata[rownames(rchoice) == var_combs[1,k]])
-      y <- unlist(workingdata[rownames(rchoice) == var_combs[2,k]])
-
-      coefficients[k,1] <- stats::cor.test(method = "spearman",
-                                           as.numeric(x),
-                                           as.numeric(y),
-                                           warn = -1)[["estimate"]][["rho"]]
-
-    } else {
-
-      x <- unlist(workingdata[rownames(rchoice) == var_combs[1,k]])
-      y <- unlist(workingdata[rownames(rchoice) == var_combs[2,k]])
-
-      coefficients[k,1] <- stats::cor.test(method = "pearson",
-                                           as.numeric(x),
-                                           as.numeric(y),
-                                           warn = -1)[["estimate"]][["cor"]]
-
-    }
-
-  }
-
-  test <- data.frame(matrix(nrow = length(variables), ncol = length(variables)))
-
-  rownames(test) <- variables
-  colnames(test) <- variables
-
-  for(m in 1:ncol(var_combs)){
-
-    v1r <- which(rownames(test) == var_combs[1,m])
-    v1c <- which(colnames(test) == var_combs[1,m])
-
-    v2r <- which(rownames(test) == var_combs[2,m])
-    v2c <- which(colnames(test) == var_combs[2,m])
-
-    test[v1r,v2c] <- coefficients[m,]
-
-    test[v2r,v1c] <- coefficients[m,]
-
-  }
-
-  test[upper.tri(test)] <- NA
-
-  print(knitr::kable(test, format = "pipe", digits = 3, caption = "The following correlation coefficients were found:"))
-
+  print(round(result, 3L), na.print = "")
+  invisible(result)
 }

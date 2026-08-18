@@ -2,30 +2,23 @@
 % Please edit documentation in R/multinomial_p.R
 \name{multinomial_p}
 \alias{multinomial_p}
-\title{Compute p-values for Multinomial Regression}
+\title{Compute p-values for multinomial regression}
 \usage{
 multinomial_p(mdl)
 }
 \arguments{
-\item{mdl}{The fitted multinomial regression model.}
+\item{mdl}{A fitted \code{multinom} model.}
 }
 \value{
-Usually used without variable assignment.
+A data frame with response class, term, coefficient, standard error,
+z statistic, and p-value.
 }
 \description{
-Computes p-values for an multinomial regression model fitted with nnet::multinom.
+Computes two-sided Wald z-tests for a model fitted with \code{\link[nnet:multinom]{nnet::multinom()}}.
 }
 \examples{
-data("data_g")
-
-multinom_model <- multinom(type ~ stereotypicality + cor_target + density + l2norm, data = data_gender)
-
-multinomial_p(mdl = multinom_model)
-
+\dontrun{
+model <- nnet::multinom(Species ~ Sepal.Length + Sepal.Width, iris)
+multinomial_p(model)
 }
-\references{
-Venables, W. N. & Ripley, B. D. (2002) Modern Applied Statistics with S. Fourth Edition. Springer, New York.
-}
-\author{
-D. Schmitz
 }

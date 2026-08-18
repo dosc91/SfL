@@ -1,0 +1,5 @@
+^SfL[.]Rproj$
+^_pkgdown[.]yml$
+^docs$
+^vignettes/.*[.]html$
+^[.]github$

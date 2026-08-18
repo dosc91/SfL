@@ -2,22 +2,21 @@
 % Please edit documentation in R/se.R
 \name{se}
 \alias{se}
-\title{Standard Error}
+\title{Standard error}
 \usage{
-se(x)
+se(x, na.rm = FALSE)
 }
 \arguments{
-\item{x}{A numeric vector containing the values whose stadard error is to be computed.}
+\item{x}{A numeric vector.}
+
+\item{na.rm}{Remove missing values before computing the standard error.}
+}
+\value{
+A numeric scalar.
 }
 \description{
-Compute the standard error of a numerical or ordinal variable.
+Computes the standard error of the mean.
 }
 \examples{
-data("data_s")
-
-se(data = data_s$age)
-
-}
-\author{
-D. Schmitz
+se(c(1, 2, 3, 4))
 }

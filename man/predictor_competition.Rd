@@ -2,7 +2,7 @@
 % Please edit documentation in R/predictor_competition.R
 \name{predictor_competition}
 \alias{predictor_competition}
-\title{Compare Variables for Predictor Strength}
+\title{Compare two sets of predictors}
 \usage{
 predictor_competition(
   data,
@@ -14,40 +14,26 @@ predictor_competition(
 )
 }
 \arguments{
-\item{data}{The original data set for both models.}
+\item{data}{Data frame used for both models.}
 
-\item{dependent}{The dependent variable for both models.}
+\item{dependent}{Name of the dependent variable.}
 
-\item{independent1}{The independent variable(s), i.e. the fixed effects, of the 1st model.}
+\item{independent1, independent2}{Character vectors naming the fixed-effect
+terms in the two models.}
 
-\item{independent2}{The independent variable(s), i.e. the fixed effects, of the 2nd model.}
+\item{random.intercept}{Optional random-intercept grouping variable.}
 
-\item{random.intercept}{The random intercept for both models. If not random intercept is specified, regular linear models are fitted.}
-
-\item{random.slope}{The random slope for both models. The default assumes no random slope.}
+\item{random.slope}{Random-slope expression; defaults to \code{1}, which specifies
+a random-intercept-only model.}
 }
 \value{
-A dataframe containing npar, AIC, BIG, logLik, deviance, Chisq, Df, and Pr(>Chisq). Usually used without variable assignment.
+The result of \code{\link[=predictor_competition2]{predictor_competition2()}}.
 }
 \description{
-NOTE: This function is deprecated. Please use \code{SfL::predictor_competition2} instead.
-Compare the predictive strength of two independent variables in a minimal linear (mixed effects) regression model. The function creates two identical
-\code{lm} or \code{lmer} objects, only differing in fixed effects structure. Then, a log-likelihood test is used to decide which fixed effect structure is better fit to
-predict the dependent variable.
+\code{predictor_competition()} is retained for backward compatibility. New code
+should use \code{\link[=predictor_competition2]{predictor_competition2()}}.
 }
 \examples{
 data("data_s")
-
-# example 1: two similarly well fit predictors
-predictor_competition(data = data_s, dependent = "sDur", independent1 = "typeOfS", independent2 = "pauseBin", random.intercept = "speaker")
-
-# example 2: one predictor is better than the other
-predictor_competition(data = data_s, dependent = "sDur", independent1 = "typeOfS", independent2 = "slideNumber", random.intercept = "speaker")
-
-}
-\references{
-Bates, D., Maechler, M., Bolker, B., & Walker, S. (2015). Fitting Linear Mixed-Effects Models Using lme4. Journal of Statistical Software, 67(1), 1-48. doi:10.18637/jss.v067.i01.
-}
-\author{
-D. Schmitz
+predictor_competition(data_s, "sDur", "pauseBin", "typeOfS")
 }

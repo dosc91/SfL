@@ -1,39 +1,41 @@
-#' Compute p-values for Multinomial Regression
+#' Compute p-values for multinomial regression
 #'
-#' @description Computes p-values for an multinomial regression model fitted with nnet::multinom.
+#' Computes two-sided Wald z-tests for a model fitted with [nnet::multinom()].
 #'
+#' @param mdl A fitted `multinom` model.
 #'
-#' @param mdl The fitted multinomial regression model.
-#'
-#' @return Usually used without variable assignment.
-#'
-#' @author D. Schmitz
-#'
-#' @references Venables, W. N. & Ripley, B. D. (2002) Modern Applied Statistics with S. Fourth Edition. Springer, New York.
-#'
+#' @return A data frame with response class, term, coefficient, standard error,
+#'   z statistic, and p-value.
 #' @examples
-#' data("data_g")
-#'
-#' multinom_model <- multinom(type ~ stereotypicality + cor_target + density + l2norm, data = data_gender)
-#'
-#' multinomial_p(mdl = multinom_model)
-#'
+#' \dontrun{
+#' model <- nnet::multinom(Species ~ Sepal.Length + Sepal.Width, iris)
+#' multinomial_p(model)
+#' }
 #' @export
+multinomial_p <- function(mdl) {
+  if (!inherits(mdl, "multinom")) {
+    stop("`mdl` must be a model fitted with nnet::multinom().", call. = FALSE)
+  }
+  output <- summary(mdl)
+  coefficients <- output$coefficients
+  standard_errors <- output$standard.errors
+  if (is.null(dim(coefficients))) {
+    coefficients <- matrix(coefficients, nrow = 1L,
+                           dimnames = list(mdl$lev[[2L]], names(coefficients)))
+    standard_errors <- matrix(standard_errors, nrow = 1L,
+                              dimnames = dimnames(coefficients))
+  }
+  z_value <- coefficients / standard_errors
+  p_value <- 2 * stats::pnorm(abs(z_value), lower.tail = FALSE)
 
-multinomial_p <- function(mdl){
-
-  output <- summary(multinom_model)
-
-  z <- output$coefficients/output$standard.errors
-
-  p <- (1 - pnorm(abs(z), 0, 1))*2 # we are using two-tailed z test
-
-  Pclass2 <- rbind(output$coefficients[1,],output$standard.errors[1,],z[1,],p[1,])
-
-  rownames(Pclass2) <- c("Coefficient","Std. Errors","z stat","p value")
-
-  ret <- t(Pclass2)
-
-  return(ret)
-
+  indices <- data.frame(
+    response = rep(rownames(coefficients), each = ncol(coefficients)),
+    term = rep(colnames(coefficients), times = nrow(coefficients)),
+    stringsAsFactors = FALSE
+  )
+  indices$coefficient <- as.vector(t(coefficients))
+  indices$std.error <- as.vector(t(standard_errors))
+  indices$z.value <- as.vector(t(z_value))
+  indices$p.value <- as.vector(t(p_value))
+  indices
 }

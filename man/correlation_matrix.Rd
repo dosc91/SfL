@@ -2,7 +2,7 @@
 % Please edit documentation in R/correlation_matrix.R
 \name{correlation_matrix}
 \alias{correlation_matrix}
-\title{Create Correlation Matrix}
+\title{Create a correlation plot matrix}
 \usage{
 correlation_matrix(
   data,
@@ -14,34 +14,28 @@ correlation_matrix(
 )
 }
 \arguments{
-\item{data}{The data set containing the variables to be plotted.}
+\item{data}{A data frame containing the variables.}
 
-\item{variables}{The variables used in the plot. Note: Variables cannot be of type 'character'.}
+\item{variables}{Character vector naming the variables to plot. Character
+columns are not supported.}
 
-\item{hist}{A logical indicating whether panels on the diagonal should contain a histogram.}
+\item{hist}{Show histograms on the diagonal.}
 
-\item{smooth}{A logical indicating whether panels in the upper triangle should have a smoother added.}
+\item{smooth}{Show LOWESS smoothers in the upper triangle.}
 
-\item{size}{A number indicating the size of the points in the panels in the upper triangle, available only when smoothers are added.}
+\item{size}{Point expansion factor.}
 
-\item{color}{A number or string indicating the color of the points in the panels in the upper triangle, available only when smoothers are added.}
+\item{color}{Point and smoother colour.}
 }
 \value{
-Nothing. Creates a plot.
+Invisibly returns the data frame used for plotting.
 }
 \description{
-This is a wrapper for \code{languageR::pairscor.fnc}. A matrix of scatter plots is produced with
-Pearson and Spearman correlations in the lower triangle. Fall back to the original function to specify additional arguments.
+Creates a base-R pairs plot with correlations in the lower triangle,
+optional histograms on the diagonal, and optional smoothers in the upper
+triangle.
 }
 \examples{
 data("data_s")
-
-correlation_matrix(data_s, variables = c("typeOfS", "sDur"))
-
-}
-\references{
-Baayen, R. H, & Shafaei-Bajestan, E. (2019). languageR: Analyzing Linguistic Data: A Practical Introduction to Statistics. R package version 1.5.0. https://CRAN.R-project.org/package=languageR
-}
-\author{
-D. Schmitz
+correlation_matrix(data_s, c("typeOfS", "sDur"))
 }

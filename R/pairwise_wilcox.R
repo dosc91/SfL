@@ -1,42 +1,31 @@
-#' Compute Pairwise Wilcoxon Tests
+#' Compute averaged pairwise Wilcoxon p-values
 #'
-#' @description \code{pairwise_wilcox} computes pairwise Wilcoxon tests as a wrapper of \code{stats::pairwise.wilcox.test}.
+#' Runs pairwise Wilcoxon tests for all columns whose names begin with
+#' `PredictedSize.` and returns the cell-wise mean adjusted p-values.
 #'
+#' @param predictor Name of the categorical grouping variable.
+#' @param data Data frame containing the grouping and prediction columns.
+#' @param method P-value adjustment method passed to
+#'   [stats::pairwise.wilcox.test()].
+#' @param x Number of decimal places used to round the result.
 #'
-#' @param predictor The categorical predictor of interest.
-#' @param data The data set containing the variables including the predictions.
-#' @param method Any of the typical methods, e.g. \code{holm} (the default) or \code{bonferroni}.
-#' @param x Numerical value passed on to \code{round} the output's p-values.
-#'
-#' @author J. Esser
-#'
+#' @return A matrix of averaged adjusted p-values.
 #' @export
+pairwise_wilcox <- function(predictor, data, method = "holm", x = 6) {
+  if (!is.data.frame(data)) stop("`data` must be a data frame.", call. = FALSE)
+  if (length(predictor) != 1L || !is.character(predictor) ||
+      !predictor %in% names(data)) {
+    stop("`predictor` must name one column in `data`.", call. = FALSE)
+  }
+  prediction_columns <- grep("^PredictedSize\\.[0-9]+$", names(data), value = TRUE)
+  if (!length(prediction_columns)) {
+    stop("No columns named like `PredictedSize.1` were found.", call. = FALSE)
+  }
 
-pairwise_wilcox <- function(predictor, data, method = "holm", x = 6){
-
-  pred_col <- which(names(data) == predictor)
-
-  t1 <- pairwise.wilcox.test(data$PredictedSize.1,
-                             data[,pred_col],
-                             p.adjust.method = method)[["p.value"]]
-  t2 <- pairwise.wilcox.test(data$PredictedSize.2,
-                             data[,pred_col],
-                             p.adjust.method = method)[["p.value"]]
-  t3 <- pairwise.wilcox.test(data$PredictedSize.3,
-                             data[,pred_col],
-                             p.adjust.method = method)[["p.value"]]
-  t4 <- pairwise.wilcox.test(data$PredictedSize.4,
-                             data[,pred_col],
-                             p.adjust.method = method)[["p.value"]]
-  t5 <- pairwise.wilcox.test(data$PredictedSize.5,
-                             data[,pred_col],
-                             p.adjust.method = method)[["p.value"]]
-
-  # Combine data frames into a list
-  df_list <- list(t1,t2,t3,t4,t5)
-
-  # Calculate the mean for each cell across data frames
-  p_vals <- round(Reduce("+", df_list) / length(df_list), x)
-
-  return(p_vals)
+  tests <- lapply(prediction_columns, function(column) {
+    stats::pairwise.wilcox.test(
+      data[[column]], data[[predictor]], p.adjust.method = method
+    )$p.value
+  })
+  round(Reduce("+", tests) / length(tests), digits = x)
 }

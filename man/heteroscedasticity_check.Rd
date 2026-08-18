@@ -2,31 +2,26 @@
 % Please edit documentation in R/heteroscedasticity_check.R
 \name{heteroscedasticity_check}
 \alias{heteroscedasticity_check}
-\title{Check Heteroscedasticity and Linearity of a Model}
+\title{Check homoscedasticity and linearity}
 \usage{
 heteroscedasticity_check(mdl, random = NULL)
 }
 \arguments{
-\item{mdl}{A simple or multiple linear regression model.}
+\item{mdl}{A fitted linear regression model.}
+
+\item{random}{Retained for backward compatibility; currently unused.}
 }
 \value{
-A plot and a test results in the console.
+A \code{ggplot} object with both tests stored in its \code{sfl_tests}
+attribute.
 }
 \description{
-Checks a simple or multiple linear regression model for heteroscedasticity and linearity. The function outputs orientation plots
-and computes relevant statistical tests (heteroscedasticity = lmtest::bptest; linearity = lmtest::raintest).
+Draws a scale-location plot and reports the studentized Breusch-Pagan and
+Rainbow tests from \code{lmtest}.
 }
 \examples{
-data("data_s")
-
-model <- lm(sDur ~ typeOfS + pauseDur, data_s)
-
+\dontrun{
+model <- stats::lm(mpg ~ wt + hp, data = mtcars)
 heteroscedasticity_check(model)
-
 }
-\references{
-Achim Zeileis, Torsten Hothorn (2002). Diagnostic Checking in Regression Relationships. R News 2(3), 7-10. URL: https://CRAN.R-project.org/doc/Rnews/
-}
-\author{
-D. Schmitz & J. Esser
 }

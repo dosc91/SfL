@@ -1,32 +1,22 @@
-#' Compute p-values for Ordinal Regression
+#' Compute p-values for ordinal regression
 #'
-#' @description Computes p-values for an ordinal regression model fitted with MASS::polr.
+#' Adds two-sided Wald p-values to the coefficient table of a model fitted with
+#' [MASS::polr()].
 #'
-#'
-#' @param mdl The fitted ordinal regression model.
-#'
-#' @return Usually used without variable assignment.
-#'
-#' @author D. Schmitz
-#'
-#' @references Venables, W. N. & Ripley, B. D. (2002) Modern Applied Statistics with S. Fourth Edition. Springer, New York.
-#'
+#' @param mdl A fitted `polr` model.
+#' @return A coefficient matrix with an additional `p value` column.
 #' @examples
-#' data("data_o")
-#'
-#' ord_mdl <- polr(size ~ vowel + C1 + C2 + age, data = data_o, Hess=TRUE)
-#'
-#' ordinal_p(mdl = ord_mdl)
-#'
+#' \dontrun{
+#' model <- MASS::polr(Sat ~ Infl + Type + Cont, MASS::housing, Hess = TRUE)
+#' ordinal_p(model)
+#' }
 #' @export
-
-ordinal_p <- function(mdl){
-
-  ctable <- coef(summary(mdl))
-
-  p <- pnorm(abs(ctable[, "t value"]), lower.tail = FALSE) * 2
-
-  ctable <- cbind(ctable, "p value" = p)
-
-  return(ctable)
+ordinal_p <- function(mdl) {
+  if (!inherits(mdl, "polr")) {
+    stop("`mdl` must be a model fitted with MASS::polr().", call. = FALSE)
+  }
+  coefficient_table <- stats::coef(summary(mdl))
+  p_value <- 2 * stats::pnorm(abs(coefficient_table[, "t value"]),
+                              lower.tail = FALSE)
+  cbind(coefficient_table, "p value" = p_value)
 }

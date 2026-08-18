@@ -1,236 +1,61 @@
 ---
-title: "SfL - Functions"
-date: "Version 0.1 - July 2021"
+title: "SfL functions"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{SfL - Functions}
+  %\VignetteIndexEntry{SfL functions}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-<style type="text/css">
-
-img{
-  border: none;
-  margin: 5px;
-}
-
-</style>
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
-
-```{r setup, include=F}
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 library(SfL)
-library(DT)
-library(lme4)
 ```
 
-<div class="logo">
+SfL provides small teaching-oriented helpers while leaving model fitting and
+specialised inference to established R packages.
 
-  <img src="figures/SfL_logo.png" style="float:right">
-
-</div>
-
-The `SfL` package was created to accompany the [Statistics for Linguistics](https://forensic-linguistics-sc.com/workshop/) online workshop in August/September 2021. The workshop was a satellite event to the [3rd Forensic Linguistics Short Course](https://forensic-linguistics-sc.com/).
-
-This vignette gives an overview of functions included in the `SfL` package. Please refer to the [data set vignette](https://htmlpreview.github.io/?https://github.com/dosc91/SfL/blob/main/vignettes/data_sets.html) for an overview of included data sets.
-
----
-
-# Overview
-
-This is a full list of all functions currently contained in `SfL`:
-
-- [correlation_matrix](#correlation_matrix)
-- [create_error_bar_df](#create_error_bar_df)
-- [open_exercise](#open_exercise)
-- [open_slides](#open_slides)
-- [predictor_competition](#predictor_competition)
-- [predictor_strength](#predictor_strength)
-- [tukey](#tukey)
-
-Where necessary, the `data_s` data set will be used for illustrations in this vignette.
+## Descriptive helpers
 
 ```{r}
+mode_stat(c(1, 1, 2, 3))
+se(c(1, 2, 3, 4))
+
 data("data_s")
+create_error_bar_df(data_s, "sDur", "pauseBin", type = "std")
 ```
 
----
-
-# Create Correlation Matrix {#correlation_matrix}
-
-The `correlation_matrix` function creates a matrix of scatter plots with Pearson and Spearman correlations in the lower triangle. It is a wrapper for `languageR::pairscor.fnc`.
-
-The function takes a data set and a vector of column (variable) names to display in the plot.
-
-```{r fig.align='center'}
-correlation_matrix(data = data_s, variables = c("typeOfS", "pauseBin", "sDur"))
-```
-
----
-
-# Create Error Bar Dataframe {#create_error_bar_df}
-
-The `create_error_bar_df` function creates a dataframe with which a `ggplot2` bar plot (`geom_bar`) with error bars (+/- 1 standard deviation) can easily be created.
-
-The function takes an original data set, a numerical value to summarise, and one or more categorical variables as arguments. </br>
-Additionally, the user may specify whether they want to compute the standard deviation (default) or standard error, and whether they wish to compute the base standard deviation/error (default) or a multiple of that, e.g. two times the standard deviation.
-
-```{r include=T, eval=T}
-# example 1: one categorical variable
-
-df1 <- create_error_bar_df(data = data_s, numerical = "sDur", factors = "pauseBin")
-
-df1
-```
-
-
-```{r include=T, eval=T}
-# example 2: more than one categorical variable
-
-df2 <- create_error_bar_df(data = data_s, numerical = "sDur", factors = c("pauseBin", "typeOfS", "folType"))
-
-df2
-```
-
-
-```{r include=T, eval=T}
-# example 3: double standard deviation
-
-df3 <- create_error_bar_df(data = data_s, numerical = "sDur", factors = "pauseBin", size = 2)
-
-df3
-```
-
-
-```{r include=T, eval=T}
-# example 4: standard error instead of standard deviation
-
-df4 <- create_error_bar_df(data = data_s, numerical = "sDur", factors = "pauseBin", type = "std")
-
-df4
-```
-
----
-
-# Open Exercise {#open_exercise}
-
-The `open_exercise` function opens the knitted RMarkdown associated with a session of the Statistics for Linguistics Workshop as html file in the system's standard browser.
-
-The function takes a session number as argument. Skipping the zero, e.g. writing `2` instead of `02`, works as well.
-
-```{r eval=F}
-open_exercise(02)
-```
-
----
-
-# Open Slides {#open_slides}
-
-The `open_slides` function opens the slides associated with a session of the Statistics for Linguistics Workshop as pdf file in the system's standard browser.
-
-The function takes a session number as argument. Skipping the zero, e.g. writing `1` instead of `01`, works as well.
-
-```{r eval=F}
-open_slides(01)
-```
-
----
-
-
-# Compare Variables for Predictor Strength {#predictor_competition}
-
-The `predictor_competition` function is used to compare the predictive strength of two independent variables. The function creates two identical lmer objects, only differing in fixed effects structure. Then, a log-likelihood test is used to decide which fixed effect structure is better fit to predict the dependent variable.
-
-The function takes a number of arguments as input, i.e. the original data set, the dependent variable for both models, the independent variables to test, a random intercept variable, and (if specified) a random slope variable.
+## Correlations
 
 ```{r}
-# example 1: two similarly well fit predictors
-predictor_competition(data = data_s, dependent = "sDur", 
-                      independent1 = "typeOfS", independent2 = "pauseBin", 
-                      random.intercept = "speaker")
-
-# example 2: one predictor is better than the other
-predictor_competition(data = data_s, dependent = "sDur", 
-                      independent1 = "typeOfS", independent2 = "slideNumber", 
-                      random.intercept = "speaker")
+corfun(data_s, c("sDur", "sDurLog", "speakingRate"))
 ```
 
----
+`correlation_matrix()` creates a base-R pairs plot with correlation
+coefficients, histograms, and optional smoothers.
 
-# Compute Predictor Strength {#predictor_strength}
+## Mixed-model R-squared
 
-This function creates an `lmer` model for each predictor variable, lacking that predictor variable. Then, conditional and marginal coefficients of determination for each model are calculated. Comparing the value of the conditional coefficient of determination across all models, one can conclude the predictor strength of the respective missing predictor. The function uses `MuMIn::r.squaredGLMM` to compute coefficients of determination.
+SfL 1.0.0 calculates marginal and conditional R-squared values for Gaussian
+`lme4::lmer()` models without requiring MuMIn.
 
-This function needs a dependent variable, several independent variables as fixed effects, a random effect structure, and a data set to work.
-
-```{r warning=FALSE, message=FALSE}
-predictor_strength(dependent = "sDur",
-        fixed = c("pauseBin", "list", "folType", "baseDur"),
-        random_str = c("(1 | speaker) + (1 | item)"),
-        data = data_s)
+```{r, eval=requireNamespace("lme4", quietly=TRUE)}
+model <- lme4::lmer(Reaction ~ Days + (Days | Subject), lme4::sleepstudy)
+mixed_model_r2(model)
 ```
 
----
+## Workshop resources
 
-# Tukey Contrasts {#tukey}
+Slides and exercises are hosted on GitHub Pages. These examples are not run
+while building the vignette because they open a web browser.
 
-The `tukey` function computes Tukey Contrasts for all levels of a categorical predictor. 
-
-The function takes simple and multiple linear regression models, as well as linear mixed effects regression models as input. Specify the categorical predictor for which Tukey contrasts should be computed.
-
-```{r}
-simple_lm <- lm(sDur ~ typeOfS, data = data_s)
-tukey(model = simple_lm, predictor = typeOfS)
-
-multiple_lm <- lm(sDur ~ typeOfS + pauseBin, data = data_s)
-tukey(model = multiple_lm, predictor = pauseBin)
-
-# library(lme4)
-mixed_lm <- lmer(sDur ~ typeOfS + pauseBin + folType + (1 | speaker), data = data_s, REML = F)
-tukey(model = mixed_lm, predictor = folType)
+```{r, eval=FALSE}
+open_slide(3, 2021, "english")
+open_exercise(2, 2021, "english")
 ```
 
----
+## Optional plotting packages
 
-# References
-
-Baayen, R. Harald and Shafaei-Bajestan, Elnaz. (2019). languageR: Analyzing Linguistic Data: A Practical Introduction to Statistics. R package version 1.5.0. https://CRAN.R-project.org/package=languageR
-
-Bates, Douglas, Maechler, Martin, Bolker, Ben, and Steve Walker. (2015). Fitting Linear Mixed-Effects Models Using lme4. Journal of Statistical Software, 67(1), 1-48. doi:10.18637/jss.v067.i01.
-
-Barton, Kamil. (2020). MuMIn: Multi-Model Inference. R package version 1.43.17. https://CRAN.R-project.org/package=MuMIn
-
-Coretta, Stefano, Casillas, Joseph V., and Roettger, Timo. (2021). learnB4SS: Learning materials for the learnB4SS workshop. R package version 1.0.0. https://github.com/learnB4SS/learnB4SS
-
-Hothorn, Torsten, Bretz, Frank, and Westfall, Peter. (2008). Simultaneous Inference in General Parametric Models. Biometrical Journal 50(3), 346-363.
-
-Nakagawa, S., Johnson, P.C.D., and Schielzeth, H. (2017) The coefficient of determination R? and intra-class correlation coefficient from generalized linear mixed-effects models revisited and expanded. J. R. Soc. Interface 14: 20170213.
-
-R Core Team. (2021). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
-
-Schmitz, Dominic and Esser, Janina. (2021). SfL: Statistics for Linguistics. R package version 0.2. URL: https://github.com/dosc91/SfL
-
-H. Wickham. (2016) ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York.
-
----
-
-*Please message the author at contact@dominicschmitz.com in case of any questions, errors or ideas.*
-
-
-
-
-
-
-
-
-
-
-
-
-
+```{r, eval=FALSE}
+install_workshop_packages()
+```

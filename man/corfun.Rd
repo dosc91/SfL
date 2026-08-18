@@ -2,29 +2,24 @@
 % Please edit documentation in R/corfun.R
 \name{corfun}
 \alias{corfun}
-\title{Compute Correlation Coefficients}
+\title{Compute correlation coefficients}
 \usage{
 corfun(data, variables)
 }
 \arguments{
-\item{data}{The data set containing the variables.}
+\item{data}{A data frame containing the variables.}
 
-\item{variables}{The variables for which correlation coefficients are to be computed.}
+\item{variables}{Character vector naming at least two variables.}
+}
+\value{
+Invisibly returns a lower-triangular numeric matrix.
 }
 \description{
-\code{corfun} computes the Pearson or Spearman correlation coefficients for all variable pairs. Pearson is computed for comparisons of
-normally distributed numeric variables, Spearman for all other comparisons.
+Computes coefficients for every pair of selected variables. Pearson's
+correlation is used when both variables are numeric and pass a
+Shapiro-Wilk normality check; Spearman's correlation is used otherwise.
 }
 \examples{
 data("data_s")
-
 corfun(data_s, c("sDurLog", "speakingRate", "typeOfS"))
-
-corfun(data_s, c("sDurLog", "speakingRate", "typeOfS", "sDur"))
-
-corfun(data_s, c("sDurLog", "speakingRate", "typeOfS", "sDur", "pauseDur", "pauseBin"))
-
-}
-\author{
-D. Schmitz
 }

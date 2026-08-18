@@ -2,7 +2,7 @@
 % Please edit documentation in R/predictor_competition2.R
 \name{predictor_competition2}
 \alias{predictor_competition2}
-\title{Compare Variables for Predictor Strength 2}
+\title{Compare two sets of predictors using AIC}
 \usage{
 predictor_competition2(
   data,
@@ -14,35 +14,27 @@ predictor_competition2(
 )
 }
 \arguments{
-\item{data}{The original data set for both models.}
+\item{data}{Data frame used for both models.}
 
-\item{dependent}{The dependent variable for both models.}
+\item{dependent}{Name of the dependent variable.}
 
-\item{independent1}{The independent variable(s), i.e. the fixed effects, of the 1st model.}
+\item{independent1, independent2}{Character vectors naming the fixed-effect
+terms in the two models.}
 
-\item{independent2}{The independent variable(s), i.e. the fixed effects, of the 2nd model.}
+\item{random.intercept}{Optional random-intercept grouping variable.}
 
-\item{random.intercept}{The random intercept for both models. If not random intercept is specified, regular linear models are fitted.}
-
-\item{random.slope}{The random slope for both models. The default assumes no random slope.}
+\item{random.slope}{Random-slope expression; defaults to \code{1}, which specifies
+a random-intercept-only model.}
 }
 \value{
-A dataframe containing df and AIC. Usually used without variable assignment.
+The two-row data frame returned by \code{\link[stats:AIC]{stats::AIC()}}.
 }
 \description{
-Compare the predictive strength of two independent variables in a minimal linear (mixed effects) regression model. The function creates two identical
-\code{lm} or \code{lmer} objects, only differing in fixed effects structure. Then, using the Akaike Information Criterion, the better predictor is determined. A model
-is assumed to have a better fit, if its AIC is 2 points lower than the other's.
+Fits two linear or linear mixed-effects models that differ in their fixed
+effects. A difference of at least two AIC points is reported as evidence for
+the lower-AIC model.
 }
 \examples{
 data("data_s")
-
-predictor_competition2(data = data_s, dependent = "sDur", independent1 = "pauseBin", independent2 = "typeOfS")
-
-}
-\references{
-Bates, D., Maechler, M., Bolker, B., & Walker, S. (2015). Fitting Linear Mixed-Effects Models Using lme4. Journal of Statistical Software, 67(1), 1-48. doi:10.18637/jss.v067.i01.
-}
-\author{
-D. Schmitz & J. Esser
+predictor_competition2(data_s, "sDur", "pauseBin", "typeOfS")
 }

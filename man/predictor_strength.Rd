@@ -2,46 +2,35 @@
 % Please edit documentation in R/predictor_strength.R
 \name{predictor_strength}
 \alias{predictor_strength}
-\title{Compute Predictor Strength}
+\title{Compute predictor strength}
 \usage{
 predictor_strength(dependent, fixed, random_str, data)
 }
 \arguments{
-\item{dependent}{The dependent variable for all models.}
+\item{dependent}{Name of the dependent variable.}
 
-\item{fixed}{The independent variables, i.e. the fixed effects, for all models.}
+\item{fixed}{Character vector of fixed-effect terms.}
 
-\item{random_str}{The random effect structure for all models.}
+\item{random_str}{Character vector defining the random-effect structure.}
 
-\item{data}{The original data set.}
+\item{data}{Data frame used to fit the models.}
 }
 \value{
-A dataframe containing the conditional and marginal coefficients of determination for each model, and a column defining the variable the
-values belong to.
+A data frame with the omitted predictor and the model's marginal and
+conditional R-squared values.
 }
 \description{
-Given a dependent variable, a set of fixed effect variables, and a random effect structure, this function creates an \code{lmer} model
-for each predictor variable, lacking that predictor variable.
-Then, conditional and marginal coefficients of determination for each model are calculated. Comparing the value of the conditional coefficient
-of determination across all models, one can conclude the predictor strength of the respective missing predictor.
-The function uses \code{MuMIn::r.squaredGLMM} to compute coefficients of determination.
+Fits one Gaussian mixed-effects model for each fixed-effect term, omitting
+that term in turn, and reports marginal and conditional R-squared values.
 }
 \examples{
+\dontrun{
 data("data_s")
-
-predictor_strength(dependent = "sDur",
-        fixed = c("pauseBin", "list", "folType", "baseDur"),
-        random_str = c("(1 | speaker) + (1 | item)"),
-        data = data_s)
-
+predictor_strength(
+  dependent = "sDur",
+  fixed = c("pauseBin", "list", "folType", "baseDur"),
+  random_str = c("(1 | speaker)", "(1 | item)"),
+  data = data_s
+)
 }
-\references{
-Bates, D., Maechler, M., Bolker, B., & Walker, S. (2015). Fitting Linear Mixed-Effects Models Using lme4. Journal of Statistical Software, 67(1), 1-48. doi:10.18637/jss.v067.i01.
-
-Barton, K. (2020). MuMIn: Multi-Model Inference. R package version 1.43.17. https://CRAN.R-project.org/package=MuMIn
-
-Nakagawa, S., Johnson, P.C.D., & Schielzeth, H. (2017) The coefficient of determination R? and intra-class correlation coefficient from generalized linear mixed-effects models revisited and expanded. J. R. Soc. Interface 14: 20170213.
-}
-\author{
-D. Schmitz & J. Esser
 }

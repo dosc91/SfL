@@ -1,23 +1,18 @@
-#' Mode (Statistical)
+#' Statistical mode
 #'
-#' @description Compute the mode of a numerical or ordinal variable.
+#' Returns the first value with the greatest observed frequency.
 #'
-#' @param x A numeric vector containing the values whose mode is to be computed.
+#' @param x A vector.
+#' @param na.rm Remove missing values before computing the mode.
 #'
-#'
-#' @author D. Schmitz
-#'
+#' @return A length-one vector of the same basic type as `x`.
 #' @examples
-#' data("data_s")
-#'
-#' mode_stat(x = data_s$age)
-#'
+#' mode_stat(c(1, 1, 2, 3))
 #' @export
-
-mode_stat <- function(x) {
-
-  uniqv <- unique(x)
-
-  uniqv[which.max(tabulate(match(x, uniqv)))]
-
+mode_stat <- function(x, na.rm = FALSE) {
+  if (!length(x)) stop("`x` must not be empty.", call. = FALSE)
+  if (isTRUE(na.rm)) x <- x[!is.na(x)]
+  if (!length(x)) return(NA)
+  values <- unique(x)
+  values[which.max(tabulate(match(x, values)))]
 }

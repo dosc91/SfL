@@ -2,22 +2,21 @@
 % Please edit documentation in R/mode_stat.R
 \name{mode_stat}
 \alias{mode_stat}
-\title{Mode (Statistical)}
+\title{Statistical mode}
 \usage{
-mode_stat(x)
+mode_stat(x, na.rm = FALSE)
 }
 \arguments{
-\item{x}{A numeric vector containing the values whose mode is to be computed.}
+\item{x}{A vector.}
+
+\item{na.rm}{Remove missing values before computing the mode.}
+}
+\value{
+A length-one vector of the same basic type as \code{x}.
 }
 \description{
-Compute the mode of a numerical or ordinal variable.
+Returns the first value with the greatest observed frequency.
 }
 \examples{
-data("data_s")
-
-mode_stat(x = data_s$age)
-
-}
-\author{
-D. Schmitz
+mode_stat(c(1, 1, 2, 3))
 }

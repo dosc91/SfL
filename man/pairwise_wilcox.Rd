@@ -2,22 +2,24 @@
 % Please edit documentation in R/pairwise_wilcox.R
 \name{pairwise_wilcox}
 \alias{pairwise_wilcox}
-\title{Compute Pairwise Wilcoxon Tests}
+\title{Compute averaged pairwise Wilcoxon p-values}
 \usage{
 pairwise_wilcox(predictor, data, method = "holm", x = 6)
 }
 \arguments{
-\item{predictor}{The categorical predictor of interest.}
+\item{predictor}{Name of the categorical grouping variable.}
 
-\item{data}{The data set containing the variables including the predictions.}
+\item{data}{Data frame containing the grouping and prediction columns.}
 
-\item{method}{Any of the typical methods, e.g. \code{holm} (the default) or \code{bonferroni}.}
+\item{method}{P-value adjustment method passed to
+\code{\link[stats:pairwise.wilcox.test]{stats::pairwise.wilcox.test()}}.}
 
-\item{x}{Numerical value passed on to \code{round} the output's p-values.}
+\item{x}{Number of decimal places used to round the result.}
+}
+\value{
+A matrix of averaged adjusted p-values.
 }
 \description{
-\code{pairwise_wilcox} computes pairwise Wilcoxon tests as a wrapper of \code{stats::pairwise.wilcox.test}.
-}
-\author{
-J. Esser
+Runs pairwise Wilcoxon tests for all columns whose names begin with
+\code{PredictedSize.} and returns the cell-wise mean adjusted p-values.
 }

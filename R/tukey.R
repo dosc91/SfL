@@ -1,34 +1,32 @@
-#' Tukey Contrasts
+#' Tukey contrasts
 #'
-#' @description Compute Tukey Contrasts for all levels of a categorical predictor. Takes simple linear regression
-#' models and multiple linear regression models, as well as linear mixed effects models as input.
+#' Computes simultaneous Tukey contrasts for a categorical predictor in a
+#' linear or linear mixed-effects model.
 #'
+#' @param model A fitted model supported by `multcomp::glht()`.
+#' @param predictor A categorical predictor, supplied either as an unquoted
+#'   name or a single character string.
 #'
-#' @param model The model object, created by \code{lm()} or \code{lmer()}.
-#' @param predictor The categorical predictor for which Tukey Contrasts should be computed.
-#'
-#' @return A list object if assigned to a variable name.
-#'
-#' @author D. Schmitz
-#'
-#' @references Hothorn, T., Bretz, F., & Westfall, P. (2008). Simultaneous Inference in General Parametric Models. Biometrical Journal 50(3), 346-363.
-#'
+#' @return The summary of a `multcomp::glht` object.
 #' @examples
-#' data("data_s")
-#'
-#' mdl <- lm(sDur ~ pauseBin, data = data_s)
-#'
-#' tukey(model = mdl, predictor = pauseBin)
-#'
+#' \dontrun{
+#' model <- stats::lm(mpg ~ factor(cyl), mtcars)
+#' tukey(model, "factor(cyl)")
+#' }
 #' @export
-
-tukey <- function(model, predictor){
-  linfct = multcomp::mcp(predictor = "Tukey")
-  names(linfct) = deparse(substitute(predictor))
-  summary(multcomp::glht(model, linfct))
+tukey <- function(model, predictor) {
+  .require_optional("multcomp", "tukey")
+  predictor_name <- if (is.character(predictor)) {
+    if (length(predictor) != 1L) {
+      stop("`predictor` must contain one name.", call. = FALSE)
+    }
+    predictor
+  } else {
+    deparse(substitute(predictor))
+  }
+  linear_function <- do.call(
+    multcomp::mcp,
+    stats::setNames(list("Tukey"), predictor_name)
+  )
+  summary(multcomp::glht(model, linear_function))
 }
-
-
-
-
-

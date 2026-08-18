@@ -2,33 +2,26 @@
 % Please edit documentation in R/tukey.R
 \name{tukey}
 \alias{tukey}
-\title{Tukey Contrasts}
+\title{Tukey contrasts}
 \usage{
 tukey(model, predictor)
 }
 \arguments{
-\item{model}{The model object, created by \code{lm()} or \code{lmer()}.}
+\item{model}{A fitted model supported by \code{multcomp::glht()}.}
 
-\item{predictor}{The categorical predictor for which Tukey Contrasts should be computed.}
+\item{predictor}{A categorical predictor, supplied either as an unquoted
+name or a single character string.}
 }
 \value{
-A list object if assigned to a variable name.
+The summary of a \code{multcomp::glht} object.
 }
 \description{
-Compute Tukey Contrasts for all levels of a categorical predictor. Takes simple linear regression
-models and multiple linear regression models, as well as linear mixed effects models as input.
+Computes simultaneous Tukey contrasts for a categorical predictor in a
+linear or linear mixed-effects model.
 }
 \examples{
-data("data_s")
-
-mdl <- lm(sDur ~ pauseBin, data = data_s)
-
-tukey(model = mdl, predictor = pauseBin)
-
+\dontrun{
+model <- stats::lm(mpg ~ factor(cyl), mtcars)
+tukey(model, "factor(cyl)")
 }
-\references{
-Hothorn, T., Bretz, F., & Westfall, P. (2008). Simultaneous Inference in General Parametric Models. Biometrical Journal 50(3), 346-363.
-}
-\author{
-D. Schmitz
 }

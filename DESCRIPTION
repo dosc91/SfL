@@ -1,38 +1,39 @@
 Package: SfL
 Title: Statistics for Linguistics
-Version: 0.5.0
-Date: 2024-09-09
+Version: 1.0.0
+Date: 2026-08-18
 Authors@R: c(
     person("Dominic", "Schmitz", email = "contact@dominicschmitz.com", role = c("aut", "cre")),
     person("Janina", "Esser", email = "janina.esser.92@gmail.com", role = "aut"))
 Description: A package introducing basics of statistics used in the study of language.
+URL: https://github.com/dosc91/SfL, https://dosc91.github.io/SfL/
+BugReports: https://github.com/dosc91/SfL/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.2.3
 Imports: 
-    stringr,
-    glue,
-    usethis,
-    utils,
-    knitr,
-    performance,
-    ggplot2,
-    gridExtra,
-    gghighlight,
-    ggridges,
+    graphics,
+    grDevices,
+    stats,
+    utils
+Suggests:
+    factoextra,
     ggforce,
-    multcomp,
-    DT,
-    languageR,
+    gghighlight,
+    ggplot2,
+    ggridges,
+    gridExtra,
+    knitr,
     lme4,
-    visreg,
-    lmerTest,
-    LMERConvenienceFunctions,
-    MuMIn
+    lmtest,
+    MASS,
+    multcomp,
+    nnet,
+    rmarkdown,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Depends: 
     R (>= 4.0)
-Suggests: 
-    rmarkdown
+Config/testthat/edition: 3

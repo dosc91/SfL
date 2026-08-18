@@ -1,59 +1,75 @@
-# SfL <img src='https://dominicschmitz.com/wp-content/uploads/2021/11/SfL_logo.png' align="right" height="138" />
+# SfL
 
 <!-- badges: start -->
-![](https://img.shields.io/badge/version-0.5-FFA70B.svg)
-![](https://img.shields.io/github/last-commit/dosc91/SfL)
+![Version](https://img.shields.io/badge/version-1.0.0-FFA70B.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/dosc91/SfL)
 <!-- badges: end -->
 
-`SfL` is a package created for the ["Statistics for Linguistics"](https://div-ling.org/en/events/statistics-for-linguistics-en/) workshop. 
+`SfL` supports the **Statistics for Linguistics** workshop. It provides
+teaching data, approachable statistical helpers, and links to workshop slides
+and exercises hosted on the [SfL website](https://dosc91.github.io/SfL/).
 
-It includes some handy functions and data sets, but most importantly installs all necessary packages and contains exercise files.
+## Installation
 
-Check out the [references](https://dosc91.github.io/SfL/reference/index.html) for more detailed information.
-
-
-# How to Install
-
-The preferred way to install this package is through devtools:
+Install the development version from GitHub:
 
 ```r
-# if devtools has not been installed yet, please install it first
-# install.packages("devtools")
-
-# then, install the SfL package
-devtools::install_github("dosc91/SfL")
+install.packages("remotes")
+remotes::install_github("dosc91/SfL")
 ```
 
-You will be asked to update dependencies during installation; usually, updates can be skipped.
+SfL supports R 4.0 and newer. The current CRAN release of `ggplot2` requires R
+4.1 or newer, so participants using the current plotting stack should update R
+before the workshop.
 
+## Workshop plotting packages
 
-# References
+Plotting extensions used in workshop materials are optional rather than hard
+SfL dependencies. Install them explicitly with:
 
-Please cite the package as follows:
+```r
+SfL::install_workshop_packages()
+```
 
-Schmitz, D., & Esser, J. (2021). SfL: Statistics for Linguistics. R package version 0.4. URL: https://github.com/dosc91/SfL
+The initial set contains `ggplot2`, `gridExtra`, `gghighlight`, `ggridges`,
+`ggforce`, and `factoextra`. Already-installed packages are skipped.
 
-The following sources are made use of in the `SfL` package:
+## Slides and exercises
 
-Baayen, R. H, & Shafaei-Bajestan, E. (2019). languageR: Analyzing Linguistic Data: A Practical Introduction to Statistics. R package version 1.5.0. https://CRAN.R-project.org/package=languageR
+Open a registered resource in the default browser:
 
-Barton, K. (2020). MuMIn: Multi-Model Inference. R package version 1.43.17. https://CRAN.R-project.org/package=MuMIn
+```r
+SfL::open_slide(3, 2021, "english")
+SfL::open_exercise(2, 2021, "english")
+```
 
-Bates, D., Maechler, M., Bolker, B., & Walker, S. (2015). Fitting Linear Mixed-Effects Models Using lme4. Journal of Statistical Software, 67(1), 1-48. doi:10.18637/jss.v067.i01.
+The plural aliases `open_slides()` and `open_exercises()` remain available.
+Resource URLs are maintained in one internal catalogue so future workshop PDFs
+and exercises can be added without duplicating dispatch logic.
 
-Coretta, S., Casillas, J. V., & Roettger, T. (2021). learnB4SS: Learning materials for the learnB4SS workshop. R package version 1.0.0. https://github.com/learnB4SS/learnB4SS
+## Documentation
 
-Hothorn, T., Bretz, F., & Westfall, P. (2008). Simultaneous Inference in General Parametric Models. Biometrical Journal 50(3), 346-363.
+Function documentation is available through R's help system:
 
-Nakagawa, S., Johnson, P.C.D., & Schielzeth, H. (2017) The coefficient of determination R? and intra-class correlation coefficient from generalized linear mixed-effects models revisited and expanded. J. R. Soc. Interface 14: 20170213.
+```r
+help(package = "SfL")
+?SfL::predictor_strength
+```
 
-Roettger, T. B., Winter, B., Kirby, J., Grawunder, S., & Grice, M. (2014). Assessing incomplete neutralization of final devoicing in German. Journal of Phonetics, 43: 11- 25.
+Source vignettes live in `vignettes/` and can be rebuilt with:
 
-Schmitz, D. (2018). Tonal Alignment and Segmental Composition in German. Master's Thesis. Universität zu Köln, Köln, Germany.
+```r
+devtools::build_vignettes()
+pkgdown::build_site()
+```
 
-Schmitz, D., Baer-Henney, D., & Plag, I. (2021). The duration of word-final /s/ differs across morphological categories in English: evidence from pseudowords. Phonetica. De Gruyter Mouton 78(5–6). 571–616. https://doi.org/10.1515/phon-2021-2013.
+## Citation
 
-Schmitz, D., Hae-Eun C., & Niemann, H. (2018). Vowel shortening in German as a function of syllable structure. In Proceedings 13. Phonetik und Phonologie Tagung (P&P13), 181–184. Berlin.
+Please cite the package as:
 
-Wickham, H. (2016) ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York.
+> Schmitz, D., & Esser, J. (2026). SfL: Statistics for Linguistics. R package
+> version 1.0.0. https://github.com/dosc91/SfL
 
+## License
+
+SfL is released under the MIT License.
