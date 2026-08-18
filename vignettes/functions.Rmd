@@ -51,7 +51,7 @@ while building the vignette because they open a web browser.
 
 ```{r, eval=FALSE}
 open_slide(3, 2021, "english")
-open_exercise(2, 2021, "english")
+open_exercise(3, 2026, "marburg")
 ```
 
 ## Optional plotting packages
