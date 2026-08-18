@@ -56,18 +56,11 @@ help(package = "SfL")
 ?SfL::predictor_strength
 ```
 
-Source vignettes live in `vignettes/` and can be rebuilt with:
-
-```r
-devtools::build_vignettes()
-pkgdown::build_site()
-```
-
 ## Citation
 
 Please cite the package as:
 
-> Schmitz, D., & Esser, J. (2026). SfL: Statistics for Linguistics. R package
+> Schmitz, D. & Esser, J. (2026). SfL: Statistics for Linguistics. R package
 > version 1.0.0. https://github.com/dosc91/SfL
 
 ## License
