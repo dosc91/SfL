@@ -1,3 +1,8 @@
+# SfL 1.0.2
+
+* Added the Marburg 2026 HTML exercises for sessions 03 through 10 to the
+  workshop resource catalogue.
+
 # SfL 1.0.1
 
 ## Data
