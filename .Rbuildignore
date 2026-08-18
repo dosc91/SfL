@@ -3,3 +3,4 @@
 ^docs$
 ^vignettes/.*[.]html$
 ^[.]github$
+^data-raw$

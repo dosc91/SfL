@@ -20,14 +20,36 @@ example) for variable-level documentation.
 data(package = "SfL")
 ```
 
-The following objects are included in version 1.0.0:
+The following objects are included in version 1.0.1:
 
 ```{r, echo=FALSE}
 objects <- data.frame(
   object = c(
-    "data_a", "data_c", "data_g", "data_k", "data_o", "data_p",
+    "data_a", "data_c", "data_g", "data_k", "data_l", "data_o", "data_p",
     "data_r", "data_s", "data_t", "data_v", "data_z"
   )
 )
 knitr::kable(objects, col.names = "Data object")
 ```
+
+## Lexical decision and lexical neighbourhood (`data_l`)
+
+### Unsere Studie
+
+Wir untersuchen, wie Menschen Wörter im mentalen Lexikon erkennen. Insgesamt
+bearbeiten 60 Versuchspersonen jeweils 120 Wörter in einer
+Lexical-Decision-Aufgabe. Manche Wörter erscheinen nach einem semantisch
+verwandten Kontext, andere nach einem nicht verwandten Kontext. Gleichzeitig
+unterscheiden sich die Wörter unter anderem hinsichtlich ihrer Häufigkeit,
+Länge und lexikalischen Nachbarschaft.
+
+Uns interessiert: Was macht ein Wort schnell und zuverlässig erkennbar? Dazu
+analysieren wir sowohl die Reaktionszeit als auch die Antwortgenauigkeit.
+
+```{r}
+data("data_l")
+dim(data_l)
+names(data_l)
+```
+
+Eine vollständige Variablenbeschreibung ist unter `?data_l` verfügbar.

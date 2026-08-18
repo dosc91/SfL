@@ -1,3 +1,11 @@
+# SfL 1.0.1
+
+## Data
+
+- Added `data_l`, a 7,200-observation lexical-decision teaching data set with
+  reaction times, response accuracy, experimental conditions, and lexical
+  predictors.
+
 # SfL 1.0.0
 
 ## Installation and dependencies

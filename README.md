@@ -1,7 +1,7 @@
 # SfL
 
 <!-- badges: start -->
-![Version](https://img.shields.io/badge/version-1.0.0-FFA70B.svg)
+![Version](https://img.shields.io/badge/version-1.0.1-FFA70B.svg)
 ![GitHub last commit](https://img.shields.io/github/last-commit/dosc91/SfL)
 <!-- badges: end -->
 
@@ -61,7 +61,7 @@ help(package = "SfL")
 Please cite the package as:
 
 > Schmitz, D. & Esser, J. (2026). SfL: Statistics for Linguistics. R package
-> version 1.0.0. https://github.com/dosc91/SfL
+> version 1.0.1. https://github.com/dosc91/SfL
 
 ## License
 
