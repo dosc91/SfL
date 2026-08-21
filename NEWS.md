@@ -4,6 +4,8 @@
   workshop resource catalogue.
 * Added the Marburg 2026 PDF slides for sessions 01 through 10 to the workshop
   resource catalogue.
+* Normalized the Marburg slide filenames to portable ASCII names so GitHub
+  installations also work in Windows locales with limited Unicode support.
 
 # SfL 1.0.1
 
