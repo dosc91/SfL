@@ -7,7 +7,7 @@ test_that("resource catalogue selects registered URLs", {
     marburg_slide,
     paste0(
       "https://dosc91.github.io/SfL/slides/marburg/",
-      "08_Kollinearit%C3%A4t.pdf"
+      "08_Kollinearitaet.pdf"
     )
   )
 

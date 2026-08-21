@@ -53,16 +53,16 @@
     .make_resource_rows(
       "slide", 2026, "marburg", 1:10,
       c(
-        "slides/marburg/01_Intro%20%26%20Vorstellungsrunde.pdf",
-        "slides/marburg/02_Vom%20Forschungsdesign%20zum%20Modell.pdf",
-        "slides/marburg/03_Lineare%20Regression.pdf",
-        "slides/marburg/04_Multiple%20Regression%20%26%20Kontrollvariablen.pdf",
+        "slides/marburg/01_Intro_und_Vorstellungsrunde.pdf",
+        "slides/marburg/02_Vom_Forschungsdesign_zum_Modell.pdf",
+        "slides/marburg/03_Lineare_Regression.pdf",
+        "slides/marburg/04_Multiple_Regression_Kontrollvariablen.pdf",
         "slides/marburg/05_Interaktionen.pdf",
-        "slides/marburg/06_Logistische%20Regression.pdf",
-        "slides/marburg/07_Gemischte%20Modelle.pdf",
-        "slides/marburg/08_Kollinearit%C3%A4t.pdf",
-        "slides/marburg/09_Modelldiagnostik%20%26%20Modellkomplexit%C3%A4t.pdf",
-        "slides/marburg/10_Ergebnisse%20kommunizieren.pdf"
+        "slides/marburg/06_Logistische_Regression.pdf",
+        "slides/marburg/07_Gemischte_Modelle.pdf",
+        "slides/marburg/08_Kollinearitaet.pdf",
+        "slides/marburg/09_Modelldiagnostik_Modellkomplexitaet.pdf",
+        "slides/marburg/10_Ergebnisse_kommunizieren.pdf"
       )
     ),
     .make_resource_rows(
