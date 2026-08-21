@@ -2,6 +2,15 @@ test_that("resource catalogue selects registered URLs", {
   url <- SfL:::.resource_url(3, 2021, "English", "slide")
   expect_identical(url, "https://dosc91.github.io/SfL/slides/SfL_Session_03.pdf")
 
+  marburg_slide <- SfL:::.resource_url(8, 2026, "Marburg", "slide")
+  expect_identical(
+    marburg_slide,
+    paste0(
+      "https://dosc91.github.io/SfL/slides/marburg/",
+      "08_Kollinearit%C3%A4t.pdf"
+    )
+  )
+
   hannover <- SfL:::.resource_url(11, 2023, "hannover", "exercise")
   expect_match(hannover, "11_Kollinearitaet[.]html$")
 

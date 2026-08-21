@@ -51,6 +51,21 @@
       )
     ),
     .make_resource_rows(
+      "slide", 2026, "marburg", 1:10,
+      c(
+        "slides/marburg/01_Intro%20%26%20Vorstellungsrunde.pdf",
+        "slides/marburg/02_Vom%20Forschungsdesign%20zum%20Modell.pdf",
+        "slides/marburg/03_Lineare%20Regression.pdf",
+        "slides/marburg/04_Multiple%20Regression%20%26%20Kontrollvariablen.pdf",
+        "slides/marburg/05_Interaktionen.pdf",
+        "slides/marburg/06_Logistische%20Regression.pdf",
+        "slides/marburg/07_Gemischte%20Modelle.pdf",
+        "slides/marburg/08_Kollinearit%C3%A4t.pdf",
+        "slides/marburg/09_Modelldiagnostik%20%26%20Modellkomplexit%C3%A4t.pdf",
+        "slides/marburg/10_Ergebnisse%20kommunizieren.pdf"
+      )
+    ),
+    .make_resource_rows(
       "exercise", 2021, "english", 2:7,
       c(
         "exercises/Introduction_to_R_and_RStudio.html",
